@@ -12,6 +12,7 @@ const GradientContainer = props => {
         height: verticalScale(props.height || 100),
         borderRadius: moderateScale(props.borderRadius || 10),
         overflow: 'hidden',
+        flexDirection:"row"
         // margin:scale(props.padding ||10 )
       }}>
       <LinearGradient
