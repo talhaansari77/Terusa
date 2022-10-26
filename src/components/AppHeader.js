@@ -13,8 +13,10 @@ const AppHeader = (props) => {
         <TouchableOpacity 
 
         activeOpacity={0.6}
-        style={{width:  scale(props.width || 40),height: verticalScale( props.height||  40)}}>
+        style={{width:  scale(props.width || 35),height: verticalScale( props.height||  35)}}>
             <Image 
+                resizeMode="contain"
+
             style={commonStyles.img}
             source={props.img}/>
         </TouchableOpacity>
@@ -30,8 +32,9 @@ const AppHeader = (props) => {
 <TouchableOpacity 
 
 activeOpacity={0.6}
-style={{width:  scale(props.rigthWidth || 40),height: verticalScale( props.rightHeight||  40)}}>
+style={{width:  scale(props.rigthWidth || 35),height: verticalScale( props.rightHeight||  35)}}>
     <Image 
+    resizeMode="contain"
     style={commonStyles.img}
     source={props.rightImg}/>
 </TouchableOpacity>
