@@ -32,7 +32,6 @@ import {
     iconContainer: {
       width: moderateScale(25),
       height: verticalScale(25),
-      marginBottom: verticalScale(10),
     },
     img: {
       width: '100%',

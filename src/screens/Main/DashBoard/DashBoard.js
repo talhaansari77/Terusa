@@ -1,11 +1,13 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View,SafeAreaView } from 'react-native'
 import React from 'react'
+import AppHeader from '../../../components/AppHeader'
 
 const DashBoard = () => {
   return (
-    <View>
-      <Text>DashBoard</Text>
-    </View>
+    <SafeAreaView>
+      <AppHeader/>
+      {/* <Text>DashBoard</Text> */}
+    </SafeAreaView>
   )
 }
 

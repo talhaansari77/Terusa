@@ -18,7 +18,7 @@ export const Roboto = {
   italic200: 'Roboto-LightItalic',
   Regular300: 'Roboto-Regular',
   Italic300: 'Roboto-Italic',
-  SemiBold: 'Roboto-SemiBold',
+  SemiBold: 'Roboto-Medium',
   italic400: 'Roboto-MediumItalic',
   Italic500: 'Roboto-BoldItalic',
   BlackBold: 'Roboto-Black',
