@@ -10,7 +10,7 @@ const RootNavigator = () => {
     ...DefaultTheme,
     colors: {
       ...DefaultTheme.colors,
-      background: '#ffff',
+      background:'rgb(48,62,96)',
     },
   };
 

@@ -1,4 +1,6 @@
 export const images = {
+
+    AppLogo:require("./AppLogo.png"),
   BackgroundImage: require('./background.jpg'),
   SecurityImage: require('./security.png'),
   SecurityImage: require('./security.png'),
