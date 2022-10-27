@@ -69,7 +69,6 @@ const Welcome = () => {
         title="GET STARTED"
         width="100%"
         fontSize={23}
-        // marginTop={verticalScale(10)}
         backgroundColor={colors.primary}
         height={verticalScale(40)}
         borderRadius={moderateScale(50)}

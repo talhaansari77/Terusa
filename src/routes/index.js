@@ -20,9 +20,9 @@ const RootNavigator = () => {
       <Stack.Navigator
         // initialRouteName="EditProfile"
         screenOptions={{headerShown: false}}>
+        <Stack.Screen name="MainStack" component={MainStack} />
         <Stack.Screen name="AuthStack" component={AuthStack} />
 
-        <Stack.Screen name="MainStack" component={MainStack} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -60,6 +60,8 @@ function CustomGradientButton({
           alignItems: alignItems || 'center',
           alignSelf: alignSelf || 'center',
           justifyContent: justifyContent || 'center',
+          alignContent: 'center',
+          // textAlign:"center",
           marginTop,
           marginBottom: marginBottom,
           marginHorizontal: marginHorizontal,
@@ -89,7 +91,12 @@ function CustomGradientButton({
                 justifyContent: 'space-evenly',
               }}>
               <View
-                style={{width: "70%",flexDirection: 'row', justifyContent: 'space-evenly', alignItems:"center"}}>
+                style={{
+                  width: '70%',
+                  flexDirection: 'row',
+                  justifyContent: 'space-evenly',
+                  alignItems: 'center',
+                }}>
                 <Text
                   style={[
                     {
@@ -97,13 +104,12 @@ function CustomGradientButton({
                       fontSize: fontSize || verticalScale(15),
                       fontFamily: fontFamily || 'Montserrat-Bold',
                       alignSelf: alignSelf || 'center',
-                      // marginTop: marginTop
                       // textAlign: textAlign
                     },
                   ]}>
                   {title}
                 </Text>
-                <Text>{icons ? icons : null}</Text>
+                {icons ? <Text>{icons ? icons : null}</Text> : null}
               </View>
             </LinearGradient>
           </View>
