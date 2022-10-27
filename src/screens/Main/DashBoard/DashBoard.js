@@ -1,11 +1,22 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View,SafeAreaView } from 'react-native'
 import React from 'react'
+import AppHeader from '../../../components/AppHeader'
+import { images } from '../../../assets/images'
+import GradientContainer from '../../../components/GradientContainer'
 
 const DashBoard = () => {
   return (
-    <View>
-      <Text>DashBoard</Text>
-    </View>
+    <SafeAreaView>
+      <AppHeader
+      img={images.UserImage}
+
+      txt={"Terusa"}
+      fontSize={18}
+      rightImg={images.SettingImage}
+      />
+      <GradientContainer/>
+      {/* <Text>DashBoard</Text> */}
+    </SafeAreaView>
   )
 }
 

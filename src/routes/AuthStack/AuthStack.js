@@ -17,11 +17,11 @@ const AuthStack = ({navigation}) => {
   return (
     <Stack.Navigator
       screenOptions={{headerShown: false}}
-      initialRouteName={"SecurityWallet"}
+      // initialRouteName={"SecurityWallet"}
     >
       <Stack.Screen name="OnBoarding" component={OnBoarding} />
       <Stack.Screen name="Welcome" component={Welcome} />
-      <Stack.Screen name="SecurityWallet" component={SecurityWallet} />
+      {/* <Stack.Screen name="SecurityWallet" component={SecurityWallet} /> */}
 
     </Stack.Navigator>
   );
