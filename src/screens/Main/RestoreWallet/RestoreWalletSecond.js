@@ -8,6 +8,8 @@ import LinearGradient from 'react-native-linear-gradient';
 import {moderateScale, verticalScale} from 'react-native-size-matters';
 import CustomTextInput from '../../../components/CustomTextInput';
 import CustomGradientButton from '../../../components/CustomGradientButton';
+import GradientContainer from '../../../components/GradientContainer';
+import RestoreWalletHeader from './Molecules/RestoreWalletHeader';
 
 const RestoreWalletSecond = () => {
   const RestorWalletArray = [
@@ -42,61 +44,29 @@ const RestoreWalletSecond = () => {
       resizeMode="cover"
       style={{height: '100%'}}>
       <SafeAreaView>
-        <CustomText
-          label={'Restore Wallet'}
-          alignSelf={'center'}
-          fontSize={15}
-          color={colors.white}
-          fontFamily={'Montserrat-Bold'}
-        />
-        <Spacer height={30} />
-        <View style={{width: '100%', paddingHorizontal: 50}}>
-          <CustomText
-            label={
-              'Type your 12-word recovery phrase restore you existing wallet'
-            }
-            alignSelf={'center'}
-            textAlign={'center'}
-            fontSize={12}
-            color={colors.lighBlue}
-            fontFamily={'Montserrat-regular'}
-          />
-        </View>
+        <RestoreWalletHeader />
 
         <View style={{width: '100%', padding: 20}}>
           {RestorWalletArray.map((walletArray, index) => (
             <View key={index}>
-              <LinearGradient
-                start={{x: 0.0, y: 0.25}}
-                end={{x: 0.8, y: 0.0}}
-                colors={[
-                  colors.darkGreyBlueThired,
-                  colors.darkGreyBlueThired,
-                  colors.duskSecond,
-                ]}
-                style={{
-                  height: verticalScale(55),
-                  alignItems: 'center',
-                  borderRadius: 10,
-                  flexDirection: 'row',
-                  justifyContent: 'space-evenly',
-                  marginBottom: 20,
-                  width:"100%", 
-                  paddingHorizontal:20
-                }}>
+              <GradientContainer
+                height={'55'}
+                marginBottom={20}
+                alignItems={'center'}
+                flexDirection={'row'}>
                 <CustomText
                   label={walletArray.no}
                   color={colors.white}
                   fontSize={15}
                   fontFamily={'Montserrat-bold'}
-                  
                 />
+
                 <CustomTextInput
                   placeholder="------------"
                   placeholderTextColor={colors.white}
                   paddingHorizontal={10}
                 />
-              </LinearGradient>
+              </GradientContainer>
             </View>
           ))}
         </View>

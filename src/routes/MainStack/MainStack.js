@@ -3,6 +3,8 @@ import DashBoard from '../../screens/Main/DashBoard/DashBoard';
 import {createStackNavigator} from '@react-navigation/stack';
 import RestoreWallet from '../../screens/Main/RestoreWallet/RestoreWallet';
 import RestoreWalletSecond from '../../screens/Main/RestoreWallet/RestoreWalletSecond';
+import SelectCurrency from '../../screens/Main/Currency/SelectCurrency';
+import RestoreSuccessful from '../../screens/Main/RestoreSuccessful/RestoreSuccessful';
 
 
 const MainStack = () => {
@@ -11,11 +13,13 @@ const MainStack = () => {
   return (
     <Stack.Navigator
       screenOptions={{headerShown: false}}
-      initialRouteName={"RestoreWallet"}
+      initialRouteName={"RestoreSuccessful"}
     >
       <Stack.Screen name="DashBoard" component={DashBoard} />
       <Stack.Screen name="RestoreWallet" component={RestoreWallet} />
       <Stack.Screen name="RestoreWalletSecond" component={RestoreWalletSecond} />
+      <Stack.Screen name="SelectCurrency" component={SelectCurrency} />
+      <Stack.Screen name="RestoreSuccessful" component={RestoreSuccessful} />
 
     </Stack.Navigator>
   );

@@ -11,12 +11,20 @@ const GradientContainer = props => {
         width: props.width || '100%',
         height: verticalScale(props.height || 100),
         borderRadius: moderateScale(props.borderRadius || 10),
+        marginTop: props.marginTop,
+        marginBottom: props.marginBottom,
         overflow: 'hidden',
-        flexDirection:"row"
+        flexDirection: 'row',
         // margin:scale(props.padding ||10 )
       }}>
       <LinearGradient
-        style={{width: '100%', height: '100%', padding: props.padding || 10}}
+        style={{
+          width: '100%',
+          height: '100%',
+          padding: props.padding || 10,
+          flexDirection: props.flexDirection,
+          alignItems:props.alignItems
+        }}
         start={{x: 0.0, y: 0.25}}
         end={{x: 0.8, y: 0.0}}
         colors={[colors.darkGreyBlueSecond, colors.dusk]}>
