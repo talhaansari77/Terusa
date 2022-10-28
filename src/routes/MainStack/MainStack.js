@@ -10,6 +10,8 @@ import WalletScreen from '../../screens/Main/WalletScreen/WalletScreen';
 import RecivedAmountScreen from '../../screens/Main/RecivedAmountScreen/RecivedAmountScreen';
 import ProfileScreen from '../../screens/Main/ProfileScreen/ProfileScreen';
 import SettingScreen from '../../screens/Main/SettingScreen/SettingScreen';
+import SecurityScreen from '../../screens/Main/SecurityScreen/SecurityScreen';
+import RecoveryScreen from '../../screens/Main/RecoveryScreen/RecoveryScreen';
 
 
 const MainStack = () => {
@@ -30,6 +32,8 @@ const MainStack = () => {
       <Stack.Screen name="RecivedAmountScreen" component={RecivedAmountScreen} />
       <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
       <Stack.Screen name="SettingScreen" component={SettingScreen} />
+      <Stack.Screen name="SecurityScreen" component={SecurityScreen} />
+      <Stack.Screen name="RecoveryScreen" component={RecoveryScreen} />
 
     </Stack.Navigator>
   );

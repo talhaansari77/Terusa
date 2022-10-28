@@ -40,6 +40,10 @@ function CustomGradientButton({
   alignSelf,
   paddingHorizontal,
   icons,
+  x1,
+  y1,
+  x2,
+  y2,
 }) {
   return (
     <TouchableOpacity
@@ -80,8 +84,8 @@ function CustomGradientButton({
               alignSelf: 'center',
             }}>
             <LinearGradient
-              start={{x: 0, y: 1}}
-              end={{x: 1, y: 0}}
+              start={{x: x1 || 0, y: y1 || 1}}
+              end={{x: x2 || 1, y: y2 || 0}}
               colors={[colors.niceBlue, colors.blueWithPurple]}
               style={{
                 height: '100%',
