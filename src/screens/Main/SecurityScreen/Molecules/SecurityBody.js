@@ -1,5 +1,5 @@
-import {View, Text, Image} from 'react-native';
-import React from 'react';
+import {View, Text, Image, Switch} from 'react-native';
+import React, {useState} from 'react';
 import {images} from '../../../../assets/images';
 import GradientContainer from '../../../../components/GradientContainer';
 import CustomText from '../../../../components/CustomText';
@@ -7,6 +7,14 @@ import {colors} from '../../../../utils/Colors';
 import {scale, verticalScale} from 'react-native-size-matters';
 
 const SecurityBody = () => {
+  const [isOn, setisOn] = useState({
+    withProfile: false,
+  });
+
+  const onViewProfile = () => {
+    setisOn({...isOn, withProfile: !isOn.withProfile});
+  };
+
   const SecuirtyFlatListData = [
     {
       title: 'Backup',
@@ -23,14 +31,25 @@ const SecurityBody = () => {
         'Lorem, ipsum dolor sit ametLorem, ipsum dolor sit ametLorem, ipsum dolor sit ametLorem, ipsum dolor sit ametLorem, ipsum dolor sit amet',
       image: images.LockIconImage,
       blueImage: images.LockBlueIcon,
-      status: true,
+      status: (
+        <Switch
+          value={isOn.withProfile}
+          trackColor={{false: colors.white, true: colors.white}}
+          thumbColor={colors.white}
+          style={{transform: [{scaleX: 1.1}, {scaleY: 1.1}]}}
+          onPress={() => setActive(!active)}
+          onValueChange={onViewProfile}
+        />
+      ),
     },
   ];
+
   return (
-    <View>
+    <View >
       {SecuirtyFlatListData.map((securityArray, index) => (
         <View key={index}>
           <GradientContainer
+          style={{}}
             height={'90'}
             marginBottom={20}
             //   alignItems={"center"}
@@ -40,8 +59,10 @@ const SecurityBody = () => {
                 display: 'flex',
                 flexDirection: 'row',
                 justifyContent: 'space-around',
+                width: '100%',
+                paddingHorizontal: 10
               }}>
-              <View style={{display: 'flex', justifyContent: 'space-evenly',}}>
+              <View style={{display: 'flex', justifyContent: 'space-evenly'}}>
                 <CustomText
                   label={securityArray.title}
                   color={colors.white}
@@ -58,29 +79,26 @@ const SecurityBody = () => {
                   label={securityArray.subTitle}
                   width={'90%'}
                   color={colors.white}
-                //   textAlign={"center"}
+                  //   textAlign={"center"}
                   fontSize={9}
                   fontFamily={'Montserrat-regular'}
                 />
               </View>
 
-              <View style={{right:10, top:10}} >
+              <View style={{right: 2, top: 10}}>
                 <Image
                   source={securityArray.image}
                   style={{
                     height: verticalScale(30),
                     width: scale(30),
                     resizeMode: 'contain',
+                    marginBottom: 12,
                   }}
                 />
+
+                {securityArray.status}
               </View>
             </View>
-
-            {/* <CustomTextInput
-            placeholder="------------"
-            placeholderTextColor={colors.white}
-            paddingHorizontal={10}
-          /> */}
           </GradientContainer>
         </View>
       ))}
