@@ -18,7 +18,6 @@ const RootNavigator = () => {
   return (
     <NavigationContainer theme={MyTheme}>
       <Stack.Navigator
-        // initialRouteName="EditProfile"
         screenOptions={{headerShown: false}}>
         <Stack.Screen name="MainStack" component={MainStack} />
         <Stack.Screen name="AuthStack" component={AuthStack} />

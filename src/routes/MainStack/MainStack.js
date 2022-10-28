@@ -5,6 +5,11 @@ import RestoreWallet from '../../screens/Main/RestoreWallet/RestoreWallet';
 import RestoreWalletSecond from '../../screens/Main/RestoreWallet/RestoreWalletSecond';
 import SelectCurrency from '../../screens/Main/Currency/SelectCurrency';
 import RestoreSuccessful from '../../screens/Main/RestoreSuccessful/RestoreSuccessful';
+import SendAmountScreen from '../../screens/Main/SendAmountScreen/SendAmountScreen';
+import WalletScreen from '../../screens/Main/WalletScreen/WalletScreen';
+import RecivedAmountScreen from '../../screens/Main/RecivedAmountScreen/RecivedAmountScreen';
+import ProfileScreen from '../../screens/Main/ProfileScreen/ProfileScreen';
+import SettingScreen from '../../screens/Main/SettingScreen/SettingScreen';
 
 
 const MainStack = () => {
@@ -13,13 +18,18 @@ const MainStack = () => {
   return (
     <Stack.Navigator
       screenOptions={{headerShown: false}}
-      initialRouteName={"RestoreSuccessful"}
+      initialRouteName={"ProfileScreen"}
     >
       <Stack.Screen name="DashBoard" component={DashBoard} />
       <Stack.Screen name="RestoreWallet" component={RestoreWallet} />
       <Stack.Screen name="RestoreWalletSecond" component={RestoreWalletSecond} />
       <Stack.Screen name="SelectCurrency" component={SelectCurrency} />
       <Stack.Screen name="RestoreSuccessful" component={RestoreSuccessful} />
+      <Stack.Screen name="SendAmountScreen" component={SendAmountScreen} />
+      <Stack.Screen name="WalletScreen" component={WalletScreen} />
+      <Stack.Screen name="RecivedAmountScreen" component={RecivedAmountScreen} />
+      <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
+      <Stack.Screen name="SettingScreen" component={SettingScreen} />
 
     </Stack.Navigator>
   );
