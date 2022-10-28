@@ -5,6 +5,7 @@ import RestoreWallet from '../../screens/Main/RestoreWallet/RestoreWallet';
 import RestoreWalletSecond from '../../screens/Main/RestoreWallet/RestoreWalletSecond';
 import SelectCurrency from '../../screens/Main/Currency/SelectCurrency';
 import RestoreSuccessful from '../../screens/Main/RestoreSuccessful/RestoreSuccessful';
+import SecurityScreen from '../../screens/Main/SecurityScreen/SecurityScreen';
 
 
 const MainStack = () => {
@@ -13,13 +14,14 @@ const MainStack = () => {
   return (
     <Stack.Navigator
       screenOptions={{headerShown: false}}
-      initialRouteName={"RestoreSuccessful"}
+      initialRouteName={"SecurityScreen"}
     >
       <Stack.Screen name="DashBoard" component={DashBoard} />
       <Stack.Screen name="RestoreWallet" component={RestoreWallet} />
       <Stack.Screen name="RestoreWalletSecond" component={RestoreWalletSecond} />
       <Stack.Screen name="SelectCurrency" component={SelectCurrency} />
       <Stack.Screen name="RestoreSuccessful" component={RestoreSuccessful} />
+      <Stack.Screen name="SecurityScreen" component={SecurityScreen} />
 
     </Stack.Navigator>
   );
