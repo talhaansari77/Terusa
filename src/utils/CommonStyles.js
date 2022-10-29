@@ -4,13 +4,16 @@ import {
     verticalScale,
     moderateScale,
   } from 'react-native-size-matters';
+  import {
+  
+    Platform
+  } from 'react-native'
   // import colors from './colors';
   const commonStyles = ScaledSheet.create({
     container: {
-      justifyContent: 'center',
-      alignItems: 'center',
+    
       flexDirection: 'column',
-      padding: 15,
+      padding: 10,
       flex: 1,
     },
  
@@ -42,7 +45,13 @@ import {
       justifyContent: 'center',
       alignItems: 'center',
     },
+
+    IosPadding:{
+      flex: 1,paddingTop:Platform.OS=="ios"?verticalScale(35):0,
+      paddingHorizontal:moderateScale(15)
+    }
   });
+
   
   export default commonStyles;
   

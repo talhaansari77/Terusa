@@ -13,7 +13,7 @@ const AppHeader = (props) => {
         <TouchableOpacity 
 
         activeOpacity={0.6}
-        style={{width:  scale(props.width || 35),height: verticalScale( props.height||  35)}}>
+        style={{width:  scale(props.width || 35),height: verticalScale( props.height||  35),marginLeft:props.marginLeft}}>
             <Image 
                 resizeMode="contain"
 
