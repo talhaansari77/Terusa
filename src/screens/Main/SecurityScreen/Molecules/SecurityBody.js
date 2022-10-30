@@ -34,7 +34,7 @@ const SecurityBody = () => {
       status: (
         <Switch
           value={isOn.withProfile}
-          trackColor={{false: colors.white, true: colors.white}}
+          trackColor={{false: colors.white, true: colors.darkGrey}}
           thumbColor={colors.white}
           style={{transform: [{scaleX: 1.1}, {scaleY: 1.1}]}}
           onPress={() => setActive(!active)}
