@@ -15,6 +15,7 @@ import {images} from '../../../assets/images';
 import {scale} from 'react-native-size-matters';
 import {colors} from '../../../utils/Colors';
 import LinearGradient from 'react-native-linear-gradient';
+import Ionicons from "react-native-vector-icons/Ionicons";
 import {useState} from 'react';
 
 const SettingScreen = ({navigation}) => {

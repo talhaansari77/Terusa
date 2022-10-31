@@ -1,3 +1,5 @@
+import Ionicons from "react-native-vector-icons/Ionicons";
+
 export const images = {
 
     AppLogo:require("./AppLogo.png"),
@@ -98,5 +100,5 @@ export const images = {
   UsdtLogo: require('./UsdtLogo.png'),
   SerachIconblue: require('./SerachIconblue.png'),
   SerachProfile: require('./searchIconSecond.png'),
-  SearchBlueImage: require('./SearchBlueIcon.png'),
+  SearchBlueImage: require('./SearchBlueIcon.png'), 
 };
