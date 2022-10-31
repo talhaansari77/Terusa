@@ -44,6 +44,8 @@ function CustomGradientButton({
   y1,
   x2,
   y2,
+  iconMarginLeft,
+  marginLeft
 }) {
   return (
     <TouchableOpacity
@@ -108,13 +110,17 @@ function CustomGradientButton({
                       fontSize: fontSize || verticalScale(15),
                       fontFamily: fontFamily || 'Montserrat-Bold',
                       alignSelf: alignSelf || 'center',
+                      marginLeft:"15%"
                       // textAlign: textAlign
                     },
                   ]}>
                   {title}
                 </Text>
-                {icons ? <Text>{icons ? icons : null}</Text> : null}
+             
               </View>
+              {icons ? <View
+                style={{marginLeft:iconMarginLeft}}
+                >{icons ? icons : null}</View> : null}
             </LinearGradient>
           </View>
         </View>

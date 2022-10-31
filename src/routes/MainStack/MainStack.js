@@ -1,6 +1,7 @@
 import {View, Text, Image, Platform} from 'react-native';
 import DashBoard from '../../screens/Main/DashBoard/DashBoard';
 import {createStackNavigator} from '@react-navigation/stack';
+import Portfolio from '../../screens/Main/Portfolio/Portfolio';
 import RestoreWallet from '../../screens/Main/RestoreWallet/RestoreWallet';
 import RestoreWalletSecond from '../../screens/Main/RestoreWallet/RestoreWalletSecond';
 import SelectCurrency from '../../screens/Main/Currency/SelectCurrency';
@@ -21,9 +22,11 @@ const MainStack = () => {
   return (
     <Stack.Navigator
       screenOptions={{headerShown: false}}
-      initialRouteName={"SettingScreen"}
+      initialRouteName={"DashBoard"}
     >
       <Stack.Screen name="DashBoard" component={DashBoard} />
+      <Stack.Screen name="Portfolio" component={Portfolio} />
+
       <Stack.Screen name="RestoreWallet" component={RestoreWallet} />
       <Stack.Screen name="RestoreWalletSecond" component={RestoreWalletSecond} />
       <Stack.Screen name="SelectCurrency" component={SelectCurrency} />

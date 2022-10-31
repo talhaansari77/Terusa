@@ -8,16 +8,20 @@ import {
   TouchableOpacity,
   TextInput,
   Switch,
+  ImageBackground,
+  ScrollView
   //   Switch,
 } from 'react-native';
 import React from 'react';
 import styled from 'react-native-styled-components';
 import AppHeader from '../../../components/AppHeader';
-import {scale} from 'react-native-size-matters';
+import {scale, verticalScale} from 'react-native-size-matters';
 import {images} from '../../../assets/images';
 import {colors} from '../../../utils/Colors';
 import LinearGradient from 'react-native-linear-gradient';
 import {useState} from 'react';
+import { Spacer } from '../../../components/Spacer';
+import commonStyles from '../../../utils/CommonStyles';
 // import {SwitchToggle} from '../../../components/Switch'
 
 const ProfileScreen = () => {
@@ -61,15 +65,20 @@ const ProfileScreen = () => {
     },
   ];
   return (
-    <SafeAreaView style={{flex: 1}}>
-      <PH20>
+    <ImageBackground
+    source={images.BackgroundImage}
+    resizeMode="cover"
+    style={commonStyles.IosPadding}>
+      {/* <PH20> */}
+      <ScrollView>
+
         <AppHeader
           img={images.BackArrow}
           txt={'Profile'}
           fontSize={18}
           rightImg={images.SettingImage}
         />
-        {/* <Spacer height={10}/> */}
+        <Spacer height={10}/>
         <View style={styles.container}>
           <View style={styles.circleShapeView}>
             <View style={styles.shadowLogoContainer}>
@@ -77,14 +86,64 @@ const ProfileScreen = () => {
             </View>
           </View>
           <View style={styles.QrCodeTextView}>
-            <Text style={styles.QrCodeVersionNameText}>DE-CRYPTO 2.1.03</Text>
+            <Text style={styles.QrCodeVersionNameText}>Terusa 2.1.03</Text>
             <Text style={styles.QrCodeSubText}>
               Lorem, ipsum dolor sit amet
             </Text>
           </View>
         </View>
+        {
 
-        <FlatList
+          FlatListProfileData.map(item=>{
+
+            return(
+
+              <View style={[styles.shadowContainer, styles.securityMarginTop]}>
+              <LinearGradient
+                start={{x: 0.0, y: 0.25}}
+                end={{x: 0.8, y: 0.0}}
+                colors={[
+                  colors.darkGreyBlueThired,
+                  colors.darkGreyBlueThired,
+                  colors.duskSecond,
+                ]}
+                style={styles.securityFlatListView}>
+                <TouchableOpacity
+                  activeOpacity={0.7}
+                  onPress={() => {
+                    {
+                      index === 1 && navigation.navigate('ContactUs');
+                    }
+                    {
+                      index === 0 && navigation.navigate('Security');
+                    }
+                  }}>
+                  <View style={styles.flatListInnerTextView}>
+                    <Text style={styles.flatListInnerTitleText}>
+                      {item.title}
+                    </Text>
+                    <Image
+                      source={item.image}
+                      style={styles.securityInnerImage}
+                    />
+                  </View>
+                  <View style={styles.separatorLine} />
+                  <View style={styles.securitySubTitleView}>
+                    <Text style={styles.flatListInnersubTitleText}>
+                      {item.subTitle}
+                    </Text>
+                  </View>
+                </TouchableOpacity>
+              </LinearGradient>
+            </View>
+
+            )
+
+          })
+
+        }
+
+         {/* <FlatList
           data={FlatListProfileData}
           contentContainerStyle={styles.paddingBottomSecond}
           renderItem={({item, index}) => (
@@ -127,7 +186,8 @@ const ProfileScreen = () => {
               </LinearGradient>
             </View>
           )}
-        />
+        />  */}
+        <Spacer height={10}/>
 
         <View style={styles.shadowContainer}>
           <LinearGradient
@@ -154,6 +214,7 @@ const ProfileScreen = () => {
             </Text>
           </LinearGradient>
         </View>
+        <Spacer height={5}/>
 
         <View style={styles.searchView}>
           <TextInput
@@ -180,8 +241,93 @@ const ProfileScreen = () => {
             </TouchableOpacity>
           )}
         </View>
+        <Spacer height={20}/>
 
-        <FlatList
+        {
+          ProfileFlatListData.map((item,index)=>{
+            return(
+              <View style={[styles.shadowContainer, styles.marginTop]}>
+              <LinearGradient
+                start={{x: 0.0, y: 0.0}}
+                end={{x: 0.8, y: 0.0}}
+                colors={[
+                  colors.darkGreyBlueThired,
+                  colors.darkGreyBlueThired,
+                  colors.duskSecond,
+                ]}
+                style={styles.flatListView}>
+                <View style={styles.flatListInnerView}>
+                  <Image
+                    source={item.image}
+                    style={styles.flatListInnerImage}
+                  />
+
+                  <View style={styles.itemDetailsView}>
+                    <Text style={styles.flatListInnerShortTitle}>
+                      {item.subtitle}
+                    </Text>
+                    <View style={styles.switchToggleView}>
+                      {index === 0 && (
+                        <View style={styles.toggleView}>
+                          <Switch
+                            trackColor={{false: colors.black, true: '#f4f3f4'}}
+                            thumbColor={isEnabled ? colors.primary : colors.white}
+                            ios_backgroundColor={colors.primary}
+                            onValueChange={toggleSwitch}
+                            value={isEnabled}
+                          />
+                        </View>
+                      )}
+                      {index === 1 && (
+                        <View style={styles.toggleView}>
+                          {/* <Switch
+                              switchOn={this.state.switchOnSecondButton}
+                              onPress={() =>
+                                this.setState({
+                                  switchOnSecondButton: !this.state
+                                    .switchOnSecondButton
+                                })
+                              }
+                            /> */}
+                            <Switch
+                           trackColor={{false: colors.black, true: '#f4f3f4'}}
+                           thumbColor={isEnabled ? colors.primary : colors.white}
+                           ios_backgroundColor={colors.primary}
+                           onValueChange={toggleSwitch}
+                           value={isEnabled}
+                          />
+                        </View>
+                      )}
+                      {index === 2 && (
+                        <View style={styles.toggleView}>
+                          {/* <Switch
+                              switchOn={this.state.switchOnThiredButton}
+                              onPress={this.switchOnThiredPress}
+                            /> */}
+                            <Switch
+                            trackColor={{false: colors.black, true: '#f4f3f4'}}
+                            thumbColor={isEnabled ? colors.primary : colors.white}
+                            ios_backgroundColor={colors.primary}
+                            onValueChange={toggleSwitch}
+                            value={isEnabled}
+                          />
+                        </View>
+                      )}
+                    </View>
+
+                    <Text style={styles.flatListInnerFullTextTitle}>
+                      {item.name}
+                    </Text>
+                  </View>
+                </View>
+              </LinearGradient>
+            </View>
+
+            )
+          })
+        }
+
+        {/* <FlatList
           style={styles.flatList}
           contentContainerStyle={styles.paddingBottom}
           data={ProfileFlatListData}
@@ -220,15 +366,7 @@ const ProfileScreen = () => {
                       )}
                       {index === 1 && (
                         <View style={styles.toggleView}>
-                          {/* <Switch
-                              switchOn={this.state.switchOnSecondButton}
-                              onPress={() =>
-                                this.setState({
-                                  switchOnSecondButton: !this.state
-                                    .switchOnSecondButton
-                                })
-                              }
-                            /> */}
+                        
                             <Switch
                             trackColor={{false: colors.blueWithPurple, true: '#f4f3f4'}}
                             thumbColor={isEnabled ? colors.niceBlue : colors.white}
@@ -240,10 +378,7 @@ const ProfileScreen = () => {
                       )}
                       {index === 2 && (
                         <View style={styles.toggleView}>
-                          {/* <Switch
-                              switchOn={this.state.switchOnThiredButton}
-                              onPress={this.switchOnThiredPress}
-                            /> */}
+                       
                             <Switch
                             trackColor={{false: colors.blueWithPurple, true: '#f4f3f4'}}
                             thumbColor={isEnabled ? colors.niceBlue : colors.white}
@@ -263,9 +398,11 @@ const ProfileScreen = () => {
               </LinearGradient>
             </View>
           )}
-        />
-      </PH20>
-    </SafeAreaView>
+        /> */}
+      {/* </PH20> */}
+      </ScrollView>
+
+      </ImageBackground>
   );
 };
 
@@ -383,7 +520,7 @@ const styles = StyleSheet.create({
     paddingTop: 23,
   },
   searchView: {
-    height: 35,
+    height: verticalScale(35),
     width: 330,
     backgroundColor: colors.darkTwo,
     flexDirection: 'row',

@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, View, Image, TouchableOpacity,ImageBackground} from 'react-native';
 import React, {useState, useRef} from 'react';
 import {images} from '../../../assets/images';
 import commonStyles from '../../../utils/CommonStyles';
@@ -8,41 +8,33 @@ import {verticalScale, ScaledSheet, scale} from 'react-native-size-matters';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import CustomText from '../../../components/CustomText';
 import {Spacer} from '../../../components/Spacer';
-import {Roboto} from '../../../utils/Fonts';
+import {Montserrat, Roboto} from '../../../utils/Fonts';
 import Icon from 'react-native-vector-icons/Ionicons';
 import GradientCircleBtn from '../../../components/GradientCircleBtn';
+import SepratorLine from '../../../components/SepratorLine';
 
 const OnBoarding = ({navigation}) => {
   const [page, setPage] = useState(0);
   const ref = useRef(null);
 
-  const moveBack=()=>{
-
-    if(page==0){
-
+  const moveBack = () => {
+    if (page == 0) {
+    } else {
+      ref?.current?.goToSlide(page - 1);
+      setPage(page - 1);
     }
-    else{
-      ref?.current?.goToSlide(page-1)
-      setPage(page-1)
+  };
 
+  const moveForward = () => {
+    if (page + 1 <= 2) {
+      ref?.current?.goToSlide(page + 1);
+      setPage(page + 1);
     }
-
-  }
-
-  const moveForward=()=>{
-
-    if(page+1<=2){
-
-      ref?.current?.goToSlide(page+1)
-      setPage(page+1)
-
-    }
-   
-
-  }
+  };
   return (
-    <View style={{flex: 1}}>
-      <View style={{height: '85%'}}>
+    <ImageBackground source={images.BackgroundImage} resizeMode="cover" style={{height:"100%"}} >
+
+      <View style={{height: '87%'}}>
         <AppIntroSlider
           showNextButton={false}
           showDoneButton={false}
@@ -51,7 +43,7 @@ const OnBoarding = ({navigation}) => {
           showSkipButton={false}
           data={OnBoardingData}
           dotStyle={{backgroundColor: colors.lighBlue}}
-          activeDotStyle={{backgroundColor:colors.white}}
+          activeDotStyle={{backgroundColor: colors.white}}
           onSlideChange={index => setPage(index)}
           keyExtractor={(item, index) => {
             item?.id + index.toString();
@@ -68,13 +60,16 @@ const OnBoarding = ({navigation}) => {
                     resizeMode="contain"
                   />
                 </View>
-                <Spacer height={40} />
+                <Spacer height={30} />
+                <SepratorLine />
+                <Spacer height={30} />
 
                 <CustomText
                   label={item.title}
                   color={colors.white}
-                  fontFamily={Roboto.BlackBold}
-                  fontSize={verticalScale(16)}
+                  fontWeight={'600'}
+                  fontFamily={Montserrat.SemiBold}
+                  fontSize={verticalScale(18)}
                 />
                 <Spacer height={verticalScale(20)} />
                 <View style={{width: '85%'}}>
@@ -87,67 +82,50 @@ const OnBoarding = ({navigation}) => {
                     textDecorationColor="black"
                   />
                 </View>
-
-               
               </View>
             </>
           )}
         />
       </View>
 
-      <View style={[commonStyles.justify,{
-        padding:scale(20),
-
-      }]}>
+      <View
+        style={[
+          commonStyles.justify,
+          {
+            padding: scale(20),
+          },
+        ]}>
         {/* <Text>cdjbcd</Text> */}
 
         <TouchableOpacity
-        activeOpacity={0.6}
-        onPress={()=>{
-
-          moveBack()
-
-        }}
-        >
-        <Icon
-          name="chevron-back"
-          size={30}
-          color={colors.white}
-        />
-
+          activeOpacity={0.6}
+          onPress={() => {
+            moveBack();
+          }}>
+          <Icon name="chevron-back" size={30} color={colors.white} />
         </TouchableOpacity>
 
-      
         <GradientCircleBtn
-        onPress={()=>{
-          if(page==2){
-            navigation.navigate("MainStack")
-          }
-          else{
-            moveForward()
-
-
-          }
-
-        }}
+          onPress={() => {
+            if (page == 2) {
+              navigation.navigate('Welcome');
+            } else {
+              moveForward();
+            }
+          }}
         />
 
         <CustomText
-                  label={"Skip"}
-                  onPress={()=>{
-                    navigation.navigate("MainStack")
-
-
-                  }}
-                  color={colors.white}
-                  fontFamily={Roboto.SemiBold}
-                  fontSize={verticalScale(12)}
-                />
-
-
-
+          label={'Skip'}
+          onPress={() => {
+            navigation.navigate('Welcome');
+          }}
+          color={colors.white}
+          fontFamily={Roboto.SemiBold}
+          fontSize={verticalScale(12)}
+        />
       </View>
-    </View>
+    </ImageBackground>
   );
 };
 
@@ -158,7 +136,7 @@ const styles = ScaledSheet.create({
     flex: 1,
   },
   imgConatiner: {
-    height: '50%',
+    height: '45%',
     width: '90%',
     paddingRight: 5,
   },
@@ -195,19 +173,3 @@ const styles = ScaledSheet.create({
     marginHorizontal: '5@s',
   },
 });
-
-// <View
-// style={{
-//   width: '100%',
-//   height: '100%',
-//   alignItems: 'center',
-//   justifyContent: 'center',
-//   backgroundColor:colors.primary
-// }}>
-//   <View style={{width:"70%",height:"70%"}}>
-//   <Image
-//   resizeMode="contain"
-//   style={commonStyles.img} source={images.AppLogo} />
-
-//   </View>
-// </View>

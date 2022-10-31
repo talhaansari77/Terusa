@@ -12,12 +12,15 @@ const AppHeader = props => {
     <View style={commonStyles.justify}>
       <TouchableOpacity
         activeOpacity={0.6}
-        style={{
-          width: scale(props.width || 35),
-          height: verticalScale(props.height || 35),
-        }}>
-        <Image
-          resizeMode="contain"
+        onPress={props.onPress}
+        style={{width:  scale(props.width || 35),height: verticalScale( props.height||  35),marginLeft:props.marginLeft}}>
+            <Image 
+                resizeMode="contain"
+        // style={{
+        //   width: scale(props.width || 35),
+        //   height: verticalScale(props.height || 35),
+        // }}
+        
           style={commonStyles.img}
           source={props.img}
         />
