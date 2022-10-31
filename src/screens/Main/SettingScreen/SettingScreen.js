@@ -17,7 +17,7 @@ import {colors} from '../../../utils/Colors';
 import LinearGradient from 'react-native-linear-gradient';
 import {useState} from 'react';
 
-const SettingScreen = () => {
+const SettingScreen = ({navigation}) => {
   const [checked, setChecked] = useState(false);
 
   const SettingFlatListdata = [
@@ -67,6 +67,15 @@ const SettingScreen = () => {
       currency: false,
       touchable: false,
     },
+    {
+      title: 'Add FingerPrint',
+      subTitle: 'Add FingerPrint for Security',
+      // image: images.DarkThemeIcon,
+      blackImage: images.LightThemeIcon,
+      SwitchBtn: true,
+      currency: false,
+      touchable: true,
+    },
   ];
   return (
     <SafeAreaView style={{flex: 1}}>
@@ -88,6 +97,7 @@ const SettingScreen = () => {
                   onPress={() => {
                     index === 2 && navigation.navigate('SelectCurrency');
                     index === 3 && navigation.navigate('RestoreWallet');
+                    index === 5 && navigation.navigate('FingerPrintScreen');
                   }}
                   disabled={item.touchable === true ? false : true}
                   style={styles.flatListInnerView}>
