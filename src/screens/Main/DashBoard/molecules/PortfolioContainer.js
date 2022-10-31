@@ -24,7 +24,7 @@ const PortfolioContainer = ({   setModalVisible,
         <CustomText
                 label={"Portfolio Value"}
                 fontSize={14}
-                // fontWeight={"400"}
+                fontWeight={"400"}
                 fontFamily={Roboto.SemiBold}
                 color={colors.darkGrey}
               />

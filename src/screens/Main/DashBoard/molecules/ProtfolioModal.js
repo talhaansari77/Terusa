@@ -4,6 +4,7 @@ import { PortFolioModalData } from '../../../../utils/Data'
 import CustomText from '../../../../components/CustomText'
 import { Montserrat, Roboto } from '../../../../utils/Fonts'
 import { colors } from '../../../../utils/Colors'
+import { moderateScale } from 'react-native-size-matters'
 
 const ProtfolioModal = ({modalVisible,setModalVisible}) => {
   return (
@@ -16,6 +17,7 @@ const ProtfolioModal = ({modalVisible,setModalVisible}) => {
       setModalVisible(false);
     }}>
     <TouchableOpacity
+
       activeOpacity={6}
       onPress={() => {
         setModalVisible(false);
@@ -23,6 +25,8 @@ const ProtfolioModal = ({modalVisible,setModalVisible}) => {
       style={styles.popupModal}>
       <TouchableOpacity activeOpacity={1} style={styles.popupView}>
         <View style={styles.flatListModalView}>
+            <View style={{borderRadius:10,borderWidth:0.5,borderColor:colors.normallightGrey,paddingHorizontal:moderateScale(30)}}>
+
           <FlatList
             bounces={false}
             showsVerticalScrollIndicator={false}
@@ -37,7 +41,7 @@ const ProtfolioModal = ({modalVisible,setModalVisible}) => {
                         <CustomText
                 label={item.name}
                 fontSize={14}
-                fontWeight={"700"}
+                fontWeight={"600"}
                 fontFamily={Montserrat.SemiBold}
                 color={colors.black}
                 marginBottom={20}
@@ -54,6 +58,8 @@ const ProtfolioModal = ({modalVisible,setModalVisible}) => {
               </View>
             )}
           />
+                      </View>
+
         </View>
       </TouchableOpacity>
     </TouchableOpacity>
@@ -70,7 +76,7 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
       },
       popupView: {
         width: '80%',
@@ -80,7 +86,9 @@ const styles = StyleSheet.create({
       },
       flatListModalView: {
         width: '100%',
-        paddingHorizontal: 30
+        padding:8,
+        // paddingHorizontal: 30,
+        borderRadius:20,
       },
       modalTextView: {
         width: '100%',

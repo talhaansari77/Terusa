@@ -20,8 +20,8 @@ const AuthStack = ({navigation}) => {
       // initialRouteName={"SecurityWallet"}
     >
       <Stack.Screen name="OnBoarding" component={OnBoarding} />
+   {/* <Stack.Screen name="SecurityWallet" component={SecurityWallet} /> */}
       <Stack.Screen name="Welcome" component={Welcome} />
-      {/* <Stack.Screen name="SecurityWallet" component={SecurityWallet} /> */}
 
     </Stack.Navigator>
   );

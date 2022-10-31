@@ -17,9 +17,9 @@ const SummaryContainer = () => {
   return (
     <View>
       <GradientContainer height={'91%'}
-      borderWidth={1.5}
-      borderRadius={20}
-      borderColor={colors.darkBlue}
+    //   borderWidth={1.5}
+    //   borderRadius={20}
+    //   borderColor={colors.darkBlue}
       >
         <View style={{width: '100%', height: '100%'}}>
           <View style={styles.graphCon}>

@@ -40,6 +40,12 @@ function CustomGradientButton({
   alignSelf,
   paddingHorizontal,
   icons,
+  x1,
+  y1,
+  x2,
+  y2,
+  iconMarginLeft,
+  marginLeft
 }) {
   return (
     <TouchableOpacity
@@ -60,6 +66,8 @@ function CustomGradientButton({
           alignItems: alignItems || 'center',
           alignSelf: alignSelf || 'center',
           justifyContent: justifyContent || 'center',
+          alignContent: 'center',
+          // textAlign:"center",
           marginTop,
           marginBottom: marginBottom,
           marginHorizontal: marginHorizontal,
@@ -78,8 +86,8 @@ function CustomGradientButton({
               alignSelf: 'center',
             }}>
             <LinearGradient
-              start={{x: 0, y: 1}}
-              end={{x: 0, y: 0}}
+              start={{x: x1 || 0, y: y1 || 1}}
+              end={{x: x2 || 1, y: y2 || 0}}
               colors={[colors.niceBlue, colors.blueWithPurple]}
               style={{
                 height: '100%',
@@ -89,7 +97,12 @@ function CustomGradientButton({
                 justifyContent: 'space-evenly',
               }}>
               <View
-                style={{width: "70%",flexDirection: 'row', justifyContent: 'space-evenly', alignItems:"center"}}>
+                style={{
+                  width: '70%',
+                  flexDirection: 'row',
+                  justifyContent: 'space-evenly',
+                  alignItems: 'center',
+                }}>
                 <Text
                   style={[
                     {
@@ -97,14 +110,17 @@ function CustomGradientButton({
                       fontSize: fontSize || verticalScale(15),
                       fontFamily: fontFamily || 'Montserrat-Bold',
                       alignSelf: alignSelf || 'center',
-                      // marginTop: marginTop
+                      marginLeft:"15%"
                       // textAlign: textAlign
                     },
                   ]}>
                   {title}
                 </Text>
-                <Text>{icons ? icons : null}</Text>
+             
               </View>
+              {icons ? <View
+                style={{marginLeft:iconMarginLeft}}
+                >{icons ? icons : null}</View> : null}
             </LinearGradient>
           </View>
         </View>

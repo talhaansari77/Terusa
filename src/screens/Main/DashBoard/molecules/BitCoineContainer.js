@@ -31,6 +31,7 @@ const BitCoineContainer = ({coin,name,number,amount,grading,img}) => {
               height: '100%',
               justifyContent: 'center',
               marginHorizontal: 10,
+              
             }}>
             <View style={styles.imgContainer}>
               <Image source={img} style={commonStyles.img} />

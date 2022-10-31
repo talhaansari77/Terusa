@@ -5,7 +5,8 @@ import {
   SafeAreaView,
   FlatList,
   ScrollView,
-  Platform
+  Platform,
+  ImageBackground
 } from 'react-native';
 import React,{useState} from 'react';
 import AppHeader from '../../../components/AppHeader';
@@ -81,8 +82,16 @@ const DashBoard = ({navigation}) => {
   };
   return (
     <>
-      <View style={commonStyles.IosPadding}>
+     <ImageBackground
+      source={images.BackgroundImage}
+      resizeMode="cover"
+      style={commonStyles.IosPadding}>
+
         <AppHeader
+        onPress={()=>{
+          navigation.navigate("ProfileScreen")
+
+        }}
         marginLeft={10}
           img={images.UserImage}
           txt={'Terusa'}
@@ -110,7 +119,9 @@ const DashBoard = ({navigation}) => {
            renderItem={CoinRender} />
         </ScrollView>
 
-    </View>
+        </ImageBackground>
+
+
     <FooterAddContainer/>
     <ProtfolioModal
     setModalVisible={setModalVisible}

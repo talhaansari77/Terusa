@@ -47,7 +47,7 @@ import {
     },
 
     IosPadding:{
-      flex: 1,paddingTop:Platform.OS=="ios"?verticalScale(35):0,
+      flex: 1,paddingTop:Platform.OS=="ios"?verticalScale(40):5,
       paddingHorizontal:moderateScale(15)
     }
   });
