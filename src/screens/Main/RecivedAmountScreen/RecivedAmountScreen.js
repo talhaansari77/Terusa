@@ -9,7 +9,7 @@ import CustomGradientButton from '../../../components/CustomGradientButton';
 import QRCode from 'react-native-qrcode-svg';
 import { Spacer } from '../../../components/Spacer';
 
-const RecivedAmountScreen = () => {
+const RecivedAmountScreen = ({navigation}) => {
   return (
     <SafeAreaView style={{flex: 1}}>
       <PH20>
@@ -18,6 +18,8 @@ const RecivedAmountScreen = () => {
           txt={'Receive Bitcoin'}
           fontSize={18}
           rightImg={images.SettingImage}
+          onPress={()=>navigation.navigate("WalletScreen")}
+
         />
         <Spacer height={10}/>
 

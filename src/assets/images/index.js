@@ -4,6 +4,9 @@ export const images = {
 
     AppLogo:require("./AppLogo.png"),
   BackgroundImage: require('./background.jpg'),
+  fingerprint: require('./Fingerprint.png'),
+  twoFA: require('./twoFA.png'),
+  faceId: require('./faceId.png'),
   SecurityImage: require('./security.png'),
   SecurityImage: require('./security.png'),
   SystemImage: require('./perspective.png'),

@@ -24,7 +24,7 @@ import { Spacer } from '../../../components/Spacer';
 import commonStyles from '../../../utils/CommonStyles';
 // import {SwitchToggle} from '../../../components/Switch'
 
-const ProfileScreen = () => {
+const ProfileScreen = ({navigation}) => {
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
   const [state, setState] = useState({
@@ -77,12 +77,13 @@ const ProfileScreen = () => {
           txt={'Profile'}
           fontSize={18}
           rightImg={images.SettingImage}
+          onPress={()=>navigation.navigate("DashBoard")}
         />
         <Spacer height={10}/>
         <View style={styles.container}>
           <View style={styles.circleShapeView}>
             <View style={styles.shadowLogoContainer}>
-              <Image source={images.QrCode} style={styles.qrCodeImage} />
+              <Image source={images.AppLogo} style={styles.qrCodeImage} />
             </View>
           </View>
           <View style={styles.QrCodeTextView}>
@@ -434,7 +435,7 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     borderRadius: 50,
-    backgroundColor: colors.lightBlueGrey,
+    // backgroundColor: colors.lightBlueGrey,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -459,8 +460,8 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   qrCodeImage: {
-    width: 50,
-    height: 50,
+    width: 100,
+    height: 100,
     resizeMode: 'contain',
   },
   securityFlatListView: {
@@ -665,6 +666,8 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     shadowColor: colors.black,
+    justifyContent: 'center',
+    alignItems: 'center',
     shadowOffset: {
       width: 0,
       height: 5,

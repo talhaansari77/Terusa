@@ -6,9 +6,9 @@ import {
   FlatList,
   ScrollView,
   Platform,
-  ImageBackground
+  ImageBackground,
 } from 'react-native';
-import React,{useState} from 'react';
+import React, {useState} from 'react';
 import AppHeader from '../../../components/AppHeader';
 import {images} from '../../../assets/images';
 import GradientContainer from '../../../components/GradientContainer';
@@ -21,116 +21,110 @@ import FooterAddContainer from './molecules/FooterAddContainer';
 import PortfolioContainer from './molecules/PortfolioContainer';
 import ProtfolioModal from './molecules/ProtfolioModal';
 
-const CoinDate = [
-  {
-    id: 1,
-    name: 'Bitcoin',
-    coin: 'BTC',
-    amount: '$9111.89',
-    number: '10',
-    grading: '+0.89%',
-    img: images.BitCoinImage,
-  },
-  {
-    id: 2,
-    name: 'Bitcoin',
-    coin: 'DASH',
-    amount: '$9111.89',
-    number: '10',
-    grading: '+0.89%',
-    img: images.dashLogo,
-  },
-  {
-    id: 3,
-    name: 'Bitcoin',
-    coin: 'USDT',
-    amount: '$9111.89',
-    number: '10',
-    grading: '+0.89%',
-    img: images.UsdtLogo,
-  },
-  // {
-  //   id: 4,
-  //   name: 'Bitcoin',
-  //   coin: 'USDT',
-  //   amount: '$9111.89',
-  //   number: '10',
-  //   grading: '+0.89%',
-  //   img: images.UsdtLogo,
-  // },
-  
-];
+
 
 const DashBoard = ({navigation}) => {
-
-  const [modalVisible,setModalVisible] = useState(false)
+  const [modalVisible, setModalVisible] = useState(false);
+  const CoinDate = [
+    {
+      id: 1,
+      name: 'Bitcoin',
+      coin: 'BTC',
+      amount: '$9111.89',
+      number: '10',
+      grading: '+0.89%',
+      img: images.BitCoinImage,
+      onPress:()=>navigation.navigate("WalletScreen")
+    },
+    {
+      id: 2,
+      name: 'Bitcoin',
+      coin: 'DASH',
+      amount: '$9111.89',
+      number: '10',
+      grading: '+0.89%',
+      img: images.dashLogo,
+    },
+    {
+      id: 3,
+      name: 'Bitcoin',
+      coin: 'USDT',
+      amount: '$9111.89',
+      number: '10',
+      grading: '+0.89%',
+      img: images.UsdtLogo,
+    },
+    // {
+    //   id: 4,
+    //   name: 'Bitcoin',
+    //   coin: 'USDT',
+    //   amount: '$9111.89',
+    //   number: '10',
+    //   grading: '+0.89%',
+    //   img: images.UsdtLogo,
+    // },
+  ];
   const CoinRender = ({item, index}) => {
     return (
       // <View style={{flex:1}}>
-          <BitCoineContainer
+      <BitCoineContainer
         name={item.name}
         coin={item.coin}
         amount={item.amount}
         number={item.number}
         grading={item.grading}
         img={item.img}
+        onPress={item.onPress}
       />
-
       // </View>
-    
     );
   };
   return (
     <>
-     <ImageBackground
-      source={images.BackgroundImage}
-      resizeMode="cover"
-      style={commonStyles.IosPadding}>
-
+      <ImageBackground
+        source={images.BackgroundImage}
+        resizeMode="cover"
+        style={commonStyles.IosPadding}>
         <AppHeader
-        onPress={()=>{
-          navigation.navigate("ProfileScreen")
-
-        }}
-        marginLeft={10}
+          onPress={() => {
+            navigation.navigate('ProfileScreen');
+          }}
+          marginLeft={10}
           img={images.UserImage}
           txt={'Terusa'}
           width={18}
           heigth={20}
           fontSize={18}
           rightImg={images.SettingImage}
-        />
-        <ScrollView >
-          <Spacer height={10} />
-          <DashBoardContainer 
-          onPress={()=>{
-            navigation.navigate("Portfolio")
+          rightOnPress={()=>navigation.navigate("SettingScreen")}
 
-          }}
-          
+        />
+        <ScrollView>
+          <Spacer height={10} />
+          <DashBoardContainer
+            onPress={() => {
+              navigation.navigate('Portfolio');
+            }}
           />
           <PortfolioContainer
-             setModalVisible={setModalVisible}
-             modalVisible={modalVisible}
+            setModalVisible={setModalVisible}
+            modalVisible={modalVisible}
           />
-      
-          <FlatList data={CoinDate}
-          showsVerticalScrollIndicator={false}
-           renderItem={CoinRender} />
+
+          <FlatList
+            data={CoinDate}
+            showsVerticalScrollIndicator={false}
+            renderItem={CoinRender}
+          />
         </ScrollView>
+      </ImageBackground>
 
-        </ImageBackground>
-
-
-    <FooterAddContainer/>
-    <ProtfolioModal
-    setModalVisible={setModalVisible}
-    modalVisible={modalVisible}
-    
-    />
-
+      <FooterAddContainer />
+      <ProtfolioModal
+        setModalVisible={setModalVisible}
+        modalVisible={modalVisible}
+      />
     </>
-  
   );
 };
 

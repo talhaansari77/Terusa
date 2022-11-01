@@ -21,7 +21,7 @@ import CustomGradientButton from '../../../components/CustomGradientButton';
 import {Spacer} from '../../../components/Spacer';
 import AppHeader from '../../../components/AppHeader';
 
-const SendAmountScreen = () => {
+const SendAmountScreen = ({navigation}) => {
   return (
     <SafeAreaView>
       <PH10>
@@ -31,6 +31,7 @@ const SendAmountScreen = () => {
           txt={'Bitcoin'}
           fontSize={18}
           rightImg={images.SettingImage}
+          onPress={()=>navigation.navigate("WalletScreen")}
         />
         <Spacer height={20} />
         <View style={styles.bitcoinImageView}>

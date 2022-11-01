@@ -59,19 +59,37 @@ const SettingScreen = ({navigation}) => {
       currency: false,
       touchable: true,
     },
-    {
-      title: 'Theme',
-      subTitle: 'Change your Screens Theme',
-      image: images.DarkThemeIcon,
-      blackImage: images.LightThemeIcon,
-      SwitchBtn: true,
-      currency: false,
-      touchable: false,
-    },
+    // {
+    //   title: 'Theme',
+    //   subTitle: 'Change your Screens Theme',
+    //   image: images.DarkThemeIcon,
+    //   blackImage: images.LightThemeIcon,
+    //   SwitchBtn: true,
+    //   currency: false,
+    //   touchable: false,
+    // },
     {
       title: 'Add FingerPrint',
       subTitle: 'Add FingerPrint for Security',
-      // image: images.DarkThemeIcon,
+      image: images.fingerprint,
+      blackImage: images.LightThemeIcon,
+      // SwitchBtn: true,
+      currency: false,
+      touchable: true,
+    },
+    {
+      title: 'Face Id',
+      subTitle: 'Add FingerPrint for Security',
+      image: images.faceId,
+      blackImage: images.LightThemeIcon,
+      SwitchBtn: true,
+      currency: false,
+      touchable: true,
+    },
+    {
+      title: 'Two Factor Authentication',
+      subTitle: 'Add FingerPrint for Security',
+      image: images.twoFA,
       blackImage: images.LightThemeIcon,
       SwitchBtn: true,
       currency: false,
@@ -117,15 +135,7 @@ const SettingScreen = ({navigation}) => {
                     )}
                     {index === 0 && (
                       <View style={styles.toggleView}>
-                        {/* <Switch
-                            switchOn={this.state.switchOnFirstButton}
-                            onPress={() =>
-                              setState({
-                                switchOnFirstButton: !this.state
-                                  .switchOnFirstButton
-                              })
-                            }
-                          /> */}
+                        
                           <Switch
                           value={checked}
                           onValueChange={value => setChecked(value)}
@@ -134,15 +144,7 @@ const SettingScreen = ({navigation}) => {
                     )}
                     {index === 1 && (
                       <View style={styles.toggleView}>
-                        {/* <Switch
-                            switchOn={this.state.switchOnSecondButton}
-                            onPress={() =>
-                              setState({
-                                switchOnSecondButton: !this.state
-                                  .switchOnSecondButton
-                              })
-                            }
-                          /> */}
+                        
                           <Switch
                           value={checked}
                           onValueChange={value => setChecked(value)}
@@ -151,10 +153,7 @@ const SettingScreen = ({navigation}) => {
                     )}
                     {index === 4 && item.SwitchBtn == true && (
                       <View style={styles.toggleView}>
-                        {/* <Switch
-                            switchOn={state.switchThemeButton}
-                            onPress={switchThemeonPress}
-                          /> */}
+                        
                         <Switch
                           value={checked}
                           onValueChange={value => setChecked(value)}
@@ -208,6 +207,7 @@ const styles = StyleSheet.create({
     height: 35,
     width: 35,
     resizeMode: 'contain',
+    tintColor:colors.white
   },
   itemDetailsView: {
     width: '100%',

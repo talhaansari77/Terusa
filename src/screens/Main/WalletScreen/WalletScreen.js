@@ -32,7 +32,7 @@ import {
   Line as LineHorizantol,
 } from 'react-native-svg';
 
-const WalletScreen = () => {
+const WalletScreen = ({navigation}) => {
   const Data = [
     {
       date: '26 march,2020',
@@ -231,7 +231,7 @@ const WalletScreen = () => {
       <View style={styles.footer}>
         <View style={styles.bottomButtonView}>
           <TouchableOpacity
-            onPress={() => navigation.navigate('SendAmount')}
+            onPress={() => navigation.navigate('SendAmountScreen')}
             style={styles.bottomButtonInnerView}>
             <LinearGradient
               start={{x: 0.3, y: 1.3}}
@@ -250,7 +250,7 @@ const WalletScreen = () => {
           </TouchableOpacity>
           <View style={styles.middleLine} />
           <TouchableOpacity
-            onPress={() => navigation.navigate('RecivedAmount')}
+            onPress={() => navigation.navigate('RecivedAmountScreen')}
             style={styles.bottomButtonInnerView}>
             <LinearGradient
               start={{x: 0.3, y: 1.3}}
@@ -623,7 +623,7 @@ fontWeight:'400'
   },
   areaChart: {
     height: 157,
-    width: 343,
+    width: 380,
     right: 20,
   },
   xAxisBottom: {
@@ -633,7 +633,7 @@ fontWeight:'400'
     marginBottom: 10,
   },
   xAxisBottomHr: {
-    width: '100%',
+    width: '80%',
     height: 1,
     marginTop: 3,
     backgroundColor: colors.bluegrey,

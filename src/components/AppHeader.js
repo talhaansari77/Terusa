@@ -34,6 +34,7 @@ const AppHeader = props => {
       />
 
       <TouchableOpacity
+      onPress={props.rightOnPress}
         activeOpacity={0.6}
         style={{
           width: scale(props.rigthWidth || 35),

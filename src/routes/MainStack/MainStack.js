@@ -22,7 +22,7 @@ const MainStack = () => {
   return (
     <Stack.Navigator
       screenOptions={{headerShown: false}}
-      initialRouteName={"DashBoard"}
+      // initialRouteName={"DashBoard"}
     >
       <Stack.Screen name="DashBoard" component={DashBoard} />
       <Stack.Screen name="Portfolio" component={Portfolio} />

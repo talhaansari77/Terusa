@@ -9,10 +9,10 @@ import {Roboto} from '../../../../utils/Fonts';
 import {colors} from '../../../../utils/Colors';
 import {Spacer} from '../../../../components/Spacer';
 
-const BitCoineContainer = ({coin,name,number,amount,grading,img}) => {
+const BitCoineContainer = ({coin,name,number,amount,grading,img, onPress}) => {
   return (
     <View style={{marginBottom:20}}>
-      <GradientContainer height={verticalScale(100)} padding={-1}>
+      <GradientContainer height={verticalScale(100)} padding={-1} onPress={onPress}>
         <Image
           // resizeMode="contain"
           style={commonStyles.img}
