@@ -99,7 +99,7 @@ const SettingScreen = ({navigation}) => {
   return (
     <SafeAreaView style={{flex: 1}}>
       <PH20>
-        <AppHeader img={images.wallet} txt={'Settings'} fontSize={18} />
+        <AppHeader img={images.wallet} txt={'Settings'} fontSize={18} onPress={()=>navigation.navigate("WalletScreen")} />
         {/* <Spacer height={10}/> */}
         <FlatList
           style={styles.flatList}

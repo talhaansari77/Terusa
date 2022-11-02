@@ -87,8 +87,8 @@ const Welcome = ({navigation}) => {
         />
         <Spacer height={20} />
 
-        <TouchableOpacity onPress={() => navigation.navigate('RestoreWallet')}>
-          <Text
+        <TouchableOpacity onPress={() => navigation.navigate('MainStack',{screen:"RestoreWallet"})}>
+          <Text 
             style={{
               textAlign: 'center',
               fontSize: verticalScale(12),

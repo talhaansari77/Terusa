@@ -30,7 +30,7 @@ const RestoreWallet = ({navigation}) => {
           borderRadius={moderateScale(10)}
           alignSelf={'center'}
           onPress={() => {
-            navigation.navigate('RestoreWalletSecond');
+            navigation.navigate('RestoreWalletSecond'); 
           }}
         />
       </SafeAreaView>

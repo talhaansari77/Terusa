@@ -37,7 +37,7 @@ const RestoreWalletBody = () => {
     {RestorWalletArray.map((walletArray, index) => (
       <View key={index}>
         <GradientContainer
-          height={"55"}
+          height={60}
           marginBottom={20}
           alignItems={"center"}
           flexDirection={"row"}

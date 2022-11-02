@@ -6,7 +6,7 @@ import {Montserrat} from '../../../../utils/Fonts';
 import {Spacer} from '../../../../components/Spacer';
 import {BitCoinGraphData, xdata} from '../../../../utils/Data';
 import * as shape from 'd3-shape';
-import { AreaChart } from 'react-native-svg-charts';
+import {AreaChart} from 'react-native-svg-charts';
 
 import {
   Defs,
@@ -18,13 +18,9 @@ import {
   Grid,
   Line as LineHorizantol,
 } from 'react-native-svg';
-import { verticalScale } from 'react-native-size-matters';
-
+import {verticalScale} from 'react-native-size-matters';
 
 const CoinProgress = () => {
-
-
-
   const Line = ({line}) => (
     <Path
       key={'line'}
@@ -36,20 +32,20 @@ const CoinProgress = () => {
     />
   );
 
-    const Gradient = ({index}) => (
-        <Defs key={index}>
-          <LinearGradientSvg
-            id={'gradient'}
-            x1={'10%'}
-            y1={'10%'}
-            x2={'10%'}
-            y2={'80%'}>
-            <Stop offset={'0%'} stopColor={'rgb(95, 94, 108)'} stopOpacity={1} />
-            <Stop offset={'100%'} stopColor={'rgb(71, 80, 109)'} stopOpacity={1} />
-          </LinearGradientSvg>
-        </Defs>
-      );
-    
+  const Gradient = ({index}) => (
+    <Defs key={index}>
+      <LinearGradientSvg
+        id={'gradient'}
+        x1={'10%'}
+        y1={'10%'}
+        x2={'10%'}
+        y2={'80%'}>
+        <Stop offset={'0%'} stopColor={'rgb(95, 94, 108)'} stopOpacity={1} />
+        <Stop offset={'100%'} stopColor={'rgb(71, 80, 109)'} stopOpacity={1} />
+      </LinearGradientSvg>
+    </Defs>
+  );
+
   return (
     <View style={{width: '100%'}}>
       <View style={styles.xAxisTop}>
@@ -63,15 +59,15 @@ const CoinProgress = () => {
         <View style={styles.xAxisTopHr} />
       </View>
       <AreaChart
-                  style={styles.areaChart}
-                  data={BitCoinGraphData}
-                  numberOfTicks={0}
-                  curve={shape.curveNatural}
-                  svg={{ fill: 'url(#gradient)' }}>
-                   {/* <Grid/> */}
-                  <Line/>
-                  <Gradient/> 
-                </AreaChart>
+        style={styles.areaChart}
+        data={BitCoinGraphData}
+        numberOfTicks={0}
+        curve={shape.curveNatural}
+        svg={{fill: 'url(#gradient)'}}>
+        {/* <Grid/> */}
+        <Line />
+        <Gradient />
+      </AreaChart>
 
       <Spacer height={1} />
 
@@ -126,8 +122,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.bluegrey,
   },
   areaChart: {
-    height:verticalScale(160),
-    width:"105%",
-    right: 7
+    height: verticalScale(160),
+    width: '105%',
+    right: 7,
   },
 });

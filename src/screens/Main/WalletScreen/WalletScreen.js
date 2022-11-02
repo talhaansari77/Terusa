@@ -109,6 +109,7 @@ const WalletScreen = ({navigation}) => {
           txt={'Bitcoin'}
           fontSize={18}
           rightImg={images.SettingImage}
+          rightOnPress={()=>navigation.navigate("SettingScreen")}
         />
       </PH20>
       <PH20>
@@ -623,7 +624,7 @@ fontWeight:'400'
   },
   areaChart: {
     height: 157,
-    width: 380,
+    width: "114%",
     right: 20,
   },
   xAxisBottom: {

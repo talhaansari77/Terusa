@@ -70,7 +70,7 @@ const ProfileScreen = ({navigation}) => {
     resizeMode="cover"
     style={commonStyles.IosPadding}>
       {/* <PH20> */}
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
 
         <AppHeader
           img={images.BackArrow}
@@ -78,6 +78,8 @@ const ProfileScreen = ({navigation}) => {
           fontSize={18}
           rightImg={images.SettingImage}
           onPress={()=>navigation.navigate("DashBoard")}
+          rightOnPress={()=>navigation.navigate("SettingScreen")}
+          
         />
         <Spacer height={10}/>
         <View style={styles.container}>

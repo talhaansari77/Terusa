@@ -11,7 +11,7 @@ import CustomGradientButton from '../../../components/CustomGradientButton';
 import GradientContainer from '../../../components/GradientContainer';
 import RestoreWalletHeader from './Molecules/RestoreWalletHeader';
 
-const RestoreWalletSecond = () => {
+const RestoreWalletSecond = ({navigation}) => {
   const RestorWalletArray = [
     {
       id: 1,
@@ -50,7 +50,7 @@ const RestoreWalletSecond = () => {
           {RestorWalletArray.map((walletArray, index) => (
             <View key={index}>
               <GradientContainer
-                height={'55'}
+                height={60}
                 marginBottom={20}
                 alignItems={'center'}
                 flexDirection={'row'}>
@@ -80,7 +80,7 @@ const RestoreWalletSecond = () => {
           borderRadius={moderateScale(10)}
           alignSelf={'center'}
           onPress={() => {
-            navigation.navigate('Login');
+            navigation.navigate('RestoreSuccessful');
           }}
         />
       </SafeAreaView>

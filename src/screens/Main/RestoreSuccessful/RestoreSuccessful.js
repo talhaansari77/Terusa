@@ -6,7 +6,7 @@ import {Spacer} from '../../../components/Spacer';
 import {moderateScale, verticalScale} from 'react-native-size-matters';
 import {images} from '../../../assets/images';
 
-const RestoreSuccessful = () => {
+const RestoreSuccessful = ({navigation}) => {
   return (
     <ImageBackground
       source={images.BackgroundImage}
