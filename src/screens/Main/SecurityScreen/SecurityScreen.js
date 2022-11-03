@@ -6,7 +6,7 @@ import SecurityBody from './Molecules/SecurityBody';
 import { Spacer } from '../../../components/Spacer';
 
 
-const SecurityScreen = () => {
+const SecurityScreen = ({navigation}) => {
   return (
     <ImageBackground
       source={images.BackgroundImage}
@@ -14,9 +14,9 @@ const SecurityScreen = () => {
       style={{height: '100%'}}>
         <SafeAreaView>
             <View style={{width:"100%", padding:20}}>
-        <SecurityHeader />
+        <SecurityHeader  />
         <Spacer height={10} />
-        <SecurityBody />
+        <SecurityBody navigation={navigation}  />
         </View>
       </SafeAreaView>
     </ImageBackground>

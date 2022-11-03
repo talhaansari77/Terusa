@@ -38,6 +38,12 @@ const ProfileScreen = ({navigation}) => {
       subTitle: 'Lorem, ipsum dolor sit amet',
       image: images.Security,
       blueImage: images.SecurityBlueIcon,
+      onPress:()=>{
+        navigation.navigate("SecurityScreen")
+
+        
+
+      }
     },
     {
       title: 'Support',
@@ -77,7 +83,8 @@ const ProfileScreen = ({navigation}) => {
           txt={'Profile'}
           fontSize={18}
           rightImg={images.SettingImage}
-          onPress={()=>navigation.navigate("DashBoard")}
+
+          onPress={()=>navigation.goBack()}
           rightOnPress={()=>navigation.navigate("SettingScreen")}
           
         />
@@ -85,7 +92,7 @@ const ProfileScreen = ({navigation}) => {
         <View style={styles.container}>
           <View style={styles.circleShapeView}>
             <View style={styles.shadowLogoContainer}>
-              <Image source={images.AppLogo} style={styles.qrCodeImage} />
+              <Image source={images.QrCode} style={styles.qrCodeImage} />
             </View>
           </View>
           <View style={styles.QrCodeTextView}>
@@ -97,7 +104,7 @@ const ProfileScreen = ({navigation}) => {
         </View>
         {
 
-          FlatListProfileData.map(item=>{
+          FlatListProfileData.map((item,index)=>{
 
             return(
 
@@ -113,14 +120,7 @@ const ProfileScreen = ({navigation}) => {
                 style={styles.securityFlatListView}>
                 <TouchableOpacity
                   activeOpacity={0.7}
-                  onPress={() => {
-                    {
-                      index === 1 && navigation.navigate('ContactUs');
-                    }
-                    {
-                      index === 0 && navigation.navigate('Security');
-                    }
-                  }}>
+                  onPress={item.onPress}>
                   <View style={styles.flatListInnerTextView}>
                     <Text style={styles.flatListInnerTitleText}>
                       {item.title}
@@ -437,7 +437,7 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     borderRadius: 50,
-    // backgroundColor: colors.lightBlueGrey,
+    backgroundColor: colors.lightBlueGrey,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -462,8 +462,8 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   qrCodeImage: {
-    width: 100,
-    height: 100,
+    width: 50,
+    height: 50,
     resizeMode: 'contain',
   },
   securityFlatListView: {
@@ -668,8 +668,6 @@ const styles = StyleSheet.create({
     width: 50,
     height: 50,
     shadowColor: colors.black,
-    justifyContent: 'center',
-    alignItems: 'center',
     shadowOffset: {
       width: 0,
       height: 5,

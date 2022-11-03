@@ -1,12 +1,14 @@
-import {View, Text, Image, Switch} from 'react-native';
+import {View, Text, Image, Switch, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
 import {images} from '../../../../assets/images';
 import GradientContainer from '../../../../components/GradientContainer';
 import CustomText from '../../../../components/CustomText';
 import {colors} from '../../../../utils/Colors';
 import {scale, verticalScale} from 'react-native-size-matters';
+import {Spacer} from '../../../../components/Spacer';
+import {ListItem} from 'react-native-elements';
 
-const SecurityBody = () => {
+const SecurityBody = ({navigation}) => {
   const [isOn, setisOn] = useState({
     withProfile: false,
   });
@@ -24,6 +26,9 @@ const SecurityBody = () => {
       blueImage: images.BackupBlueIcon,
       endTitle: 'Lorem, ipsum dolor sit amet',
       status: false,
+      onPress: () => {
+        navigation.navigate('RecoveryScreen');
+      },
     },
     {
       title: 'Secure With a Passcode',
@@ -31,6 +36,10 @@ const SecurityBody = () => {
         'Lorem, ipsum dolor sit ametLorem, ipsum dolor sit ametLorem, ipsum dolor sit ametLorem, ipsum dolor sit ametLorem, ipsum dolor sit amet',
       image: images.LockIconImage,
       blueImage: images.LockBlueIcon,
+      onPress:()=>{
+        navigation.navigate("AuthStack",{screen:"SecurityWallet"})
+
+      },
       status: (
         <Switch
           value={isOn.withProfile}
@@ -45,12 +54,15 @@ const SecurityBody = () => {
   ];
 
   return (
-    <View >
+    <View>
       {SecuirtyFlatListData.map((securityArray, index) => (
-        <View key={index}>
+        <TouchableOpacity
+          activeOpacity={0.6}
+          onPress={securityArray.onPress}
+          key={index}>
           <GradientContainer
-          style={{}}
-            height={'90'}
+            style={{}}
+            height={120}
             marginBottom={20}
             //   alignItems={"center"}
             flexDirection={'row'}>
@@ -60,7 +72,7 @@ const SecurityBody = () => {
                 flexDirection: 'row',
                 justifyContent: 'space-around',
                 width: '100%',
-                paddingHorizontal: 10
+                paddingHorizontal: 10,
               }}>
               <View style={{display: 'flex', justifyContent: 'space-evenly'}}>
                 <CustomText
@@ -85,7 +97,7 @@ const SecurityBody = () => {
                 />
               </View>
 
-              <View style={{right: 2, top: 10}}>
+              <View style={{right: 2, top: 10, marginBottom: 20}}>
                 <Image
                   source={securityArray.image}
                   style={{
@@ -95,12 +107,13 @@ const SecurityBody = () => {
                     marginBottom: 12,
                   }}
                 />
+                <Spacer height={5} />
 
                 {securityArray.status}
               </View>
             </View>
           </GradientContainer>
-        </View>
+        </TouchableOpacity>
       ))}
     </View>
   );

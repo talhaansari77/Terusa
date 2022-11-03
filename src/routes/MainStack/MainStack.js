@@ -26,7 +26,6 @@ const MainStack = () => {
     >
       <Stack.Screen name="DashBoard" component={DashBoard} />
       <Stack.Screen name="Portfolio" component={Portfolio} />
-
       <Stack.Screen name="RestoreWallet" component={RestoreWallet} />
       <Stack.Screen name="RestoreWalletSecond" component={RestoreWalletSecond} />
       <Stack.Screen name="SelectCurrency" component={SelectCurrency} />

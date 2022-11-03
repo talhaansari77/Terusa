@@ -162,12 +162,12 @@ const RecoveryScreenBody = () => {
         x2={0.8}
         y2={0.0}
         title="Press and Hold to Reveal"
-        width="75%"
-        fontSize={15}
+        width="90%"
+        fontSize={14}
         height={verticalScale(35)}
-        justifyContent={'center'}
+        // justifyContent={'center'}
         borderRadius={moderateScale(10)}
-        alignSelf={'center'}
+        // alignSelf={'center'}
         fontFamily={'Montserrat-bold'}
         onPress={() => setActive(!active)}
       />
