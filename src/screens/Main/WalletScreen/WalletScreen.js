@@ -506,7 +506,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  paddingBottomSecond: {paddingBottom: 250},
+  paddingBottomSecond: {paddingBottom: 25},
 
   hBtn: {
     height: 18,
