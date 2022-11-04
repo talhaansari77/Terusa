@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View, Image,TouchableOpacity} from 'react-native';
+import {StyleSheet, Text, View, Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 import {images} from '../../../../assets/images';
 import commonStyles from '../../../../utils/CommonStyles';
@@ -9,9 +9,9 @@ const FooterAddContainer = () => {
     <View style={styles.mainContainer}>
       <View style={{width: '10%'}}></View>
 
-      <TouchableOpacity 
-      activeOpacity={0.6}
-      style={{width: 150, height: 300,marginBottom:verticalScale(30)}}>
+      <TouchableOpacity
+        activeOpacity={0.6}
+        style={{width: 150, height: 300, marginBottom: verticalScale(30)}}>
         <Image
           style={commonStyles.img}
           resizeMode="contain"
@@ -19,8 +19,8 @@ const FooterAddContainer = () => {
         />
       </TouchableOpacity>
 
-      <TouchableOpacity 
-      activeOpacity={0.6}
+      <TouchableOpacity
+        activeOpacity={0.6}
         style={{
           width: moderateScale(40),
           height: verticalScale(70),

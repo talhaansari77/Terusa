@@ -31,7 +31,7 @@ const SendAmountScreen = ({navigation}) => {
           txt={'Bitcoin'}
           fontSize={18}
           rightImg={images.SettingImage}
-          onPress={()=>navigation.navigate("WalletScreen")}
+          onPress={()=>navigation.navigate("MainStack",{screen:"WalletScreen"})}
         />
         <Spacer height={20} />
         <View style={styles.bitcoinImageView}>

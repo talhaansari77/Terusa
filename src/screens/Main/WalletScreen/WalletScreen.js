@@ -109,7 +109,7 @@ const WalletScreen = ({navigation}) => {
           txt={'Bitcoin'}
           fontSize={18}
           rightImg={images.SettingImage}
-          rightOnPress={()=>navigation.navigate("SettingScreen")}
+          rightOnPress={() => navigation.navigate('SettingScreen')}
         />
       </PH20>
       <PH20>
@@ -158,7 +158,8 @@ const WalletScreen = ({navigation}) => {
                 <Text style={styles.xAxisAmt}>$4,341.68</Text>
                 <View style={styles.xAxisBottomHr} />
               </View>
-              <XAxis
+              {/* //! Bug To Fix Here >>>> */}
+              {/* <XAxis
                 data={xdata}
                 formatLabel={value => xdata[value]}
                 contentInset={{left: 20, right: 10}}
@@ -166,7 +167,8 @@ const WalletScreen = ({navigation}) => {
                   ...styles.xAxisSvg,
                   fill: 'white',
                 }}
-              />
+              /> */}
+              {/* //! <<<< Bug To Fix Here */}
             </View>
           </LinearGradient>
         </View>
@@ -227,7 +229,6 @@ const WalletScreen = ({navigation}) => {
             )}
           />
         </View>
-        
       </PH20>
       <View style={styles.footer}>
         <View style={styles.bottomButtonView}>
@@ -361,7 +362,7 @@ const styles = StyleSheet.create({
   rightSideValueText: {
     fontSize: 14,
     //...Fonts.style.mediumBluegrey,
-    color:colors.bluegrey,
+    color: colors.bluegrey,
 
     marginTop: 5,
   },
@@ -395,8 +396,8 @@ const styles = StyleSheet.create({
   activityText: {
     fontSize: 18,
     //...Fonts.style.boldFontWhite
-    color:colors.white,
-fontWeight:"bold"
+    color: colors.white,
+    fontWeight: 'bold',
   },
   securityFlatListView: {
     width: '100%',
@@ -412,8 +413,8 @@ fontWeight:"bold"
   flatListInnerDate: {
     fontSize: 16,
     //...Fonts.style.semiBoldWhite,
-    color:colors.white,
-fontWeight:'600',
+    color: colors.white,
+    fontWeight: '600',
     left: 20,
     // bottom: isIphoneX() ? '5' : '6'
   },
@@ -447,31 +448,28 @@ fontWeight:'600',
     paddingLeft: 10,
     marginBottom: 2,
     //...Fonts.style.mediumBluegrey
-    color:colors.bluegrey,
-    fontWeight:'400'
-    
+    color: colors.bluegrey,
+    fontWeight: '400',
   },
   flatListInnerRightTitle: {
     right: 18,
     position: 'absolute',
     //...Fonts.style.mediumFontOrange
-    fontWeight:'400',
-    color:colors.orange,
-    
+    fontWeight: '400',
+    color: colors.orange,
   },
   flatListInnerRightDollerTitle: {
     right: 18,
     position: 'absolute',
-    fontWeight:'400',
+    fontWeight: '400',
     //...Fonts.style.mediumWhite
-    color:colors.white,
-
+    color: colors.white,
   },
   flatListInnerFullTextTitle: {
     //...Fonts.style.mediumWhite,
-    color:colors.white,
+    color: colors.white,
 
-    fontWeight:'400',
+    fontWeight: '400',
     paddingLeft: 10,
     fontSize: 14,
     marginBottom: 2,
@@ -524,16 +522,15 @@ fontWeight:'600',
   sendText: {
     fontSize: 14,
     //...Fonts.style.semiBoldWhite
-    color:colors.white,
-    fontWeight:'600'
-
+    color: colors.white,
+    fontWeight: '600',
   },
   recivedText: {
     fontSize: 14,
     top: 10,
     //...Fonts.style.mediumWhite
-    color:colors.white,
-fontWeight:'400'
+    color: colors.white,
+    fontWeight: '400',
   },
   linemarginTop: {
     marginTop: 10,
@@ -541,8 +538,7 @@ fontWeight:'400'
   gText: {
     fontSize: 14,
     //...Fonts.style.regularBluegrey
-    color:colors.bluegrey,
-
+    color: colors.bluegrey,
   },
   contentInset: {
     top: 20,
@@ -618,13 +614,13 @@ fontWeight:'400'
   },
   xAxisAmt: {
     //...Fonts.style.regularBluegrey,
-    color:colors.bluegrey,
+    color: colors.bluegrey,
 
     fontSize: 14,
   },
   areaChart: {
     height: 157,
-    width: "114%",
+    width: '114%',
     right: 20,
   },
   xAxisBottom: {
@@ -641,8 +637,8 @@ fontWeight:'400'
   },
   xAxisSvg: {
     //...Fonts.style.boldFontBlue,
-    color:colors.blue,
-    fontWeight:"bold",
+    color: colors.blue,
+    fontWeight: 'bold',
 
     fontSize: 16,
   },

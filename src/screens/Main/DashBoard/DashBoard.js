@@ -34,7 +34,7 @@ const DashBoard = ({navigation}) => {
       number: '10',
       grading: '+0.89%',
       img: images.BitCoinImage,
-      onPress:()=>navigation.navigate("WalletScreen")
+      onPress:()=>navigation.navigate("MainStack",{screen:"WalletScreen"})
     },
     {
       id: 2,
@@ -44,6 +44,8 @@ const DashBoard = ({navigation}) => {
       number: '10',
       grading: '+0.89%',
       img: images.dashLogo,
+      onPress:()=>navigation.navigate("MainStack",{screen:"WalletScreen"})
+
     },
     {
       id: 3,
@@ -53,6 +55,8 @@ const DashBoard = ({navigation}) => {
       number: '10',
       grading: '+0.89%',
       img: images.UsdtLogo,
+      onPress:()=>navigation.navigate("MainStack",{screen:"WalletScreen"})
+
     },
     // {
     //   id: 4,

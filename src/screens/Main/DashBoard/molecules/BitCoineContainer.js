@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View, Image} from 'react-native';
+import {StyleSheet, Text, View, Image, Platform} from 'react-native';
 import React from 'react';
 import GradientContainer from '../../../../components/GradientContainer';
 import commonStyles from '../../../../utils/CommonStyles';
@@ -12,7 +12,7 @@ import {Spacer} from '../../../../components/Spacer';
 const BitCoineContainer = ({coin,name,number,amount,grading,img, onPress}) => {
   return (
     <View style={{marginBottom:20}}>
-      <GradientContainer height={verticalScale(100)} padding={-1} onPress={onPress}>
+      <GradientContainer height={verticalScale(Platform.OS==='ios'?100:120)} padding={-1} onPress={onPress}>
         <Image
           // resizeMode="contain"
           style={commonStyles.img}

@@ -19,7 +19,7 @@ const Portfolio = ({navigation}) => {
         //   heigth={40}
           fontSize={18}
           rightImg={images.SettingImage}
-          onPress={()=>navigation.navigate("WalletScreen")}
+          onPress={()=>navigation.navigate("MainStack",{screen:"WalletScreen"})}
           rightOnPress={()=>navigation.navigate("SettingScreen")}
 
         />
