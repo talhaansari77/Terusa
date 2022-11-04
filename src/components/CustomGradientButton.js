@@ -110,7 +110,7 @@ function CustomGradientButton({
                       fontSize: fontSize || verticalScale(15),
                       fontFamily: fontFamily || 'Montserrat-Bold',
                       alignSelf: alignSelf || 'center',
-                      marginLeft:"15%"
+                      // marginLeft:"15%"
                       // textAlign: textAlign
                     },
                   ]}>

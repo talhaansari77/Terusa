@@ -41,10 +41,11 @@ export default FooterAddContainer;
 
 const styles = StyleSheet.create({
   mainContainer: {
+    // backgroundColor:"red",
     position: 'absolute',
     bottom: 0,
     width: '100%',
-    height: '13%',
+    height: '12%',
     alignSelf: 'center',
 
     alignItems: 'center',

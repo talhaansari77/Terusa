@@ -103,7 +103,10 @@ const DashBoard = ({navigation}) => {
           rightOnPress={()=>navigation.navigate("SettingScreen")}
 
         />
-        <ScrollView>
+        <View style={{height:"80%"}}>
+
+
+        <ScrollView showsVerticalScrollIndicator={false}>
           <Spacer height={10} />
           <DashBoardContainer
             onPress={() => {
@@ -121,6 +124,7 @@ const DashBoard = ({navigation}) => {
             renderItem={CoinRender}
           />
         </ScrollView>
+        </View>
       </ImageBackground>
 
       <FooterAddContainer />

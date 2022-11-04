@@ -25,12 +25,28 @@ import commonStyles from '../../../utils/CommonStyles';
 // import {SwitchToggle} from '../../../components/Switch'
 
 const ProfileScreen = ({navigation}) => {
+  const [checked, setChecked] = useState({
+    btn1: false,
+    btn2: false,
+    btn3: false,
+  });
+
+  const btn1 = () => {
+    setChecked({...checked, btn1: !checked.btn1});
+  };
+  const btn2 = () => {
+    setChecked({...checked, btn2: !checked.btn2});
+  };
+  const btn3 = () => {
+    setChecked({...checked, btn3: !checked.btn3});
+  };
+
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
   const [state, setState] = useState({
     searchText: '',
   });
-  const [checked, setChecked] = useState(false);
+  // const [checked, setChecked] = useState(false);
 
   const FlatListProfileData = [
     {
@@ -92,7 +108,7 @@ const ProfileScreen = ({navigation}) => {
         <View style={styles.container}>
           <View style={styles.circleShapeView}>
             <View style={styles.shadowLogoContainer}>
-              <Image source={images.QrCode} style={styles.qrCodeImage} />
+              <Image source={images.AppLogo} style={styles.qrCodeImage} />
             </View>
           </View>
           <View style={styles.QrCodeTextView}>
@@ -273,11 +289,11 @@ const ProfileScreen = ({navigation}) => {
                       {index === 0 && (
                         <View style={styles.toggleView}>
                           <Switch
-                            trackColor={{false: colors.black, true: '#f4f3f4'}}
-                            thumbColor={isEnabled ? colors.primary : colors.white}
+                            // trackColor={{false: colors.black, true: '#f4f3f4'}}
+                            // thumbColor={isEnabled ? colors.primary : colors.white}
                             ios_backgroundColor={colors.primary}
-                            onValueChange={toggleSwitch}
-                            value={isEnabled}
+                            onValueChange={btn1}
+                            value={checked.btn1}
                           />
                         </View>
                       )}
@@ -293,11 +309,11 @@ const ProfileScreen = ({navigation}) => {
                               }
                             /> */}
                             <Switch
-                           trackColor={{false: colors.black, true: '#f4f3f4'}}
-                           thumbColor={isEnabled ? colors.primary : colors.white}
+                          //  trackColor={{false: colors.black, true: '#f4f3f4'}}
+                          //  thumbColor={isEnabled ? colors.primary : colors.white}
                            ios_backgroundColor={colors.primary}
-                           onValueChange={toggleSwitch}
-                           value={isEnabled}
+                           onValueChange={btn2}
+                           value={checked.btn2}
                           />
                         </View>
                       )}
@@ -308,11 +324,11 @@ const ProfileScreen = ({navigation}) => {
                               onPress={this.switchOnThiredPress}
                             /> */}
                             <Switch
-                            trackColor={{false: colors.black, true: '#f4f3f4'}}
-                            thumbColor={isEnabled ? colors.primary : colors.white}
+                            // trackColor={{false: colors.black, true: '#f4f3f4'}}
+                            // thumbColor={isEnabled ? colors.primary : colors.white}
                             ios_backgroundColor={colors.primary}
-                            onValueChange={toggleSwitch}
-                            value={isEnabled}
+                            onValueChange={btn3}
+                            value={checked.btn3}
                           />
                         </View>
                       )}
@@ -462,8 +478,8 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   qrCodeImage: {
-    width: 50,
-    height: 50,
+    width: 100,
+    height: 100,
     resizeMode: 'contain',
   },
   securityFlatListView: {
@@ -675,6 +691,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.36,
     shadowRadius: 6.68,
     elevation: 11,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   popupModal: {
     flex: 1,

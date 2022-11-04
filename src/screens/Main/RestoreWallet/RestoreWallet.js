@@ -20,7 +20,7 @@ const RestoreWallet = ({navigation}) => {
 
         <RestoreWalletBody />
 
-        <Spacer height={20} />
+        {/* <Spacer height={10} /> */}
         <CustomGradientButton
           title="Next"
           width="60%"

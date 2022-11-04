@@ -71,7 +71,7 @@ const RestoreWalletSecond = ({navigation}) => {
           ))}
         </View>
 
-        <Spacer height={20} />
+        {/* <Spacer height={20} /> */}
         <CustomGradientButton
           title="Restore"
           width="60%"

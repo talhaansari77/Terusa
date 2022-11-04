@@ -19,7 +19,18 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import {useState} from 'react';
 
 const SettingScreen = ({navigation}) => {
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState({
+    notfication: false,
+    sound: false,
+  });
+
+  const setNotfication = () => {
+    setChecked({...checked, notfication: !checked.notfication});
+  };
+
+  const setSound = () => {
+    setChecked({...checked, sound: !checked.sound});
+  };
 
   const SettingFlatListdata = [
     {
@@ -97,9 +108,9 @@ const SettingScreen = ({navigation}) => {
     },
   ];
   return (
-    <SafeAreaView style={{flex: 1}}>
-      <PH20>
-        <AppHeader img={images.wallet} txt={'Settings'} fontSize={18} onPress={()=>navigation.navigate("MainStack",{screen:"WalletScreen"})} />
+        <SafeAreaView style={{flex: 1}}>
+    <PH20>
+        <AppHeader img={images.wallet} txt={'Settings'} fontSize={18} onPress={()=>navigation.navigate("WalletScreen")} />
         {/* <Spacer height={10}/> */}
         <FlatList
           style={styles.flatList}
@@ -136,9 +147,11 @@ const SettingScreen = ({navigation}) => {
                     {index === 0 && (
                       <View style={styles.toggleView}>
                         
-                          <Switch
-                          value={checked}
-                          onValueChange={value => setChecked(value)}
+                        <Switch
+                                                    ios_backgroundColor={colors.primary}
+
+                          value={checked.notfication}
+                          onValueChange={setNotfication}
                         />
                       </View>
                     )}
@@ -146,8 +159,11 @@ const SettingScreen = ({navigation}) => {
                       <View style={styles.toggleView}>
                         
                           <Switch
-                          value={checked}
-                          onValueChange={value => setChecked(value)}
+                                                      ios_backgroundColor={colors.primary}
+
+                          value={checked.sound}
+                          // onValueChange={value => setChecked(value)}
+                          onValueChange={setSound}
                         />
                       </View>
                     )}
@@ -155,8 +171,9 @@ const SettingScreen = ({navigation}) => {
                       <View style={styles.toggleView}>
                         
                         <Switch
-                          value={checked}
-                          onValueChange={value => setChecked(value)}
+                          value={checked.global}
+                          // onValueChange={value => setChecked(value)}
+                          onValueChange={onGlobal}
                           
                         />
                       </View>
