@@ -6,7 +6,7 @@ import {
   FlatList,
   Image,
   TouchableOpacity,
-  Switch
+  Switch,
 } from 'react-native';
 import React from 'react';
 import AppHeader from '../../../components/AppHeader';
@@ -15,7 +15,7 @@ import {images} from '../../../assets/images';
 import {scale} from 'react-native-size-matters';
 import {colors} from '../../../utils/Colors';
 import LinearGradient from 'react-native-linear-gradient';
-import Ionicons from "react-native-vector-icons/Ionicons";
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import {useState} from 'react';
 
 const SettingScreen = ({navigation}) => {
@@ -108,9 +108,14 @@ const SettingScreen = ({navigation}) => {
     },
   ];
   return (
-        <SafeAreaView style={{flex: 1}}>
-    <PH20>
-        <AppHeader img={images.wallet} txt={'Settings'} fontSize={18} onPress={()=>navigation.navigate("WalletScreen")} />
+    <SafeAreaView style={{flex: 1}}>
+      <PH20>
+        <AppHeader
+          img={images.wallet}
+          txt={'Settings'}
+          fontSize={18}
+          onPress={() => navigation.navigate('WalletScreen')}
+        />
         {/* <Spacer height={10}/> */}
         <FlatList
           style={styles.flatList}
@@ -146,10 +151,8 @@ const SettingScreen = ({navigation}) => {
                     )}
                     {index === 0 && (
                       <View style={styles.toggleView}>
-                        
                         <Switch
-                                                    ios_backgroundColor={colors.primary}
-
+                          ios_backgroundColor={colors.primary}
                           value={checked.notfication}
                           onValueChange={setNotfication}
                         />
@@ -157,10 +160,8 @@ const SettingScreen = ({navigation}) => {
                     )}
                     {index === 1 && (
                       <View style={styles.toggleView}>
-                        
-                          <Switch
-                                                      ios_backgroundColor={colors.primary}
-
+                        <Switch
+                          ios_backgroundColor={colors.primary}
                           value={checked.sound}
                           // onValueChange={value => setChecked(value)}
                           onValueChange={setSound}
@@ -169,12 +170,10 @@ const SettingScreen = ({navigation}) => {
                     )}
                     {index === 4 && item.SwitchBtn == true && (
                       <View style={styles.toggleView}>
-                        
                         <Switch
                           value={checked.global}
                           // onValueChange={value => setChecked(value)}
                           onValueChange={onGlobal}
-                          
                         />
                       </View>
                     )}
@@ -224,7 +223,7 @@ const styles = StyleSheet.create({
     height: 35,
     width: 35,
     resizeMode: 'contain',
-    tintColor:colors.white
+    tintColor: colors.white,
   },
   itemDetailsView: {
     width: '100%',
