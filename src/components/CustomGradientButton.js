@@ -44,7 +44,7 @@ function CustomGradientButton({
   y1,
   x2,
   y2,
-  iconMarginLeft,
+  iconMarginRight,
   marginLeft
 }) {
   return (
@@ -98,11 +98,12 @@ function CustomGradientButton({
               }}>
               <View
                 style={{
-                  width: '70%',
+                  width:  icons?"80%":'100%',
                   flexDirection: 'row',
                   justifyContent: 'space-evenly',
                   alignItems: 'center',
                 }}>
+                  <View></View>
                 <Text
                   style={[
                     {
@@ -119,7 +120,7 @@ function CustomGradientButton({
              
               </View>
               {icons ? <View
-                style={{marginLeft:iconMarginLeft}}
+                style={{paddingRight: iconMarginRight}}
                 >{icons ? icons : null}</View> : null}
             </LinearGradient>
           </View>

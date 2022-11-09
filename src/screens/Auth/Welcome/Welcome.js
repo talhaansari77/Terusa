@@ -69,11 +69,12 @@ const Welcome = ({navigation}) => {
           industr Lorem Ipsum sim text.
         </Text>
       </View>
-      <View style={{height: '22%', justifyContent: 'flex-end'}}>
+      <View style={{height: '20%', justifyContent: 'flex-end'}}>
         <CustomGradientButton
           title="GET STARTED"
           width="100%"
           fontSize={18}
+          iconMarginRight={moderateScale(30)}
           fontFamily={Montserrat.SemiBold}
           backgroundColor={colors.primary}
           height={verticalScale(40)}
@@ -85,7 +86,7 @@ const Welcome = ({navigation}) => {
             <FontAwesome5 name="chevron-right" size={20} color={colors.white} />
           }
         />
-        <Spacer height={20} />
+        <Spacer height={15} />
 
         <TouchableOpacity onPress={() => navigation.navigate('MainStack',{screen:"RestoreWallet"})}>
           <Text 

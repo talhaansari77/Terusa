@@ -6,7 +6,7 @@ import {
   FlatList,
   Image,
   TouchableOpacity,
-  Switch
+  Switch,
 } from 'react-native';
 import React from 'react';
 import AppHeader from '../../../components/AppHeader';
@@ -15,23 +15,19 @@ import {images} from '../../../assets/images';
 import {scale} from 'react-native-size-matters';
 import {colors} from '../../../utils/Colors';
 import LinearGradient from 'react-native-linear-gradient';
-import Ionicons from "react-native-vector-icons/Ionicons";
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import {useState} from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+
 
 const SettingScreen = ({navigation}) => {
   const [checked, setChecked] = useState({
     notfication: false,
     sound: false,
+    fingerPrint: false,
+    faceId: false,
   });
-
-  const setNotfication = () => {
-    setChecked({...checked, notfication: !checked.notfication});
-  };
-
-  const setSound = () => {
-    setChecked({...checked, sound: !checked.sound});
-  };
-
   const SettingFlatListdata = [
     {
       title: 'Enable Notifications',
@@ -39,6 +35,14 @@ const SettingScreen = ({navigation}) => {
       image: images.BellImage,
       blackImage: images.BellIconBlue,
       SwitchBtn: true,
+      value: checked.notfication,
+
+      onValueChange: async() => {
+        await AsyncStorage.se
+
+        
+        setChecked({...checked, notfication: !checked.notfication});
+      },
       currency: false,
       touchable: false,
     },
@@ -50,6 +54,11 @@ const SettingScreen = ({navigation}) => {
       SwitchBtn: true,
       currency: false,
       touchable: false,
+      value: checked.sound,
+
+      onValueChange: () => {
+        setChecked({...checked, sound: !checked.sound});
+      },
     },
     {
       title: 'Currency',
@@ -59,6 +68,9 @@ const SettingScreen = ({navigation}) => {
       SwitchBtn: false,
       currency: true,
       touchable: true,
+      onPress: () => {
+        navigation.navigate('SelectCurrency');
+      },
     },
     {
       title: 'Restore Wallet',
@@ -69,23 +81,24 @@ const SettingScreen = ({navigation}) => {
       SwitchBtn: false,
       currency: false,
       touchable: true,
+      onPress: () => {
+        navigation.navigate('RestoreWallet');
+      },
     },
-    // {
-    //   title: 'Theme',
-    //   subTitle: 'Change your Screens Theme',
-    //   image: images.DarkThemeIcon,
-    //   blackImage: images.LightThemeIcon,
-    //   SwitchBtn: true,
-    //   currency: false,
-    //   touchable: false,
-    // },
     {
       title: 'Add FingerPrint',
       subTitle: 'Add FingerPrint for Security',
       image: images.fingerprint,
       blackImage: images.LightThemeIcon,
-      // SwitchBtn: true,
+      SwitchBtn: true,
+      value: checked.fingerPrint,
+
+      onValueChange: () => {
+        setChecked({...checked, fingerPrint: !checked.fingerPrint});
+      },
+
       currency: false,
+
       touchable: true,
     },
     {
@@ -96,21 +109,34 @@ const SettingScreen = ({navigation}) => {
       SwitchBtn: true,
       currency: false,
       touchable: true,
+      value: checked.faceId,
+      onValueChange: () => {
+        setChecked({...checked, faceId: !checked.faceId});
+      },
     },
     {
       title: 'Two Factor Authentication',
       subTitle: 'Add FingerPrint for Security',
       image: images.twoFA,
+      SwitchBtn: false,
+
       blackImage: images.LightThemeIcon,
-      SwitchBtn: true,
+      onPress: () => {
+        navigation.navigate('FingerPrintScreen');
+      },
       currency: false,
       touchable: true,
     },
   ];
   return (
-        <SafeAreaView style={{flex: 1}}>
-    <PH20>
-        <AppHeader img={images.wallet} txt={'Settings'} fontSize={18} onPress={()=>navigation.navigate("WalletScreen")} />
+    <SafeAreaView style={{flex: 1}}>
+      <PH20>
+        <AppHeader
+          img={images.wallet}
+          txt={'Settings'}
+          fontSize={18}
+          onPress={() => navigation.navigate('WalletScreen')}
+        />
         {/* <Spacer height={10}/> */}
         <FlatList
           style={styles.flatList}
@@ -124,11 +150,7 @@ const SettingScreen = ({navigation}) => {
                 colors={[colors.darkGreyBlueSecond, colors.dusk]}
                 style={styles.flatListView}>
                 <TouchableOpacity
-                  onPress={() => {
-                    index === 2 && navigation.navigate('SelectCurrency');
-                    index === 3 && navigation.navigate('RestoreWallet');
-                    index === 5 && navigation.navigate('FingerPrintScreen');
-                  }}
+                  onPress={item.onPress}
                   disabled={item.touchable === true ? false : true}
                   style={styles.flatListInnerView}>
                   <Image
@@ -144,37 +166,15 @@ const SettingScreen = ({navigation}) => {
                         <Text style={styles.currencyText}>USD</Text>
                       </View>
                     )}
-                    {index === 0 && (
+                    {item.SwitchBtn == true && (
                       <View style={styles.toggleView}>
-                        
                         <Switch
-                                                    ios_backgroundColor={colors.primary}
-
-                          value={checked.notfication}
-                          onValueChange={setNotfication}
-                        />
-                      </View>
-                    )}
-                    {index === 1 && (
-                      <View style={styles.toggleView}>
-                        
-                          <Switch
-                                                      ios_backgroundColor={colors.primary}
-
-                          value={checked.sound}
-                          // onValueChange={value => setChecked(value)}
-                          onValueChange={setSound}
-                        />
-                      </View>
-                    )}
-                    {index === 4 && item.SwitchBtn == true && (
-                      <View style={styles.toggleView}>
-                        
-                        <Switch
-                          value={checked.global}
-                          // onValueChange={value => setChecked(value)}
-                          onValueChange={onGlobal}
-                          
+                          trackColor={{
+                            true: colors.darkGreyBlueSecond,
+                            false: colors.dusk,
+                          }}
+                          value={item.value}
+                          onValueChange={item.onValueChange}
                         />
                       </View>
                     )}
@@ -224,7 +224,7 @@ const styles = StyleSheet.create({
     height: 35,
     width: 35,
     resizeMode: 'contain',
-    tintColor:colors.white
+    tintColor: colors.white,
   },
   itemDetailsView: {
     width: '100%',
