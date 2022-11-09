@@ -14,6 +14,7 @@ import SettingScreen from '../../screens/Main/SettingScreen/SettingScreen';
 import SecurityScreen from '../../screens/Main/SecurityScreen/SecurityScreen';
 import RecoveryScreen from '../../screens/Main/RecoveryScreen/RecoveryScreen';
 import FingerPrintScreen from '../../screens/Main/FingerPrintScreen/FingerPrintScreen';
+import SupportScreen from '../../screens/Main/SupportScreen';
 
 
 const MainStack = () => {
@@ -22,7 +23,7 @@ const MainStack = () => {
   return (
     <Stack.Navigator
       screenOptions={{headerShown: false}}
-      // initialRouteName={"DashBoard"}
+      // initialRouteName={"SupportScreen"}
     >
       <Stack.Screen name="DashBoard" component={DashBoard} />
       <Stack.Screen name="Portfolio" component={Portfolio} />
@@ -38,6 +39,7 @@ const MainStack = () => {
       <Stack.Screen name="SecurityScreen" component={SecurityScreen} />
       <Stack.Screen name="RecoveryScreen" component={RecoveryScreen} />
       <Stack.Screen name="FingerPrintScreen" component={FingerPrintScreen} />
+      <Stack.Screen name="SupportScreen" component={SupportScreen} />
 
     </Stack.Navigator>
   );

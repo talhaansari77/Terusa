@@ -9,7 +9,7 @@ import {
   TextInput,
   Switch,
   ImageBackground,
-  ScrollView
+  ScrollView,
   //   Switch,
 } from 'react-native';
 import React from 'react';
@@ -20,7 +20,7 @@ import {images} from '../../../assets/images';
 import {colors} from '../../../utils/Colors';
 import LinearGradient from 'react-native-linear-gradient';
 import {useState} from 'react';
-import { Spacer } from '../../../components/Spacer';
+import {Spacer} from '../../../components/Spacer';
 import commonStyles from '../../../utils/CommonStyles';
 // import {SwitchToggle} from '../../../components/Switch'
 
@@ -54,18 +54,18 @@ const ProfileScreen = ({navigation}) => {
       subTitle: 'Lorem, ipsum dolor sit amet',
       image: images.Security,
       blueImage: images.SecurityBlueIcon,
-      onPress:()=>{
-        navigation.navigate("SecurityScreen")
-
-        
-
-      }
+      onPress: () => {
+        navigation.navigate('SecurityScreen');
+      },
     },
     {
       title: 'Support',
       subTitle: 'Lorem, ipsum dolor sit amet',
       image: images.HoursSupport,
       blueImage: images.SupportBlueIcon,
+      onPress: () => {
+        navigation.navigate('SupportScreen');
+      },
     },
   ];
 
@@ -88,23 +88,20 @@ const ProfileScreen = ({navigation}) => {
   ];
   return (
     <ImageBackground
-    source={images.BackgroundImage}
-    resizeMode="cover"
-    style={commonStyles.IosPadding}>
+      source={images.BackgroundImage}
+      resizeMode="cover"
+      style={commonStyles.IosPadding}>
       {/* <PH20> */}
       <ScrollView showsVerticalScrollIndicator={false}>
-
         <AppHeader
           img={images.BackArrow}
           txt={'Profile'}
           fontSize={18}
           rightImg={images.SettingImage}
-
-          onPress={()=>navigation.goBack()}
-          rightOnPress={()=>navigation.navigate("SettingScreen")}
-          
+          onPress={() => navigation.goBack()}
+          rightOnPress={() => navigation.navigate('SettingScreen')}
         />
-        <Spacer height={10}/>
+        <Spacer height={10} />
         <View style={styles.container}>
           <View style={styles.circleShapeView}>
             <View style={styles.shadowLogoContainer}>
@@ -118,13 +115,9 @@ const ProfileScreen = ({navigation}) => {
             </Text>
           </View>
         </View>
-        {
-
-          FlatListProfileData.map((item,index)=>{
-
-            return(
-
-              <View style={[styles.shadowContainer, styles.securityMarginTop]}>
+        {FlatListProfileData.map((item, index) => {
+          return (
+            <View style={[styles.shadowContainer, styles.securityMarginTop]}>
               <LinearGradient
                 start={{x: 0.0, y: 0.25}}
                 end={{x: 0.8, y: 0.0}}
@@ -134,9 +127,7 @@ const ProfileScreen = ({navigation}) => {
                   colors.duskSecond,
                 ]}
                 style={styles.securityFlatListView}>
-                <TouchableOpacity
-                  activeOpacity={0.7}
-                  onPress={item.onPress}>
+                <TouchableOpacity activeOpacity={0.7} onPress={item.onPress}>
                   <View style={styles.flatListInnerTextView}>
                     <Text style={styles.flatListInnerTitleText}>
                       {item.title}
@@ -155,14 +146,10 @@ const ProfileScreen = ({navigation}) => {
                 </TouchableOpacity>
               </LinearGradient>
             </View>
+          );
+        })}
 
-            )
-
-          })
-
-        }
-
-         {/* <FlatList
+        {/* <FlatList
           data={FlatListProfileData}
           contentContainerStyle={styles.paddingBottomSecond}
           renderItem={({item, index}) => (
@@ -206,7 +193,7 @@ const ProfileScreen = ({navigation}) => {
             </View>
           )}
         />  */}
-        <Spacer height={10}/>
+        <Spacer height={10} />
 
         <View style={styles.shadowContainer}>
           <LinearGradient
@@ -233,7 +220,7 @@ const ProfileScreen = ({navigation}) => {
             </Text>
           </LinearGradient>
         </View>
-        <Spacer height={5}/>
+        <Spacer height={5} />
 
         <View style={styles.searchView}>
           <TextInput
@@ -260,12 +247,11 @@ const ProfileScreen = ({navigation}) => {
             </TouchableOpacity>
           )}
         </View>
-        <Spacer height={20}/>
+        <Spacer height={20} />
 
-        {
-          ProfileFlatListData.map((item,index)=>{
-            return(
-              <View style={[styles.shadowContainer, styles.marginTop]}>
+        {ProfileFlatListData.map((item, index) => {
+          return (
+            <View style={[styles.shadowContainer, styles.marginTop]}>
               <LinearGradient
                 start={{x: 0.0, y: 0.0}}
                 end={{x: 0.8, y: 0.0}}
@@ -308,12 +294,12 @@ const ProfileScreen = ({navigation}) => {
                                 })
                               }
                             /> */}
-                            <Switch
-                          //  trackColor={{false: colors.black, true: '#f4f3f4'}}
-                          //  thumbColor={isEnabled ? colors.primary : colors.white}
-                           ios_backgroundColor={colors.primary}
-                           onValueChange={btn2}
-                           value={checked.btn2}
+                          <Switch
+                            //  trackColor={{false: colors.black, true: '#f4f3f4'}}
+                            //  thumbColor={isEnabled ? colors.primary : colors.white}
+                            ios_backgroundColor={colors.primary}
+                            onValueChange={btn2}
+                            value={checked.btn2}
                           />
                         </View>
                       )}
@@ -323,7 +309,7 @@ const ProfileScreen = ({navigation}) => {
                               switchOn={this.state.switchOnThiredButton}
                               onPress={this.switchOnThiredPress}
                             /> */}
-                            <Switch
+                          <Switch
                             // trackColor={{false: colors.black, true: '#f4f3f4'}}
                             // thumbColor={isEnabled ? colors.primary : colors.white}
                             ios_backgroundColor={colors.primary}
@@ -341,10 +327,8 @@ const ProfileScreen = ({navigation}) => {
                 </View>
               </LinearGradient>
             </View>
-
-            )
-          })
-        }
+          );
+        })}
 
         {/* <FlatList
           style={styles.flatList}
@@ -418,10 +402,9 @@ const ProfileScreen = ({navigation}) => {
             </View>
           )}
         /> */}
-      {/* </PH20> */}
+        {/* </PH20> */}
       </ScrollView>
-
-      </ImageBackground>
+    </ImageBackground>
   );
 };
 

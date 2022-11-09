@@ -17,7 +17,7 @@ import {colors} from '../../../utils/Colors';
 import LinearGradient from 'react-native-linear-gradient';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {useState} from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 
@@ -38,7 +38,7 @@ const SettingScreen = ({navigation}) => {
       value: checked.notfication,
 
       onValueChange: async() => {
-        await AsyncStorage.se
+        await AsyncStorage.setItem("notification",checked.notfication)
 
         
         setChecked({...checked, notfication: !checked.notfication});
@@ -128,6 +128,8 @@ const SettingScreen = ({navigation}) => {
       touchable: true,
     },
   ];
+
+  
   return (
     <SafeAreaView style={{flex: 1}}>
       <PH20>
