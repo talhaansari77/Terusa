@@ -20,10 +20,22 @@ import BitCoineContainer from './molecules/BitCoineContainer';
 import FooterAddContainer from './molecules/FooterAddContainer';
 import PortfolioContainer from './molecules/PortfolioContainer';
 import ProtfolioModal from './molecules/ProtfolioModal';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 
 const DashBoard = ({navigation}) => {
+
+  const [name, setName] = useState("Ali")
+
+  const storeData = async (value) => {
+    try {
+      await AsyncStorage.setName('@storage_Key', value)
+    } catch (e) {
+      // saving error
+    }
+  }
+
   const [modalVisible, setModalVisible] = useState(false);
   const CoinDate = [
     {
@@ -68,6 +80,8 @@ const DashBoard = ({navigation}) => {
     //   img: images.UsdtLogo,
     // },
   ];
+
+ 
   const CoinRender = ({item, index}) => {
     return (
       // <View style={{flex:1}}>
@@ -103,6 +117,12 @@ const DashBoard = ({navigation}) => {
           rightOnPress={()=>navigation.navigate("SettingScreen")}
 
         />
+
+        {/* <Text>{name}</Text> */}
+        {/* <View>storeData()</View> */}
+
+        {/* <Text>storeData()</Text> */}
+        {/* getData() */}
         <View style={{height:"80%"}}>
 
 
