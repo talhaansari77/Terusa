@@ -32,7 +32,10 @@ import {
   Line as LineHorizantol,
 } from 'react-native-svg';
 
-const WalletScreen = ({navigation}) => {
+const WalletScreen = ({navigation, route}) => {
+  const percent =
+    route?.params?.coin?.price_change_percentage_24h?.toFixed(2);
+
   const Data = [
     {
       date: '26 march,2020',
@@ -106,7 +109,7 @@ const WalletScreen = ({navigation}) => {
       <PH20>
         <AppHeader
           img={images.wallet}
-          txt={'Bitcoin'}
+          txt={route?.params?.coin?.name}
           fontSize={18}
           rightImg={images.SettingImage}
           rightOnPress={() => navigation.navigate('SettingScreen')}
@@ -120,20 +123,32 @@ const WalletScreen = ({navigation}) => {
             <View style={styles.bitcoinView}>
               <View style={styles.bitcoinLeftView}>
                 <Image
-                  source={images.BitCoinImage}
+                  source={{uri: route?.params?.coin?.image}}
                   style={styles.bitcoinImage}
                 />
-                <Text style={styles.leftDollerPrice}>$5,341.68</Text>
+                <Text style={styles.leftDollerPrice}>
+                  ${route?.params?.coin?.current_price}
+                </Text>
 
                 <Text style={styles.leftBTCPrice}>
-                  BTC price <Text style={styles.leftBTCPercentage}>+1.61%</Text>
+                  BTC price{' '}
+                  <Text
+                    style={{
+                      ...styles.leftBTCPercentage,
+                      color: percent.includes('-')
+                        ? colors.red
+                        : colors.frogGreen,
+                    }}>
+                    {!percent.includes('-') ? '+' : ''}
+                    {percent}
+                  </Text>
                 </Text>
               </View>
               <View style={styles.bitcoinRightView}>
                 <Text style={styles.rightSideText}>20</Text>
                 <Text style={styles.rightSideBalanceText}>Balance</Text>
                 <View style={styles.separatorLineRight}></View>
-                <Text style={styles.rightDollerPrice}>$5,341.68</Text>
+                <Text style={styles.rightDollerPrice}>${route?.params?.coin?.current_price}</Text>
                 <Text style={styles.rightSideValueText}>Value</Text>
               </View>
             </View>
@@ -506,7 +521,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  paddingBottomSecond: {paddingBottom: 250},
+  paddingBottomSecond: {paddingBottom: 25},
 
   hBtn: {
     height: 18,

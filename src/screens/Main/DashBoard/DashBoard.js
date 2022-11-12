@@ -7,8 +7,9 @@ import {
   ScrollView,
   Platform,
   ImageBackground,
+  Alert,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import AppHeader from '../../../components/AppHeader';
 import {images} from '../../../assets/images';
 import GradientContainer from '../../../components/GradientContainer';
@@ -20,69 +21,84 @@ import BitCoineContainer from './molecules/BitCoineContainer';
 import FooterAddContainer from './molecules/FooterAddContainer';
 import PortfolioContainer from './molecules/PortfolioContainer';
 import ProtfolioModal from './molecules/ProtfolioModal';
-
-
+import axios from 'axios';
+import {useDispatch, useSelector} from 'react-redux';
+import {useIsFocused} from '@react-navigation/native';
+import Loader from '../../../utils/Loader';
+import constants from '../../../redux/constants';
 
 const DashBoard = ({navigation}) => {
+  const coinsList = useSelector(state => state.myCoinReducer.coinsList);
+  const isFocused = useIsFocused();
+
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+  const addCoin = async (coin, checkboxValue) =>
+    dispatch({
+      type: constants.ADD_COIN,
+      payload: {
+        ...coin,
+        checkboxValue: checkboxValue,
+      },
+    });
+
   const [modalVisible, setModalVisible] = useState(false);
-  const CoinDate = [
-    {
-      id: 1,
-      name: 'Bitcoin',
-      coin: 'BTC',
-      amount: '$9111.89',
-      number: '10',
-      grading: '+0.89%',
-      img: images.BitCoinImage,
-      onPress:()=>navigation.navigate("MainStack",{screen:"WalletScreen"})
-    },
-    {
-      id: 2,
-      name: 'Bitcoin',
-      coin: 'DASH',
-      amount: '$9111.89',
-      number: '10',
-      grading: '+0.89%',
-      img: images.dashLogo,
-      onPress:()=>navigation.navigate("MainStack",{screen:"WalletScreen"})
 
-    },
-    {
-      id: 3,
-      name: 'Bitcoin',
-      coin: 'USDT',
-      amount: '$9111.89',
-      number: '10',
-      grading: '+0.89%',
-      img: images.UsdtLogo,
-      onPress:()=>navigation.navigate("MainStack",{screen:"WalletScreen"})
-
-    },
-    // {
-    //   id: 4,
-    //   name: 'Bitcoin',
-    //   coin: 'USDT',
-    //   amount: '$9111.89',
-    //   number: '10',
-    //   grading: '+0.89%',
-    //   img: images.UsdtLogo,
-    // },
-  ];
   const CoinRender = ({item, index}) => {
     return (
       // <View style={{flex:1}}>
       <BitCoineContainer
         name={item.name}
-        coin={item.coin}
-        amount={item.amount}
-        number={item.number}
-        grading={item.grading}
-        img={item.img}
-        onPress={item.onPress}
+        coin={item.symbol.toUpperCase()}
+        amount={`$${item.current_price}`}
+        number={item.market_cap_rank}
+        grading={item.price_change_percentage_24h.toFixed(2)}
+        img={item.image}
+        onPress={() => navigation.navigate('WalletScreen', {coin: item})}
       />
       // </View>
     );
   };
+
+  useEffect(() => {
+    // limit is 250 tokens 
+    // axios
+    //   .get(
+    //     'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250',
+    //   )
+    //   .then(response => alert(response.data.length));
+
+    setLoading(true);
+    axios
+      .get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250`)
+      .then(response => {
+        // console.log(response.data);
+        let list = [];
+        coinsList?.map(lCoin => {
+          let foundCoin = response?.data?.find(sCoin => sCoin.id === lCoin.id);
+          list.push(foundCoin);
+        });
+        // sort coin
+        list = list.sort(
+          (a, b) =>
+            Number(a.market_cap_rank) -
+            Number(b.market_cap_rank),
+        );
+        // default coin list
+        list = list.length <= 0 ? response?.data?.slice(0, 3) : list;
+        list.map(coin => addCoin(coin, true));
+        setData(list);
+        setLoading(false);
+        console.log('data is ', list);
+      })
+      .catch(function (error) {
+        setLoading(false);
+        console.log(error);
+      });
+    // return ()=>false
+  }, [isFocused]);
+
   return (
     <>
       <ImageBackground
@@ -100,30 +116,27 @@ const DashBoard = ({navigation}) => {
           heigth={20}
           fontSize={18}
           rightImg={images.SettingImage}
-          rightOnPress={()=>navigation.navigate("SettingScreen")}
-
+          rightOnPress={() => navigation.navigate('SettingScreen')}
         />
-        <View style={{height:"80%"}}>
+        <View style={{height: '80%'}}>
+          <ScrollView showsVerticalScrollIndicator={false}>
+            <Spacer height={10} />
+            <DashBoardContainer
+              onPress={() => {
+                navigation.navigate('Portfolio');
+              }}
+            />
+            <PortfolioContainer
+              setModalVisible={setModalVisible}
+              modalVisible={modalVisible}
+            />
 
-
-        <ScrollView showsVerticalScrollIndicator={false}>
-          <Spacer height={10} />
-          <DashBoardContainer
-            onPress={() => {
-              navigation.navigate('Portfolio');
-            }}
-          />
-          <PortfolioContainer
-            setModalVisible={setModalVisible}
-            modalVisible={modalVisible}
-          />
-
-          <FlatList
-            data={CoinDate}
-            showsVerticalScrollIndicator={false}
-            renderItem={CoinRender}
-          />
-        </ScrollView>
+            <FlatList
+              data={data}
+              showsVerticalScrollIndicator={false}
+              renderItem={CoinRender}
+            />
+          </ScrollView>
         </View>
       </ImageBackground>
 
@@ -131,6 +144,11 @@ const DashBoard = ({navigation}) => {
       <ProtfolioModal
         setModalVisible={setModalVisible}
         modalVisible={modalVisible}
+      />
+      <Loader
+        file={require('../../../assets/Loaders/loader.json')}
+        loading={loading}
+        height={100}
       />
     </>
   );

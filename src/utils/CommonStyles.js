@@ -6,8 +6,9 @@ import {
   } from 'react-native-size-matters';
   import {
   
-    Platform
+    Platform, View
   } from 'react-native'
+import styled from 'react-native-styled-components';
   // import colors from './colors';
   const commonStyles = ScaledSheet.create({
     container: {
@@ -50,6 +51,13 @@ import {
       flex: 1,paddingTop:Platform.OS=="ios"?verticalScale(40):5,
       paddingHorizontal:moderateScale(15)
     }
+  });
+
+  export const PH10 = styled(View, {
+    paddingHorizontal: scale(10),
+  });
+  export const PH20 = styled(View, {
+    paddingHorizontal: scale(20),
   });
 
   

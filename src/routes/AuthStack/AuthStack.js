@@ -5,14 +5,7 @@ import OnBoarding from '../../screens/Auth/OnBoarding/OnBoarding';
 import Welcome from '../../screens/Auth/Welcome/Welcome';
 import SecurityWallet from '../../screens/Auth/SecurityWallet/SecurityWallet';
 
-
-
-
 const AuthStack = ({navigation}) => {
-
-
-
-
   const Stack = createStackNavigator();
   return (
     <Stack.Navigator
@@ -20,9 +13,8 @@ const AuthStack = ({navigation}) => {
       // initialRouteName={"SecurityWallet"}
     >
       <Stack.Screen name="OnBoarding" component={OnBoarding} />
-   <Stack.Screen name="SecurityWallet" component={SecurityWallet} />
+      <Stack.Screen name="SecurityWallet" component={SecurityWallet} />
       <Stack.Screen name="Welcome" component={Welcome} />
-
     </Stack.Navigator>
   );
 };

@@ -14,6 +14,7 @@ import SettingScreen from '../../screens/Main/SettingScreen/SettingScreen';
 import SecurityScreen from '../../screens/Main/SecurityScreen/SecurityScreen';
 import RecoveryScreen from '../../screens/Main/RecoveryScreen/RecoveryScreen';
 import FingerPrintScreen from '../../screens/Main/FingerPrintScreen/FingerPrintScreen';
+import AddMore from '../../screens/Main/AddMore/AddMore';
 
 
 const MainStack = () => {
@@ -22,9 +23,10 @@ const MainStack = () => {
   return (
     <Stack.Navigator
       screenOptions={{headerShown: false}}
-      // initialRouteName={"DashBoard"}
+      // initialRouteName={"AddMore"}
     >
       <Stack.Screen name="DashBoard" component={DashBoard} />
+      <Stack.Screen name="AddMore" component={AddMore} />
       <Stack.Screen name="Portfolio" component={Portfolio} />
       <Stack.Screen name="RestoreWallet" component={RestoreWallet} />
       <Stack.Screen name="RestoreWalletSecond" component={RestoreWalletSecond} />

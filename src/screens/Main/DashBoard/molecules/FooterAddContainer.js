@@ -3,13 +3,16 @@ import React from 'react';
 import {images} from '../../../../assets/images';
 import commonStyles from '../../../../utils/CommonStyles';
 import {moderateScale, verticalScale} from 'react-native-size-matters';
+import { useNavigation } from '@react-navigation/native';
 
 const FooterAddContainer = () => {
+  const navigation = useNavigation();
   return (
     <View style={styles.mainContainer}>
       <View style={{width: '10%'}}></View>
 
       <TouchableOpacity
+      onPress={()=>navigation.navigate('AddMore')}
         activeOpacity={0.6}
         style={{width: 150, height: 300, marginBottom: verticalScale(30)}}>
         <Image
