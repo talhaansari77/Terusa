@@ -15,6 +15,7 @@ import SecurityScreen from '../../screens/Main/SecurityScreen/SecurityScreen';
 import RecoveryScreen from '../../screens/Main/RecoveryScreen/RecoveryScreen';
 import FingerPrintScreen from '../../screens/Main/FingerPrintScreen/FingerPrintScreen';
 import AddMore from '../../screens/Main/AddMore/AddMore';
+import SupportScreen from '../../screens/Main/SupportScreen';
 
 
 const MainStack = () => {
@@ -40,6 +41,7 @@ const MainStack = () => {
       <Stack.Screen name="SecurityScreen" component={SecurityScreen} />
       <Stack.Screen name="RecoveryScreen" component={RecoveryScreen} />
       <Stack.Screen name="FingerPrintScreen" component={FingerPrintScreen} />
+      <Stack.Screen name="SupportScreen" component={SupportScreen} />
 
     </Stack.Navigator>
   );

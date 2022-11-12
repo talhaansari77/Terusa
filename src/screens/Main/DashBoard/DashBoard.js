@@ -25,6 +25,7 @@ import axios from 'axios';
 import {useDispatch, useSelector} from 'react-redux';
 import {useIsFocused} from '@react-navigation/native';
 import Loader from '../../../utils/Loader';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import constants from '../../../redux/constants';
 
 const DashBoard = ({navigation}) => {
@@ -34,6 +35,8 @@ const DashBoard = ({navigation}) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
+  const [name, setName] = useState("Ali")
+  
   const addCoin = async (coin, checkboxValue) =>
     dispatch({
       type: constants.ADD_COIN,
@@ -42,6 +45,15 @@ const DashBoard = ({navigation}) => {
         checkboxValue: checkboxValue,
       },
     });
+
+
+  const storeData = async (value) => {
+    try {
+      await AsyncStorage.setName('@storage_Key', value)
+    } catch (e) {
+      // saving error
+    }
+  }
 
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -63,12 +75,7 @@ const DashBoard = ({navigation}) => {
 
   useEffect(() => {
     // limit is 250 tokens 
-    // axios
-    //   .get(
-    //     'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250',
-    //   )
-    //   .then(response => alert(response.data.length));
-
+   
     setLoading(true);
     axios
       .get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250`)

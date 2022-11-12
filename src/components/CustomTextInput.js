@@ -64,6 +64,9 @@ const CustomTextInput = ({
               fontFamily: props.fontFamily || "Montserrat-regular",
               color: props.color || colors.white,
               fontSize: verticalScale(13),
+              textAlign: props.textAlign || "center",
+              multiline: props.multiline
+              // alignSelf: props.alignItems || "center"
             },
           ]}
           onChangeText={props.onChangeText}
