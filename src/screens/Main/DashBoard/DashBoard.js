@@ -8,7 +8,7 @@ import {
   Platform,
   ImageBackground,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useState,useEffect} from 'react';
 import AppHeader from '../../../components/AppHeader';
 import {images} from '../../../assets/images';
 import GradientContainer from '../../../components/GradientContainer';
@@ -20,10 +20,69 @@ import BitCoineContainer from './molecules/BitCoineContainer';
 import FooterAddContainer from './molecules/FooterAddContainer';
 import PortfolioContainer from './molecules/PortfolioContainer';
 import ProtfolioModal from './molecules/ProtfolioModal';
+import TouchID from 'react-native-touch-id';
+// import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 
 const DashBoard = ({navigation}) => {
+
+  const [name, setName] = useState("Ali")
+
+  const storeData = async (value) => {
+    try {
+      await AsyncStorage.setName('@storage_Key', value)
+    } catch (e) {
+      // saving error
+    }
+  }
+
+  const optionalConfigObject = {
+    title: 'Authentication Required', // Android
+    imageColor: '#e00606', // Android
+    imageErrorColor: '#ff0000', // Android
+    sensorDescription: 'Touch sensor', // Android
+    sensorErrorDescription: 'Failed', // Android
+    cancelText: 'Cancel', // Android
+    fallbackLabel: 'Show Passcode', // iOS (if empty, then label is hidden)
+    unifiedErrors: false, // use unified error messages (default false)
+    passcodeFallback: false, // iOS - allows the device to fall back to using the passcode, if faceid/touch is not available. this does not mean that if touchid/faceid fails the first few times it will revert to passcode, rather that if the former are not enrolled, then it will use the passcode.
+  };
+
+
+
+  useEffect(() => {
+    handleBiometric();
+  });
+
+  const handleBiometric = () => {
+    TouchID.isSupported(optionalConfigObject)
+      .then(biometryType => {
+        if (biometryType === 'FaceID') {
+          console.log('FaceID is supported........--------+++++++++++');
+          TouchID.authenticate()
+            .then(success => {
+              console.log('Success', success);
+            })
+            .catch(err => {
+              console.log('Error', err);
+            });
+        } else {
+          console.log('TouchID is supported........--------+++++++++++');
+          TouchID.authenticate('', optionalConfigObject)
+            .then(success => {
+              console.log('Success', success);
+            })
+            .catch(err => {
+              console.log('Error', err);
+            });
+        }
+      })
+      .catch(err => {
+        console.log('Errorsss', err);
+      });
+  };
+
   const [modalVisible, setModalVisible] = useState(false);
   const CoinDate = [
     {
@@ -68,6 +127,8 @@ const DashBoard = ({navigation}) => {
     //   img: images.UsdtLogo,
     // },
   ];
+
+ 
   const CoinRender = ({item, index}) => {
     return (
       // <View style={{flex:1}}>
@@ -103,6 +164,12 @@ const DashBoard = ({navigation}) => {
           rightOnPress={()=>navigation.navigate("SettingScreen")}
 
         />
+
+        {/* <Text>{name}</Text> */}
+        {/* <View>storeData()</View> */}
+
+        {/* <Text>storeData()</Text> */}
+        {/* getData() */}
         <View style={{height:"80%"}}>
 
 

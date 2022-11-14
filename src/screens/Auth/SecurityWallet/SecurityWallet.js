@@ -5,26 +5,91 @@ import {
   ImageBackground,
   StyleSheet,
   TouchableOpacity,
+  FlatList,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {colors} from '../../../utils/Colors';
 import {images} from '../../../assets/images';
 import {Spacer} from '../../../components/Spacer';
 import CustomText from '../../../components/CustomText';
 import styled from 'react-native-styled-components';
-import {scale, verticalScale} from 'react-native-size-matters';
+import {moderateScale, scale, verticalScale} from 'react-native-size-matters';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const SecurityWallet = () => {
-  const [SampleArray] = useState([]);
-  //   console.log("SmapleArray",SampleArray)
+const SecurityWallet = ({navigation}) => {
+  const [passCodeArray, setPasscodeArray] = useState([]);
 
-  const [passwordKey, setpasswordKey] = useState([]);
-  const [totalValue, setTotalValue] = useState([]);
-  const [holder, setHolder] = useState([]);
-  const [holder2, setHolder2] = useState('');
-  const [holder3, setHolder3] = useState('');
 
-  console.log('Holder', holder);
+  const [asyncPasscode, setGetAsyncPasscode] = useState([]);
+  useEffect(() => {
+    getPassCode();
+  }, [passCodeArray]);
+  console.log('passCodeDetail', asyncPasscode);
+
+  const getPassCode = async () => {
+    await AsyncStorage.getItem('passcode')
+      .then(resp => JSON.parse(resp))
+      .then(json => {
+        setGetAsyncPasscode(json);
+      });
+  };
+
+  const holder = [
+    {id: 1, data: '1'},
+    {id: 2, data: '2'},
+    {id: 3, data: '3'},
+    {id: 4, data: '4'},
+    {id: 5, data: '5'},
+    {id: 6, data: '6'},
+    {id: 7, data: '7'},
+    {id: 8, data: '8'},
+    {id: 9, data: '9'},
+    {id: 10, correct: images.CheckMark},
+    {id: 11, data: '0'},
+    {id: 12, incorrect: images.CrossIcon},
+  ];
+
+  const onPassCode = item => {
+    if (passCodeArray.length < 6) {
+      passCodeArray.push(item);
+    }
+  };
+
+  const onSavePassCode = async () => {
+    if (passCodeArray.length >= 6) {
+      if (asyncPasscode) {
+        let passcodeData = passCodeArray.map(item => {
+          return item;
+        });
+        let asyncPassCodeData = asyncPasscode.map(item => {
+          return item;
+        });
+
+        let answerData =
+          passcodeData.toString() === asyncPassCodeData.toString();
+
+        if (answerData == true) {
+          navigation.navigate('MainStack', {screen: 'DashBoard'});
+        } else {
+          alert('Wrong PassCode');
+        }
+      } else {
+        await AsyncStorage.setItem('passcode', JSON.stringify(passCodeArray));
+
+        navigation.navigate('Welcome');
+      }
+    } else {
+      console.log('wrong ');
+    }
+  };
+
+  const onCrossPassCode = () => {
+    if (passCodeArray.length > 0) {
+      passCodeArray.pop();
+    }
+  };
+
+  console.log('PasscodeData', passCodeArray);
   return (
     <ImageBackground
       source={images.BackgroundImage}
@@ -71,17 +136,103 @@ const SecurityWallet = () => {
           {SampleArray.length > 4 ? <Text style={{color:colors.white, height:20}}> {holder}</Text> : <SeparatorLine />}
           {SampleArray.length > 5 ? <Text style={{color:colors.white, height:20}}> {holder}</Text> : <SeparatorLine />} */}
 
-          {SampleArray.length > 0 ? <Dot /> : <SeparatorLine />}
-          {SampleArray.length > 1 ? <Dot /> : <SeparatorLine />}
-          {SampleArray.length > 2 ? <Dot /> : <SeparatorLine />}
-          {SampleArray.length > 3 ? <Dot /> : <SeparatorLine />}
-          {SampleArray.length > 4 ? <Dot /> : <SeparatorLine />}
-          {SampleArray.length > 5 ? <Dot /> : <SeparatorLine />}
+          {passCodeArray.length > 0 ? <Dot /> : <SeparatorLine />}
+          {passCodeArray.length > 1 ? <Dot /> : <SeparatorLine />}
+          {passCodeArray.length > 2 ? <Dot /> : <SeparatorLine />}
+          {passCodeArray.length > 3 ? <Dot /> : <SeparatorLine />}
+          {passCodeArray.length > 4 ? <Dot /> : <SeparatorLine />}
+          {passCodeArray.length > 5 ? <Dot /> : <SeparatorLine />}
         </DotStyle>
 
-        <Spacer height={20} />
+        <Spacer height={40} />
+        <View style={{flexDirection: 'column'}}>
+          <FlatList
+            data={holder}
+            keyExtractor={item => item}
+            numColumns={3}
+            // extraData={selectedId}
+            renderItem={({item, index}) => {
+              return (
+                <View
+                  style={{
+                    // marginRight:"30%",
+                    width: '34%',
+                    flexDirection: 'row',
+                    marginBottom: '20%',
+                    marginRight: 10,
+                    alignItems: 'center',
+                    // backgroundColor:"red",
+                    paddingLeft: moderateScale(20),
+                  }}>
+                  {item.id == 10 || item.id == 12 ? (
+                    <TouchableOpacity
+                      onPress={() => {
+                        if (item.id == 10) {
+                          onSavePassCode();
+                        } else {
+                          onCrossPassCode();
+                        }
+                      }}>
+                      <Image
+                        source={item.id == 10 ? item.correct : item.incorrect}
+                        style={{
+                          height: verticalScale(item.id == 12 ? 25 : 18),
+                          width: scale(item.id == 12 ? 15 : 18),
+                          resizeMode: 'contain',
+                          tintColor: colors.white,
+                        }}
+                      />
+                    </TouchableOpacity>
+                  ) : (
+                    <></>
+                  )}
 
-        <NumberView>
+                  <TouchableOpacity
+                    onPress={() => {
+                      // passCodeArray.push(item.data);
+
+                      // // temp.push(item?.data);
+
+                      onPassCode(item.data);
+
+                      // setPasscodeData.splice(setHolder.length + 1)
+                      // console.log("SetHolder",setHolder)
+                    }}>
+                    <NumberText>{item.data}</NumberText>
+                  </TouchableOpacity>
+                </View>
+              );
+            }}
+          />
+          {/* <FlatList
+            data={holder}
+            keyExtractor={item => item}
+            renderItem={(item, index) => {
+              return (
+                <View
+                  style={{
+                    width: '33%',
+                    flexDirection: 'row',
+                    backgroundColor: 'red',
+                  }}>
+                  <NumberText>{item}</NumberText>
+                </View>
+              );
+            }}
+          /> */}
+        </View>
+
+        {/* <NumberView>
+          
+          
+          <FirstNumber>
+          <TouchableOpacity>
+          <NumberText>1</NumberText>
+
+            
+            </TouchableOpacity>
+
+          </FirstNumber>
           <FirstNumber>
             <TouchableOpacity
               onPress={() => {
@@ -217,7 +368,7 @@ const SecurityWallet = () => {
               />
             </TouchableOpacity>
           </FirstNumber>
-        </NumberView>
+        </NumberView> */}
       </Container>
     </ImageBackground>
   );

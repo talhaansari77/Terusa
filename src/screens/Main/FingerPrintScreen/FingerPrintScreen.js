@@ -17,10 +17,7 @@ const FingerPrintScreen = () => {
     passcodeFallback: false, // iOS - allows the device to fall back to using the passcode, if faceid/touch is not available. this does not mean that if touchid/faceid fails the first few times it will revert to passcode, rather that if the former are not enrolled, then it will use the passcode.
   };
 
-  // const optionalConfigObject = {
-  //   unifiedErrors: false, // use unified error messages (default false)
-  //   passcodeFallback: false // if true is passed, itwill allow isSupported to return an error if the device is not enrolled in touch id/face id etc. Otherwise, it will just tell you what method is supported, even if the user is not enrolled.  (default false)
-  // };
+
 
   useEffect(() => {
     handleBiometric();

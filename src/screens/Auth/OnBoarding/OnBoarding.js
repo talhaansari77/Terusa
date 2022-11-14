@@ -12,6 +12,7 @@ import {Montserrat, Roboto} from '../../../utils/Fonts';
 import Icon from 'react-native-vector-icons/Ionicons';
 import GradientCircleBtn from '../../../components/GradientCircleBtn';
 import SepratorLine from '../../../components/SepratorLine';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const OnBoarding = ({navigation}) => {
   const [page, setPage] = useState(0);
@@ -31,6 +32,35 @@ const OnBoarding = ({navigation}) => {
       setPage(page + 1);
     }
   };
+
+  const onNextScreen=async()=>{
+
+    
+    let response = await AsyncStorage?.getItem('finger');
+
+    console.log("respon",response)
+    if(response=="FingerPrint" || response=="Face")
+    {
+      // navigation.navigate("MainStack",{screen:"DashBoard"})
+      navigation.navigate("Welcome")
+
+
+
+    }
+    else{
+      navigation.navigate("SecurityWallet")
+
+
+    }
+
+   
+
+
+
+    // console.log("finger",FingerPrint)
+    // FingerPrintScreen
+
+  }
   return (
     <ImageBackground source={images.BackgroundImage} resizeMode="cover" style={{height:"100%"}} >
 
@@ -108,7 +138,8 @@ const OnBoarding = ({navigation}) => {
         <GradientCircleBtn
           onPress={() => {
             if (page == 2) {
-              navigation.navigate('Welcome');
+              onNextScreen()
+              // navigation.navigate('Welcome');
             } else {
               moveForward();
             }

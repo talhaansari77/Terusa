@@ -17,11 +17,12 @@ import {colors} from '../../../utils/Colors';
 import LinearGradient from 'react-native-linear-gradient';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {useState} from 'react';
-// import AsyncStorage from '@react-native-async-storage/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 
 const SettingScreen = ({navigation}) => {
+  const [valueData, setValueData] = useState("ddd")
   const [checked, setChecked] = useState({
     notfication: false,
     sound: false,
@@ -38,10 +39,11 @@ const SettingScreen = ({navigation}) => {
       value: checked.notfication,
 
       onValueChange: async() => {
-        await AsyncStorage.setItem("notification",checked.notfication)
-
-        
         setChecked({...checked, notfication: !checked.notfication});
+
+
+         await AsyncStorage.setItem("notifi","Notification")
+
       },
       currency: false,
       touchable: false,
@@ -56,8 +58,10 @@ const SettingScreen = ({navigation}) => {
       touchable: false,
       value: checked.sound,
 
-      onValueChange: () => {
+      onValueChange: async() => {
         setChecked({...checked, sound: !checked.sound});
+        await AsyncStorage.setItem("sound","Sound")
+
       },
     },
     {
@@ -93,8 +97,10 @@ const SettingScreen = ({navigation}) => {
       SwitchBtn: true,
       value: checked.fingerPrint,
 
-      onValueChange: () => {
+      onValueChange: async() => {
         setChecked({...checked, fingerPrint: !checked.fingerPrint});
+        await AsyncStorage.setItem("finger","FingerPrint")
+
       },
 
       currency: false,
@@ -110,8 +116,10 @@ const SettingScreen = ({navigation}) => {
       currency: false,
       touchable: true,
       value: checked.faceId,
-      onValueChange: () => {
+      onValueChange:async () => {
         setChecked({...checked, faceId: !checked.faceId});
+        await AsyncStorage.setItem("Face","FaceId")
+
       },
     },
     {
@@ -176,6 +184,7 @@ const SettingScreen = ({navigation}) => {
                             false: colors.dusk,
                           }}
                           value={item.value}
+                          
                           onValueChange={item.onValueChange}
                         />
                       </View>
