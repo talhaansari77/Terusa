@@ -34,7 +34,7 @@ const BitCoineContainer = ({coin,name,number,amount,grading,img, onPress}) => {
               
             }}>
             <View style={styles.imgContainer}>
-              <Image source={img} style={commonStyles.img} />
+              <Image source={{uri:img}} style={commonStyles.img} />
             </View>
           </View>
           <View style={{width: '100%', paddingRight: 20}}>

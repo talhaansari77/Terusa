@@ -6,14 +6,7 @@ import Welcome from '../../screens/Auth/Welcome/Welcome';
 import SecurityWallet from '../../screens/Auth/SecurityWallet/SecurityWallet';
 import FingerPrintScreen from '../../screens/Main/FingerPrintScreen/FingerPrintScreen';
 
-
-
-
 const AuthStack = ({navigation}) => {
-
-
-
-
   const Stack = createStackNavigator();
   return (
     <Stack.Navigator

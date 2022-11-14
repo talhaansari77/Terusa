@@ -1,5 +1,27 @@
 import { images } from "../assets/images";
+// {
+//   let coinsList = coins;
+//   let newCoinsList = coins.filter(coin => {
+//     let coinName = coin.name.toLowerCase();
+//     let coinSymbol = coin.symbol.toLowerCase();
+//     let searchTerm = txt.toLowerCase();
+//     if (
+//       coinName.includes(searchTerm) ||
+//       coinSymbol.includes(searchTerm)
+//     ) {
+//       console.log("coinName==>",searchTerm,coinName,coinSymbol);
+//       return coin;
+//     }
+//   });
 
+//   if (newCoinsList.length <= 0) {
+//     setCoins(coinsList);
+//   } else {
+//     setCoins(newCoinsList);
+//   }
+//   // setting searchTerm
+//   setState({...state, searchText: txt});
+// }
 
 export  const OnBoardingData = [
     {
