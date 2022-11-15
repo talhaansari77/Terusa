@@ -9,11 +9,7 @@ import {
   ImageBackground,
   Alert,
 } from 'react-native';
-<<<<<<< HEAD
 import React, {useState,useEffect} from 'react';
-=======
-import React, {useEffect, useState} from 'react';
->>>>>>> 87d4450173bca2103eb95470afd05e6ea4a89669
 import AppHeader from '../../../components/AppHeader';
 import {images} from '../../../assets/images';
 import GradientContainer from '../../../components/GradientContainer';
@@ -25,19 +21,13 @@ import BitCoineContainer from './molecules/BitCoineContainer';
 import FooterAddContainer from './molecules/FooterAddContainer';
 import PortfolioContainer from './molecules/PortfolioContainer';
 import ProtfolioModal from './molecules/ProtfolioModal';
-<<<<<<< HEAD
 import TouchID from 'react-native-touch-id';
-// import AsyncStorage from '@react-native-async-storage/async-storage';
-
-
-=======
 import axios from 'axios';
 import {useDispatch, useSelector} from 'react-redux';
 import {useIsFocused} from '@react-navigation/native';
 import Loader from '../../../utils/Loader';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import constants from '../../../redux/constants';
->>>>>>> 87d4450173bca2103eb95470afd05e6ea4a89669
 
 const DashBoard = ({navigation}) => {
   const coinsList = useSelector(state => state.myCoinReducer.coinsList);

@@ -18,12 +18,14 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const SecurityWallet = ({navigation}) => {
   const [passCodeArray, setPasscodeArray] = useState([]);
+  const [counter, setCounter] = useState(0);
 
 
   const [asyncPasscode, setGetAsyncPasscode] = useState([]);
   useEffect(() => {
     getPassCode();
-  }, [passCodeArray]);
+  }, [passCodeArray,counter]);
+
   console.log('passCodeDetail', asyncPasscode);
 
   const getPassCode = async () => {
@@ -48,7 +50,6 @@ const SecurityWallet = ({navigation}) => {
     {id: 11, data: '0'},
     {id: 12, incorrect: images.CrossIcon},
   ];
-
   const onPassCode = item => {
     if (passCodeArray.length < 6) {
       passCodeArray.push(item);
@@ -173,7 +174,7 @@ const SecurityWallet = ({navigation}) => {
                           onCrossPassCode();
                         }
                       }}>
-                      <Image
+                      <Image 
                         source={item.id == 10 ? item.correct : item.incorrect}
                         style={{
                           height: verticalScale(item.id == 12 ? 25 : 18),
@@ -189,11 +190,9 @@ const SecurityWallet = ({navigation}) => {
 
                   <TouchableOpacity
                     onPress={() => {
-                      // passCodeArray.push(item.data);
-
-                      // // temp.push(item?.data);
-
+                      // console.log('press')
                       onPassCode(item.data);
+                      setCounter(counter+1);
 
                       // setPasscodeData.splice(setHolder.length + 1)
                       // console.log("SetHolder",setHolder)
