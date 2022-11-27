@@ -41,7 +41,7 @@ const FingerPrintScreen = ({navigation}) => {
           console.log('TouchID is supported........--------+++++++++++');
           TouchID.authenticate('', optionalConfigObject)
             .then(success => {
-              navigation.navigate("MainStack",{screen:"DashBoard"})
+              navigation.navigate("Welcome")
             })
             .catch(err => {
               console.log('Error', err);

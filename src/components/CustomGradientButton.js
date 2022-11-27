@@ -50,6 +50,8 @@ function CustomGradientButton({
   return (
     <TouchableOpacity
       disabled={loading}
+      onPress={onPress}
+
       activeOpacity={0.6}
       style={[
         {
@@ -74,7 +76,7 @@ function CustomGradientButton({
           paddingHorizontal: paddingHorizontal,
         },
       ]}
-      onPress={onPress}>
+      >
       {loading ? (
         <ActivityIndicator color={colors.white} size={moderateScale(26)} />
       ) : (
@@ -103,7 +105,13 @@ function CustomGradientButton({
                   justifyContent: 'space-evenly',
                   alignItems: 'center',
                 }}>
-                  <View></View>
+                  {
+                    icons? (
+                      <View></View>
+
+
+                    ):<></>
+                  }
                 <Text
                   style={[
                     {

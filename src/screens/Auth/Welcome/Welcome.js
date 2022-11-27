@@ -84,15 +84,21 @@ const Welcome = ({navigation}) => {
           height={verticalScale(40)}
           borderRadius={moderateScale(50)}
           onPress={() => {
-            navigation.navigate('MainStack');
-          }}
+            // navigation.navigate('RecoveryScreen');
+            // RecoveryScreen
+           navigation.navigate('MainStack',{screen:"RestoreWallet",restore:true})}}
+        
           icons={
             <FontAwesome5 name="chevron-right" size={20} color={colors.white} />
           }
         />
-        <Spacer height={15} />
+        <Spacer height={15}/>
 
-        <TouchableOpacity onPress={() => navigation.navigate('MainStack',{screen:"RestoreWallet"})}>
+        <TouchableOpacity onPress={() => 
+                    navigation.navigate('MainStack',{screen:"RecoveryScreen"})
+
+          // navigation.navigate('MainStack',{screen:"RestoreWallet",restore:true})
+          }>
           <Text 
             style={{
               textAlign: 'center',

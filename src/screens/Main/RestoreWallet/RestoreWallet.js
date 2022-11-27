@@ -1,4 +1,4 @@
-import {View, Text, SafeAreaView, ImageBackground} from 'react-native';
+import {View, Text, SafeAreaView, ImageBackground, ScrollView} from 'react-native';
 import React from 'react';
 import CustomText from '../../../components/CustomText';
 import {colors} from '../../../utils/Colors';
@@ -10,30 +10,25 @@ import RestoreWalletBody from './Molecules/RestoreWalletBody';
 import RestoreWalletHeader from './Molecules/RestoreWalletHeader';
 
 const RestoreWallet = ({navigation}) => {
+
+
   return (
     <ImageBackground
       source={images.BackgroundImage}
       resizeMode="cover"
       style={{height: '100%'}}>
+        <ScrollView>
+
       <SafeAreaView>
         <RestoreWalletHeader />
 
-        <RestoreWalletBody />
+        <RestoreWalletBody navigation={navigation} />
 
         {/* <Spacer height={10} /> */}
-        <CustomGradientButton
-          title="Next"
-          width="60%"
-          fontSize={23}
-          // backgroundColor={colors.primary}
-          height={verticalScale(40)}
-          borderRadius={moderateScale(10)}
-          alignSelf={'center'}
-          onPress={() => {
-            navigation.navigate('RestoreWalletSecond'); 
-          }}
-        />
+     
       </SafeAreaView>
+
+      </ScrollView>
     </ImageBackground>
   );
 };

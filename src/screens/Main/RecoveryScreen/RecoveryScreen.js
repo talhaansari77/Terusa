@@ -7,15 +7,16 @@ import RecoveryScreenBody from './Molecules/RecoveryScreenBody';
 import {Spacer} from '../../../components/Spacer';
 import {images} from '../../../assets/images';
 
-const RecoveryScreen = () => {
+const RecoveryScreen = ({navigation}) => {
   return (
     <ImageBackground
       source={images.BackgroundImage}
       resizeMode="cover"
       style={{height: '100%'}}>
       <SafeAreaView>
+      
         <RecoveryScreenHeader />
-        <RecoveryScreenBody />
+        <RecoveryScreenBody navigation={navigation} />
       </SafeAreaView>
     </ImageBackground>
   );

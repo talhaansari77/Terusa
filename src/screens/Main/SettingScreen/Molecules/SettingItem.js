@@ -33,46 +33,13 @@ const SettingItem = ({navigation}) => {
     let soundResponse = await AsyncStorage?.getItem('sound');
     let fingerResponse = await AsyncStorage?.getItem('finger');
     let faceIdResponse = await AsyncStorage?.getItem('Face');
-
     temp.push({
       noti:notifResponse,
       sound:soundResponse,
       finger:fingerResponse,
       face:faceIdResponse
-
-    
-
     })
-
     setAsyncData(temp)
-
-    
-
-
-
-    // if (notifResponse == 'Notification') {
-    //   console.log('AllAsyncFinger', fingerResponse);
-
-    //   setChecked({...checked, notfication: !checked.notfication});
-    // }
-    //  if (soundResponse == 'Sound') {
-    //   setChecked({...checked, sound: !checked.sound});
-    // }
-    //  if (fingerResponse == 'FingerPrint') {
-    //   setChecked({...checked, fingerPrint: !checked.fingerPrint});
-    // }
-    // if (faceIdResponse == 'FaceId') {
-    //   setChecked({...checked, faceId: !checked.faceId});
-    // } 
-    // else {
-    //   console.log(
-    //     'AllAsync',
-    //     notifResponse,
-    //     soundResponse,
-    //     fingerResponse,
-    //     faceIdResponse,
-    //   );
-    // }
   };
   const SettingFlatListdata = [
     {

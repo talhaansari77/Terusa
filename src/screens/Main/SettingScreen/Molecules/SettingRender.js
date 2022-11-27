@@ -27,7 +27,7 @@ useEffect(() => {
 
   if(item.enable=="1"){
 
-    setChecked({...checked,btn1:!checked.btn1})
+    setChecked({...checked,btn1:true})
 
   }
 
