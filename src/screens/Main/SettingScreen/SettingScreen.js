@@ -20,10 +20,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import SettingItem from './Molecules/SettingItem';
 
 const SettingScreen = ({navigation}) => {
-
-
-
-
   return (
     <SafeAreaView style={{flex: 1}}>
       <PH20>
@@ -32,12 +28,8 @@ const SettingScreen = ({navigation}) => {
           txt={'Settings'}
           fontSize={18}
           onPress={() => navigation.navigate('WalletScreen')}
-        />
-        <SettingItem navigation={navigation}
-     
-         />
-       
-      
+        /> 
+        <SettingItem navigation={navigation} />
       </PH20>
     </SafeAreaView>
   );
@@ -51,5 +43,3 @@ const PH10 = styled(View, {
 const PH20 = styled(View, {
   paddingHorizontal: scale(20),
 });
-
-

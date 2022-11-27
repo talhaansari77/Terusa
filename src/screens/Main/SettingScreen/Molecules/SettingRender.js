@@ -1,107 +1,72 @@
 import {
   View,
   Text,
-  SafeAreaView,
   StyleSheet,
-  FlatList,
   Image,
   TouchableOpacity,
   Switch,
 } from 'react-native';
-import React, {useState,useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {images} from '../../../../assets/images';
 import LinearGradient from 'react-native-linear-gradient';
 import {colors} from '../../../../utils/Colors';
-import { useIsFocused } from '@react-navigation/native';
 
-const SettingRender = ({item, index}) => {
+const SettingRender = ({item, index,counter}) => {
   const [checked, setChecked] = useState({
     btn1: false,
   });
 
-  const isFocused=useIsFocused()
+  
+  
 
-useEffect(() => {
-  console.log("itemEnable",  item.enable)
+  useEffect(() => {
+    console.log('itemEnable', item.enable);
 
-  if(item.enable=="1"){
-
-    setChecked({...checked,btn1:true})
-
-  }
-
-}, [isFocused])
-
-
-
+    if (item.enable == '1') {
+      setChecked({...checked, btn1: true});
+    }
+  }, [counter]);
 
   const onHandelSetting = async () => {
     if (item.id == 1) {
-      if(checked.btn1==false){
+      if (checked.btn1 == false) {
         setChecked({...checked, btn1: true});
         await AsyncStorage.setItem('notifi', '1');
         console.log('1data');
-
-
-      }
-      else{
+      } else {
         setChecked({...checked, btn1: false});
-        await AsyncStorage.removeItem('notifi',);
+        await AsyncStorage.removeItem('notifi');
         console.log('2data');
-
-
       }
-     
     } else if (item.id == 2) {
-
-      if(checked.btn1==false){
+      if (checked.btn1 == false) {
         setChecked({...checked, btn1: true});
         await AsyncStorage.setItem('sound', '1');
         console.log('3data');
-
-
-      }
-      else{
+      } else {
         setChecked({...checked, btn1: false});
-        await AsyncStorage.removeItem('sound',);
+        await AsyncStorage.removeItem('sound');
         console.log('4data');
-
-
       }
-     
     } else if (item.id == 5) {
-
-
-      if(checked.btn1==false){
+      if (checked.btn1 == false) {
         setChecked({...checked, btn1: true});
         await AsyncStorage.setItem('finger', '1');
         console.log('5data');
-
-
-      }
-      else{
+      } else {
         setChecked({...checked, btn1: false});
-        await AsyncStorage.removeItem('finger',);
+        await AsyncStorage.removeItem('finger');
         console.log('6data');
-
-
       }
     } else if (item.id == 6) {
-
-      if(checked.btn1==false){
+      if (checked.btn1 == false) {
         setChecked({...checked, btn1: true});
         await AsyncStorage.setItem('Face', '1');
         console.log('7data');
-
-
-      }
-      else{
+      } else {
         setChecked({...checked, btn1: false});
-        await AsyncStorage.removeItem('Face',);
+        await AsyncStorage.removeItem('Face');
         console.log('8data');
-
-
       }
     } else {
       console.log('jcbj');
@@ -246,4 +211,3 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
 });
-

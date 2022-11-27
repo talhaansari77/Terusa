@@ -18,16 +18,16 @@ import { useIsFocused } from '@react-navigation/native';
 const SettingItem = ({navigation}) => {
 
   const [AsyncData, setAsyncData] = useState([])
+const [counter, setCounter] = useState(0)
 
-
-  console.log("AsyncData",AsyncData)
+  console.log("AsyncData",AsyncData[0])
 
 
   useEffect(() => {
     GetSwitchData();
   }, []);
 
-  const GetSwitchData = async () => {
+  const GetSwitchData = async () => { 
     let temp=[]
     let notifResponse = await AsyncStorage?.getItem('notifi');
     let soundResponse = await AsyncStorage?.getItem('sound');
@@ -50,8 +50,6 @@ const SettingItem = ({navigation}) => {
       blackImage: images.BellIconBlue,
       SwitchBtn: true,
       enable:AsyncData?.[0]?.noti,
-
-
       onValueChange: async () => {
         setChecked({...checked, btn1: !checked.btn1});
         await AsyncStorage.setItem('notifi', 'Notification');
@@ -156,6 +154,10 @@ const SettingItem = ({navigation}) => {
     },
   ];
 
+  setTimeout(() => {
+    setCounter(1)
+  }, 100);
+  
   return (
     <View>
       <FlatList
@@ -163,7 +165,7 @@ const SettingItem = ({navigation}) => {
         contentContainerStyle={styles.paddingBottom}
         data={SettingFlatListdata}
         renderItem={({item, index}) => (
-          <SettingRender item={item} index={index} />
+          <SettingRender item={item} index={index} counter={counter} />
         )}
       />
     </View>
