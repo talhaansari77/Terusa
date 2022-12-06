@@ -130,12 +130,12 @@ const SecurityWallet = ({navigation}) => {
 
       <Container>
         <DotStyle>
-          {/* {SampleArray.length > 0 ? <Text style={{color:colors.white, height:20}}>{holder}</Text> : <SeparatorLine />}
-          {SampleArray.length > 1 ? <Text style={{color:colors.white, height:20}}> {holder}</Text> : <SeparatorLine />}
-          {SampleArray.length > 2 ? <Text style={{color:colors.white, height:20}}> {holder}</Text> : <SeparatorLine />}
-          {SampleArray.length > 3 ? <Text style={{color:colors.white, height:20}}> {holder}</Text> : <SeparatorLine />}
-          {SampleArray.length > 4 ? <Text style={{color:colors.white, height:20}}> {holder}</Text> : <SeparatorLine />}
-          {SampleArray.length > 5 ? <Text style={{color:colors.white, height:20}}> {holder}</Text> : <SeparatorLine />} */}
+          {/* {passCodeArray.length > 0 ? <Text style={{color:colors.white, height:20}}>{holder.data}</Text> : <SeparatorLine />}
+          {passCodeArray.length > 1 ? <Text style={{color:colors.white, height:20}}> {holder.data}</Text> : <SeparatorLine />}
+          {passCodeArray.length > 2 ? <Text style={{color:colors.white, height:20}}> {holder.data}</Text> : <SeparatorLine />}
+          {passCodeArray.length > 3 ? <Text style={{color:colors.white, height:20}}> {holder.data}</Text> : <SeparatorLine />}
+          {passCodeArray.length > 4 ? <Text style={{color:colors.white, height:20}}> {holder.data}</Text> : <SeparatorLine />}
+          {passCodeArray.length > 5 ? <Text style={{color:colors.white, height:20}}> {holder.data}</Text> : <SeparatorLine />} */}
 
           {passCodeArray.length > 0 ? <Dot /> : <SeparatorLine />}
           {passCodeArray.length > 1 ? <Dot /> : <SeparatorLine />}

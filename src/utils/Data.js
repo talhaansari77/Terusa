@@ -26,9 +26,31 @@ import { images } from "../assets/images";
 export  const OnBoardingData = [
     {
       id: 0,
-      title: 'SECURITY',
+      title: 'Private and Secure',
       desc: 'Lorem Ipsum is simply dummy text of the printing and typesetting industr Lorem Ipsum sim text.',
-      img: images.SecurityImage,
+      img: images.newWallet,
+    },
+    {
+      id: 1,
+      title: 'SYSTEM',
+      desc: 'Lorem Ipsum is simply dummy text of the printing and typesetting industr Lorem Ipsum sim text.',
+      img: images.SystemImage,
+    },
+    {
+      id: 2,
+      title: 'PERSPECTIVE',
+      desc: 'Lorem Ipsum is simply dummy text of the printing and typesetting industr Lorem Ipsum sim text.',
+      img: images.PerspectiveImage,
+    },
+  ];
+
+
+  export  const NewWalletData = [
+    {
+      id: 0,
+      title: 'Private and Secure',
+      desc: 'Private keys never leave your device.',
+      img: images.newWallet,
     },
     {
       id: 1,

@@ -16,6 +16,7 @@ import RecoveryScreen from '../../screens/Main/RecoveryScreen/RecoveryScreen';
 import FingerPrintScreen from '../../screens/Main/FingerPrintScreen/FingerPrintScreen';
 import AddMore from '../../screens/Main/AddMore/AddMore';
 import SupportScreen from '../../screens/Main/SupportScreen';
+import NewWallet from '../../screens/Main/NewWallet/NewWallet';
 
 
 const MainStack = () => {
@@ -24,7 +25,7 @@ const MainStack = () => {
   return (
     <Stack.Navigator
       screenOptions={{headerShown: false}}
-      // initialRouteName={"AddMore"}
+      initialRouteName={"NewWallet"}
     >
       <Stack.Screen name="DashBoard" component={DashBoard} />
       <Stack.Screen name="AddMore" component={AddMore} />
@@ -42,6 +43,7 @@ const MainStack = () => {
       <Stack.Screen name="RecoveryScreen" component={RecoveryScreen} />
       <Stack.Screen name="FingerPrintScreen" component={FingerPrintScreen} />
       <Stack.Screen name="SupportScreen" component={SupportScreen} />
+      <Stack.Screen name="NewWallet" component={NewWallet} />
 
     </Stack.Navigator>
   );

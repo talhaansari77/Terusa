@@ -1,20 +1,26 @@
-import {StyleSheet, Text, View, Image, TouchableOpacity,ImageBackground} from 'react-native';
+import {
+  View,
+  Text,
+  ImageBackground,
+  TouchableOpacity,
+  Image,
+} from 'react-native';
 import React, {useState, useRef} from 'react';
-import {images} from '../../../assets/images';
-import commonStyles from '../../../utils/CommonStyles';
-import {colors} from '../../../utils/Colors';
-import {OnBoardingData} from '../../../utils/Data';
-import {verticalScale, ScaledSheet, scale} from 'react-native-size-matters';
 import AppIntroSlider from 'react-native-app-intro-slider';
-import CustomText from '../../../components/CustomText';
-import {Spacer} from '../../../components/Spacer';
-import {Montserrat, Roboto} from '../../../utils/Fonts';
+import {images} from '../../../assets/images';
+import {NewWalletData} from '../../../utils/Data';
+import {colors} from '../../../utils/Colors';
+import {scale, ScaledSheet, verticalScale} from 'react-native-size-matters';
+import commonStyles from '../../../utils/CommonStyles';
 import Icon from 'react-native-vector-icons/Ionicons';
 import GradientCircleBtn from '../../../components/GradientCircleBtn';
+import CustomText from '../../../components/CustomText';
+import {Montserrat, Roboto} from '../../../utils/Fonts';
+import {Spacer} from '../../../components/Spacer';
 import SepratorLine from '../../../components/SepratorLine';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import CustomButton from '../../../components/CustomButton';
 
-const OnBoarding = ({navigation}) => {
+const NewWallet = () => {
   const [page, setPage] = useState(0);
   const ref = useRef(null);
 
@@ -32,46 +38,16 @@ const OnBoarding = ({navigation}) => {
       setPage(page + 1);
     }
   };
-
-  const onNextScreen=async()=>{
-
-    
-    let response = await AsyncStorage?.getItem('finger');
-
-    console.log("respon",response)
-    if(response=="FingerPrint" || response=="Face")
-    {
-      // navigation.navigate("MainStack",{screen:"DashBoard"})
-      navigation.navigate("Welcome")
-
-
-
-    }
-    else{
-      navigation.navigate("SecurityWallet")
-
-
-    }
-
-   
-
-
-
-    // console.log("finger",FingerPrint)
-    // FingerPrintScreen
-
-  }
   return (
-    <ImageBackground source={images.BackgroundImage} resizeMode="cover" style={{height:"100%"}} >
-
-      <View style={{height: '87%'}}>
+    <View>
+      <View style={{height: '95%'}}>
         <AppIntroSlider
           showNextButton={false}
           showDoneButton={false}
           ref={ref}
           bottomButton
           showSkipButton={false}
-          data={OnBoardingData}
+          data={NewWalletData}
           dotStyle={{backgroundColor: colors.lighBlue}}
           activeDotStyle={{backgroundColor: colors.white}}
           onSlideChange={index => setPage(index)}
@@ -90,78 +66,70 @@ const OnBoarding = ({navigation}) => {
                     resizeMode="contain"
                   />
                 </View>
-                <Spacer height={30} />
-                <SepratorLine />
+                {/* <Spacer height={30} /> */}
+                {/* <SepratorLine /> */}
                 <Spacer height={30} />
 
                 <CustomText
                   label={item.title}
                   color={colors.white}
                   fontWeight={'600'}
-                  fontFamily={Montserrat.SemiBold}
+                  // fontFamily={Montserrat.SemiBold}
                   fontSize={verticalScale(18)}
                 />
-                <Spacer height={verticalScale(20)} />
+                <Spacer height={verticalScale(12)} />
                 <View style={{width: '85%'}}>
                   <CustomText
                     label={item.desc}
-                    fontFamily={Roboto.SemiBold}
-                    color={colors.darkGray}
+                    // fontFamily={Roboto.SemiBold}
+                    color={colors.white}
                     textAlign="center"
                     fontSize={verticalScale(10)}
                     textDecorationColor="black"
+                    alignSelf={'center'}
                   />
                 </View>
               </View>
             </>
           )}
         />
+
+        <CustomButton
+          title={'CREATE A NEW WALLET'}
+          width={'90%'}
+          fontSize={12}
+          height={50}
+          alignSelf={'center'}
+          borderRadius={2}
+          color={colors.white}
+          backgroundColor={colors.blue}
+        />
+
+        <Spacer height={verticalScale(20)} />
+        <CustomText
+          label={'I already have a wallet'}
+          // fontFamily={Roboto.SemiBold}
+          color={colors.white}
+          textAlign="center"
+          fontSize={verticalScale(10)}
+          textDecorationColor="black"
+          alignSelf={'center'}
+        />
       </View>
 
-      <View
+      {/* <View
         style={[
           commonStyles.justify,
           {
             padding: scale(20),
           },
-        ]}
-        >
-        {/* <Text>cdjbcd</Text> */}
-
-        <TouchableOpacity
-          activeOpacity={0.6}
-          onPress={() => {
-            moveBack();
-          }}>
-          <Icon name="chevron-back" size={30} color={colors.white} />
-        </TouchableOpacity>
-
-        <GradientCircleBtn
-          onPress={() => {
-            if (page == 2) {
-              onNextScreen()
-              // navigation.navigate('Welcome');
-            } else {
-              moveForward();
-            }
-          }}
-        />
-
-        <CustomText
-          label={'Skip'}
-          onPress={() => {
-            navigation.navigate('Welcome');
-          }}
-          color={colors.white}
-          fontFamily={Roboto.SemiBold}
-          fontSize={verticalScale(12)}
-        />
-      </View>
-    </ImageBackground>
+        ]}></View> */}
+    </View>
   );
 };
 
-export default OnBoarding;
+export default NewWallet;
+
 const styles = ScaledSheet.create({
   onBoardingContainer: {
     alignItems: 'center',
@@ -173,8 +141,9 @@ const styles = ScaledSheet.create({
     paddingRight: 5,
   },
   img: {
-    width: '100%',
-    height: '100%',
+    width: '80%',
+    height: '80%',
+    alignSelf: 'center',
   },
   dotInactive: {
     width: '8@s',

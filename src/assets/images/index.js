@@ -104,4 +104,7 @@ export const images = {
   SerachIconblue: require('./SerachIconblue.png'),
   SerachProfile: require('./searchIconSecond.png'),
   SearchBlueImage: require('./SearchBlueIcon.png'), 
+  newWallet: require('./newWallet.png'), 
+
+  
 };
