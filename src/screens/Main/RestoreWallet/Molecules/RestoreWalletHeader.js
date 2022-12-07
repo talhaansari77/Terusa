@@ -7,6 +7,8 @@ import {colors} from '../../../../utils/Colors';
 const RestoreWalletHeader = () => {
   return (
     <View>
+            <Spacer height={10}/>
+
       <CustomText
         label={'Restore Wallet'}
         alignSelf={'center'}

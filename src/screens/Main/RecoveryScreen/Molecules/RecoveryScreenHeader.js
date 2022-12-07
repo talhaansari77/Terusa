@@ -2,6 +2,7 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import CustomText from '../../../../components/CustomText'
 import { colors } from '../../../../utils/Colors'
+import { Spacer } from '../../../../components/Spacer'
 
 const RecoveryScreenHeader = () => {
   return (

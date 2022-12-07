@@ -1,4 +1,11 @@
-import {StyleSheet, Text, View, Image, TouchableOpacity,ImageBackground} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  ImageBackground,
+} from 'react-native';
 import React, {useState, useRef} from 'react';
 import {images} from '../../../assets/images';
 import commonStyles from '../../../utils/CommonStyles';
@@ -13,7 +20,6 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import GradientCircleBtn from '../../../components/GradientCircleBtn';
 import SepratorLine from '../../../components/SepratorLine';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
 const OnBoarding = ({navigation}) => {
   const [page, setPage] = useState(0);
   const ref = useRef(null);
@@ -25,45 +31,36 @@ const OnBoarding = ({navigation}) => {
       setPage(page - 1);
     }
   };
-
   const moveForward = () => {
     if (page + 1 <= 2) {
       ref?.current?.goToSlide(page + 1);
       setPage(page + 1);
     }
   };
+  const onNextScreen = async () => {
+    let fingerResponse = await AsyncStorage?.getItem('finger');
+    let faceResponse = await AsyncStorage?.getItem('Face');
 
-  const onNextScreen=async()=>{
 
-    
-    let response = await AsyncStorage?.getItem('finger');
-
-    console.log("respon",response)
-    if(response=="FingerPrint" || response=="Face")
-    {
+    // console.log('respon', response);
+    if (fingerResponse == '1' || faceResponse == '1') {
+      navigation.navigate("FingerPrintScreen")
       // navigation.navigate("MainStack",{screen:"DashBoard"})
-      navigation.navigate("Welcome")
 
-
-
-    }
-    else{
-      navigation.navigate("SecurityWallet")
-
+    } else {
+      navigation.navigate('SecurityWallet');
+      // navigation.navigate("MainStack",{screen:"DashBoard"})
 
     }
-
-   
-
-
 
     // console.log("finger",FingerPrint)
     // FingerPrintScreen
-
-  }
+  };
   return (
-    <ImageBackground source={images.BackgroundImage} resizeMode="cover" style={{height:"100%"}} >
-
+    <ImageBackground
+      source={images.BackgroundImage}
+      resizeMode="cover"
+      style={{height: '100%'}}>
       <View style={{height: '87%'}}>
         <AppIntroSlider
           showNextButton={false}
@@ -139,7 +136,7 @@ const OnBoarding = ({navigation}) => {
         <GradientCircleBtn
           onPress={() => {
             if (page == 2) {
-              onNextScreen()
+              onNextScreen();
               // navigation.navigate('Welcome');
             } else {
               moveForward();
@@ -150,7 +147,8 @@ const OnBoarding = ({navigation}) => {
         <CustomText
           label={'Skip'}
           onPress={() => {
-            navigation.navigate('Welcome');
+            onNextScreen()
+            // navigation.navigate('Welcome');
           }}
           color={colors.white}
           fontFamily={Roboto.SemiBold}

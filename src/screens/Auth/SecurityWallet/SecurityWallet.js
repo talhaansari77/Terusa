@@ -86,6 +86,9 @@ const SecurityWallet = ({navigation}) => {
 
   const onCrossPassCode = () => {
     if (passCodeArray.length > 0) {
+
+      setCounter(counter+1);
+
       passCodeArray.pop();
     }
   };

@@ -2,7 +2,7 @@ import {View, Text} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import TouchID from 'react-native-touch-id';
 
-const FingerPrintScreen = () => {
+const FingerPrintScreen = ({navigation}) => {
   const [isAuth, setIsAuth] = useState(false);
 
   const optionalConfigObject = {
@@ -30,7 +30,9 @@ const FingerPrintScreen = () => {
           console.log('FaceID is supported........--------+++++++++++');
           TouchID.authenticate()
             .then(success => {
-              console.log('Success', success);
+              navigation.navigate("MainStack",{screen:"DashBoard"})
+
+              // console.log('Success', success);
             })
             .catch(err => {
               console.log('Error', err);
@@ -39,7 +41,7 @@ const FingerPrintScreen = () => {
           console.log('TouchID is supported........--------+++++++++++');
           TouchID.authenticate('', optionalConfigObject)
             .then(success => {
-              console.log('Success', success);
+              navigation.navigate("Welcome")
             })
             .catch(err => {
               console.log('Error', err);
