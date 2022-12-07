@@ -67,6 +67,7 @@ const NewWallet = () => {
                   />
                 </View>
                 {/* <Spacer height={30} /> */}
+                {/* <Spacer height={30} /> */}
                 {/* <SepratorLine /> */}
                 <Spacer height={30} />
 
