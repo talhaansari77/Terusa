@@ -37,7 +37,7 @@ const DashBoardContainer = props => {
           heigth={20}
           fontSize={18}
           rightImg={images.SettingImage}
-          rightOnPress={() => props.navigation.navigate('SettingScreen')}
+          rightOnPress={() => props.navigation.navigate('SettingStack')}
         />
         <View style={{marginLeft: verticalScale(20), alignSelf: 'center',paddingVertical:verticalScale(10)}}>
           <CustomText

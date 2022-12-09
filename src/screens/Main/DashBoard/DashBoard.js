@@ -117,6 +117,7 @@ const DashBoard = ({navigation}) => {
             onPress={() => {
               navigation.navigate('Portfolio');
             }}
+            navigation={navigation}
           />
 
           <TopNav />

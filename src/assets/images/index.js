@@ -116,6 +116,7 @@ export const images = {
   updown:require('./updown.png'), 
   addwallet:require('./addwallet.png'), 
   walletshield:require('./walletshield.png'), 
+  del:require('./del.png'), 
 
 
 };

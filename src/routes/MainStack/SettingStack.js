@@ -4,6 +4,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import SettingScreen from '../../screens/Main/SettingScreen/SettingScreen';
 import SelectCurrency from '../../screens/Main/Currency/SelectCurrency';
 import RestoreWalletDetail from '../../screens/Main/RestoreWalletDetail/RestoreWalletDetail';
+import EditWallet from '../../screens/Main/RestoreWalletDetail/EditWallet';
 
 
 const SettingStack = ({navigation}) => {
@@ -17,6 +18,7 @@ const SettingStack = ({navigation}) => {
       
       <Stack.Screen name="SelectCurrency" component={SelectCurrency} />
       <Stack.Screen name="RestoreWalletDetail" component={RestoreWalletDetail} />
+      <Stack.Screen name="EditWallet" component={EditWallet} />
 
 
       {/* <Stack.Screen name="wallet" component={DashBoard} />

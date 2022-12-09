@@ -45,7 +45,7 @@ const AppHeader = props => {
         }}>
         <Image
           resizeMode="contain"
-          style={commonStyles.img}
+          style={{...commonStyles.img,tintColor:'#fff'}}
           source={props.rightImg}
         />
       </TouchableOpacity>

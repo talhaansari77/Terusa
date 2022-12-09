@@ -25,7 +25,7 @@ const RestoreWalletDetail = ({navigation}) => {
         <PH10>
           <AppHeader
             onPress={() => {
-              navigation.navigate('ProfileScreen');
+              navigation.goBack();
             }}
             //   marginLeft={10}
             img={images.BackArrow}
