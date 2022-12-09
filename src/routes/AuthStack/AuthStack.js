@@ -5,6 +5,12 @@ import OnBoarding from '../../screens/Auth/OnBoarding/OnBoarding';
 import Welcome from '../../screens/Auth/Welcome/Welcome';
 import SecurityWallet from '../../screens/Auth/SecurityWallet/SecurityWallet';
 import FingerPrintScreen from '../../screens/Main/FingerPrintScreen/FingerPrintScreen';
+import PhraseScreen from '../../screens/Auth/Phrase/PhraseScreen';
+import PhraseConfirm from '../../screens/Auth/Phrase/PhraseConfirm';
+import TermCondition from '../../screens/Auth/TermCondition/TermCondition';
+import SuccessScreen from '../../screens/Auth/Success/SuccessScreen';
+import languagesScreen from '../../screens/Auth/languages/languagesScreen';
+import ImportCoin from '../../screens/Auth/ImportCoin/ImportCoin';
 
 const AuthStack = ({navigation}) => {
   const Stack = createStackNavigator();
@@ -13,12 +19,14 @@ const AuthStack = ({navigation}) => {
       screenOptions={{headerShown: false}}
       // initialRouteName={"SecurityWallet"}
     >
-      <Stack.Screen name="OnBoarding" component={OnBoarding} />
-   <Stack.Screen name="SecurityWallet" component={SecurityWallet} />
-   <Stack.Screen name="FingerPrintScreen" component={FingerPrintScreen} />
       <Stack.Screen name="Welcome" component={Welcome} />
-
-
+      <Stack.Screen name="languagesScreen" component={languagesScreen} />
+      <Stack.Screen name="OnBoarding" component={OnBoarding} />
+      <Stack.Screen name="ImportCoin" component={ImportCoin} />
+      <Stack.Screen name="TermCondition" component={TermCondition} />
+      <Stack.Screen name="PhraseScreen" component={PhraseScreen} />
+      <Stack.Screen name="PhraseConfirm" component={PhraseConfirm} />
+      <Stack.Screen name="SuccessScreen" component={SuccessScreen} />
     </Stack.Navigator>
   );
 };

@@ -60,6 +60,9 @@ import styled from 'react-native-styled-components';
   export const PH20 = styled(View, {
     paddingHorizontal: scale(20),
   });
+  export const PH30 = styled(View, {
+    paddingHorizontal: scale(30),
+  });
 
   
   export default commonStyles;
