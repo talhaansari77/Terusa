@@ -15,7 +15,7 @@ const DashBoardContainer = props => {
   const sendSwipeData = [
     {id: 1, txt: 'Send', img: images.upArrow,onPress:()=>props.navigation.navigate('SendAmount')},
     {id: 1, txt: 'Receive', img: images.down,onPress:()=>props.navigation.navigate('RecivedAmountScreen')},
-    {id: 1, txt: 'Buy', img: images.swap,onPress:()=>props.navigation.navigate('AddSwap')},
+    {id: 1, txt: 'Buy', img: images.purchase,onPress:()=>props.navigation.navigate('AddSwap')},
     {id: 1, txt: 'Swap', img: images.swap,onPress:()=>props.navigation.navigate('SwapScreen')},
   ];
   return (
@@ -23,7 +23,7 @@ const DashBoardContainer = props => {
       borderBottomRightRadius={scale(20)}
       borderBottomLeftRadius={scale(20)}
       onPress={props.onPress}
-      height={verticalScale(220)}>
+      height={"40%"}>
       <View style={{width: '100%', height: '100%'}}>
         <AppHeader
           onPress={() => {
@@ -61,7 +61,8 @@ const DashBoardContainer = props => {
             alignSelf="center"
           />
         </View>
-        <Spacer height={30} />
+        {/* <Spacer height={30} /> */}
+        <View style={{height:"10%"}}></View>
 
         <View
           style={{

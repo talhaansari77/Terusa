@@ -76,8 +76,8 @@ const MainStack = () => {
           // marginTop:10
         },
         tabBarStyle: {
-          backgroundColor: colors.tabColor,
-          height: verticalScale(70),
+          backgroundColor: colors.primary,
+          height: verticalScale(60),
           // borderTopLeftRadius: scale(20),
           // borderTopRightRadius: scale(20),
           // borderWidth:0,
@@ -102,18 +102,8 @@ const MainStack = () => {
           }
 
           return (
-            <View>
-              <View
-                style={{
-                  width: scale(50),
-                  height: verticalScale(23),
-                  backgroundColor: focused ? colors.primary : null,
-                  alignItems: 'center',
-                  borderRadius: 99,
-                  justifyContent: 'center',
-                  marginBottom: verticalScale(4),
-                  marginTop: verticalScale(3),
-                }}>
+            <View style={{alignItems:"center"}}>
+            
                 <Image
                   resizeMode="contain"
                   source={iconName}
@@ -123,7 +113,6 @@ const MainStack = () => {
                     tintColor: focused ? colors.white : colors.gray,
                   }}
                 />
-              </View>
               <CustomText
                 label={TextName}
                 fontSize={14}

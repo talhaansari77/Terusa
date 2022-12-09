@@ -117,6 +117,7 @@ export const images = {
   addwallet:require('./addwallet.png'), 
   walletshield:require('./walletshield.png'), 
   del:require('./del.png'), 
+  purchase:require('./purchase.png'),
 
 
 };
