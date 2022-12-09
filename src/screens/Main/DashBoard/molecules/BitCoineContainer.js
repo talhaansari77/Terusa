@@ -27,8 +27,7 @@ const bitCoinerArray = [
     amount: '$16,383.24',
     img: images.BitCoinImage,
     grading: '+1.15%',
-    swap:false
-
+    swap: false,
   },
   {
     id: 2,
@@ -37,7 +36,7 @@ const bitCoinerArray = [
     amount: '$12,363.21',
     img: images.BitCoinImage,
     grading: '-2.95%',
-    swap:true
+    swap: true,
   },
   {
     id: 3,
@@ -46,8 +45,7 @@ const bitCoinerArray = [
     amount: '$13,63.21',
     img: images.BitCoinImage,
     grading: '- 2.95%',
-    swap:true
-
+    swap: true,
   },
   {
     id: 4,
@@ -56,88 +54,83 @@ const bitCoinerArray = [
     amount: '$2,363.21',
     img: images.BitCoinImage,
     grading: '-0.9%',
-    swap:true
-
+    swap: true,
   },
 ];
 
-
 const BitCoineContainer = ({navigation}) => {
-
   const CoinRender = ({item, index}) => {
     return (
-        <TouchableOpacity
+      <TouchableOpacity
         activeOpacity={0.6}
-          style={{flexDirection: 'row', height: verticalScale(120)}}
-           onPress={()=>{
-             navigation.navigate("WalletScreen",{data:item})
-  
-           }}
-        >
-          <View
-            style={{
-              height: '100%',
-              justifyContent: 'center',
-              marginHorizontal: 10,
-              alignItems: 'center',
-            }}>
-            <View style={styles.imgContainer}>
-              <Image source={item.img} style={commonStyles.img} />
-            </View>
+        style={{flexDirection: 'row', alignItems:'center'}}
+        onPress={() => {
+          navigation.navigate('WalletScreen', {data: item});
+        }}>
+        <View
+          style={{
+            // height: '100%',
+            justifyContent: 'center',
+            marginHorizontal: 10,
+            alignItems: 'center',
+          }}>
+          <View style={styles.imgContainer}>
+            <Image source={item.img} style={{height:"80%",width:"80%"}} />
           </View>
-          <View style={{width: '100%', marginLeft: verticalScale(10)}}>
-            <View
-              style={[
-                styles.innerTxt,
-                {
-                  marginTop: '8%',
-                },
-              ]}>
-              <CustomText
-                label={item.coin}
-                fontSize={18}
-                fontFamily={Roboto.SemiBold}
-                color={colors.white}
-              />
-  
-              <CustomText
-                label={item.number}
-                fontSize={16}
-                fontFamily={Roboto.SemiBold}
-                color={colors.white}
-              />
-            </View>
-            {/* <Spacer height={7} /> */}
+        </View>
+        <View style={{width: '100%', marginLeft: verticalScale(10)}}>
+          <View
+            style={[
+              styles.innerTxt,
+              {
+                marginTop: '8%',
+              },
+            ]}>
             <CustomText
-              label={item.name}
-              fontSize={13}
+              label={item.coin}
+              fontSize={18}
+              fontFamily={Roboto.SemiBold}
+              color={colors.white}
+            />
+
+            <CustomText
+              label={item.number}
+              fontSize={16}
+              fontFamily={Roboto.SemiBold}
+              color={colors.white}
+            />
+          </View>
+          {/* <Spacer height={7} /> */}
+          <CustomText
+            label={item.name}
+            fontSize={13}
+            fontWeight={'400'}
+            fontFamily={Roboto.Light200}
+            color={colors.darkGrey}
+          />
+
+          <View style={{flexDirection: 'row', marginTop: verticalScale(-5)}}>
+            <CustomText
+              label={item.amount}
+              fontSize={14}
               fontWeight={'400'}
               fontFamily={Roboto.Light200}
-              color={colors.darkGrey}
+              color={colors.cloudyBlue}
             />
-  
-            <View style={{flexDirection: 'row', marginTop: verticalScale(-5)}}>
-              <CustomText
-                label={item.amount}
-                fontSize={14}
-                fontWeight={'400'}
-                fontFamily={Roboto.Light200}
-                color={colors.cloudyBlue}
-              />
-  
-              <CustomText
-                label={item.grading}
-                fontSize={14}
-                fontWeight={'400'}
-                fontFamily={Roboto.Light200}
-                color={colors.red}
-                marginLeft={8}
-              />
-            </View>
-            <Spacer height={10} />
-            <View style={styles.darkLine}></View>
+
+            <CustomText
+              label={item.grading}
+              fontSize={14}
+              fontWeight={'400'}
+              fontFamily={Roboto.Light200}
+              color={colors.red}
+              marginLeft={8}
+            />
           </View>
-        </TouchableOpacity>
+          <Spacer height={10} />
+          <View style={styles.darkLine}></View>
+        </View>
+      </TouchableOpacity>
     );
   };
   return (
@@ -154,6 +147,7 @@ const BitCoineContainer = ({navigation}) => {
           />
 
           <TouchableOpacity
+            onPress={() => navigation.navigate('AddSwap')}
             activeOpacity={0.6}
             style={{
               flexDirection: 'row',
@@ -189,6 +183,7 @@ const styles = StyleSheet.create({
     height: 60,
     borderRadius: 99,
     overflow: 'hidden',
+    justifyContent:"center",alignItems:"center"
   },
   innerTxt: {
     flexDirection: 'row',

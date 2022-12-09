@@ -77,18 +77,18 @@ const MainStack = () => {
         },
         tabBarStyle: {
           backgroundColor: colors.tabColor,
-          // height: verticalScale(50),
-          borderTopLeftRadius: scale(20),
-          borderTopRightRadius: scale(20),
-
+          height: verticalScale(70),
+          // borderTopLeftRadius: scale(20),
+          // borderTopRightRadius: scale(20),
+          // borderWidth:0,
+          borderTopWidth: 0,
           shadowColor: Platform.OS == 'ios' ? '#212529' : colors.black,
           shadowRadius: 8,
           elevation: 10,
           shadowOpacity: 0.7,
           shadowOffset: {width: 1, height: 4},
-
           paddingHorizontal: scale(10),
-          paddingTop: Platform.OS == 'ios' ? 10 : 0,
+          padding: 10,
         },
         tabBarIcon: ({focused, size, color}) => {
           let iconName;
@@ -135,18 +135,17 @@ const MainStack = () => {
           );
         },
       })}
-      activeColor="#f0edf6"
-      inactiveColor="#3e2465"
-      barStyle={{backgroundColor: '#694fad'}}
-      tabBarOptions={{
-        activeTintColor: colors.primary,
-        inactiveTintColor: '#000',
-        // activeBackgroundColor: '#fff',
-        showIcon: true,
-      }}
+      // activeColor="#f0edf6"
+      // inactiveColor="#3e2465"
+      // barStyle={{backgroundColor: '#694fad',}}
+      // tabBarOptions={{
+      // activeTintColor: colors.primary,
+      // inactiveTintColor: '#000',
+      // activeBackgroundColor: '#fff',
+      // showIcon: true,
+      // }}
       initialRouteName="wallet">
       <Tab.Screen name="wallet" component={TokenStack} />
-
       <Tab.Screen name="SettingStack" component={SettingStack} />
     </Tab.Navigator>
   );

@@ -30,6 +30,9 @@ function shuffle(a) {
   }
   return a;
 }
+const compareArrays = (a, b) => {
+  return JSON.stringify(a) === JSON.stringify(b);
+};
 
 const PhraseConfirm = ({navigation, route}) => {
   const phrase = route?.params?.phrase;
@@ -49,14 +52,11 @@ const PhraseConfirm = ({navigation, route}) => {
       setPassPhrase(data);
     }
     if (passPhraseC.length > 0) {
-      // alert(phrase);
-      if (
-        passPhraseC[passPhraseC.length - 1] !== phrase[passPhraseC.length - 1]
-      )
-        setError(true);
-      else {
-        setError(false);
-      }
+     
+      let a = passPhraseC.slice(0, passPhraseC.length );
+      let b = phrase.slice(0, passPhraseC.length );
+      if (compareArrays(a, b)) setError(false);
+      else setError(true);
     }
   };
   const handlePhraseC = word => {
@@ -67,13 +67,10 @@ const PhraseConfirm = ({navigation, route}) => {
       setPassPhraseC(data);
     }
     if (passPhraseC.length > 0) {
-      if (
-        passPhraseC[passPhraseC.length - 2] !== phrase[passPhraseC.length - 2]
-      )
-        setError(true);
-      else {
-        setError(false);
-      }
+      let a = passPhraseC.slice(0, passPhraseC.length );
+      let b = phrase.slice(0, passPhraseC.length );
+      if (compareArrays(a, b)) setError(false);
+      else setError(true);
     }
   };
 

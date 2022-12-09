@@ -23,7 +23,7 @@ const TopNav = () => {
           if (route.name === 'Token') {
             screenName = 'Tokens';
             color = focused ? colors.white : colors.gray;
-          } else if (route.name === 'AllVideos') {
+          } else if (route.name === 'NFTS') {
             screenName = 'NFTs';
             color = focused ? colors.white : colors.gray;
           }
@@ -38,14 +38,14 @@ const TopNav = () => {
           );
         },
         tabBarLabelStyle: {fontSize: 12},
-        tabBarItemStyle: {width: 180},
-        tabBarScrollEnabled: true,
+        // tabBarItemStyle: {width: 180},
+        // tabBarScrollEnabled: true,
         tabBarIndicatorStyle: {
           backgroundColor: colors.white,
         },
       })}>
       <Tab.Screen name="Token" component={BitCoineContainer} />
-      <Tab.Screen name="AllVideos" component={NftContainer} />
+      <Tab.Screen name="NFTS" component={NftContainer} />
     </Tab.Navigator>
   );
 };

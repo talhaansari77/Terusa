@@ -35,7 +35,7 @@ const RestoreWalletDetail = ({navigation}) => {
             fontSize={18}
             rigthWidth={20}
             rightImg={images.addwallet}
-            //   rightOnPress={() => navigation.navigate('SettingScreen')}
+              rightOnPress={() => navigation.navigate('AuthStack',{screen:'OnBoarding'})}
           />
           <Spacer height={10}/>
           

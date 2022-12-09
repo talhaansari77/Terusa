@@ -32,6 +32,7 @@ import styled from 'react-native-styled-components';
       justifyContent: 'space-between',
       alignItems: 'center',
       flexDirection: 'row',
+      padding:10
     },
     iconContainer: {
       width: moderateScale(25),

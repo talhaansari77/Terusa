@@ -5,6 +5,7 @@ import SettingScreen from '../../screens/Main/SettingScreen/SettingScreen';
 import SelectCurrency from '../../screens/Main/Currency/SelectCurrency';
 import RestoreWalletDetail from '../../screens/Main/RestoreWalletDetail/RestoreWalletDetail';
 import EditWallet from '../../screens/Main/RestoreWalletDetail/EditWallet';
+import ProfileScreen from '../../screens/Main/ProfileScreen/ProfileScreen';
 
 
 const SettingStack = ({navigation}) => {
@@ -19,6 +20,7 @@ const SettingStack = ({navigation}) => {
       <Stack.Screen name="SelectCurrency" component={SelectCurrency} />
       <Stack.Screen name="RestoreWalletDetail" component={RestoreWalletDetail} />
       <Stack.Screen name="EditWallet" component={EditWallet} />
+      <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
 
 
       {/* <Stack.Screen name="wallet" component={DashBoard} />

@@ -99,7 +99,7 @@ const ProfileScreen = ({navigation}) => {
           fontSize={18}
           rightImg={images.SettingImage}
           onPress={() => navigation.goBack()}
-          rightOnPress={() => navigation.navigate('SettingScreen')}
+          rightOnPress={() => navigation.navigate('Setting')}
         />
         <Spacer height={10} />
         <View style={styles.container}>

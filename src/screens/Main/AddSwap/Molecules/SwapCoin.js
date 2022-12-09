@@ -1,19 +1,19 @@
-import {View, Text, Image, Switch} from 'react-native';
+import {View, Text, Image, Switch, TouchableOpacity} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {PH20} from '../../../../utils/CommonStyles';
 import LinearGradient from 'react-native-linear-gradient';
 import {styles} from '../Styles';
 import {colors} from '../../../../utils/Colors';
 import {useSelector} from 'react-redux';
-import {useIsFocused} from '@react-navigation/native';
+import {useIsFocused, useNavigation} from '@react-navigation/native';
 
 const SwapCoin = ({coin, addCoin, searchText}) => {
   console.log(coin);
   const coinsList = useSelector(state => state.myCoinReducer.coinsList);
-
+const navigation = useNavigation();
   return (
     <PH20>
-      <View style={styles.flatListView}>
+      <TouchableOpacity onPress={()=>navigation.navigate('SwapScreen')} activeOpacity={0.7} style={styles.flatListView}>
         <View style={styles.flatListInnerView}>
           <Image source={{uri: coin.image}} style={styles.flatListInnerImage} />
 
@@ -32,7 +32,7 @@ const SwapCoin = ({coin, addCoin, searchText}) => {
             </Text>      
                 </View>
         </View>
-      </View>
+      </TouchableOpacity>
     </PH20>
   );
 };

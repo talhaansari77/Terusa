@@ -207,7 +207,7 @@ const WalletScreen = ({navigation, route}) => {
                   <TouchableOpacity
                   activeOpacity={0.6}
                   onPress={()=>{
-                    navigation.navigate("SendAmount")
+                    navigation.navigate("RecivedAmountScreen")
 
                   }}
                   >
