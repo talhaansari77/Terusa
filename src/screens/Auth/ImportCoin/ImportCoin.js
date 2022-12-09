@@ -25,7 +25,7 @@ import constants from '../../../redux/constants';
 import CoinView from './Molecules/CoinView';
 import Loader from '../../../utils/Loader';
 
-const AddMore = ({navigation}) => {
+const ImportCoin = ({navigation}) => {
   const [loading, setLoading] = useState(false);
 
   const dispatch = useDispatch();
@@ -75,12 +75,12 @@ const AddMore = ({navigation}) => {
       <Spacer height={Platform.OS === 'ios' ? 40 : 5} />
       <PH20>
         <AppHeader
-          img={images.wallet}
-          txt={'Add More'}
+          img={images.BackArrow}
+          txt={'Import'}
           fontSize={18}
-          rightImg={images.SettingImage}
+          // rightImg={images.SettingImage}
           onPress={() => navigation.goBack()}
-          rightOnPress={() => navigation.navigate('SettingScreen')}
+          // rightOnPress={() => navigation.navigate('SettingScreen')}
         />
       </PH20>
 
@@ -129,6 +129,8 @@ const AddMore = ({navigation}) => {
             coin={coin}
             addCoin={addCoin}
             searchText={state.searchText}
+            toggle={false}
+            onPress={()=>navigation.navigate("MainStack")}
           />
         ))}
       </ScrollView>
@@ -141,4 +143,4 @@ const AddMore = ({navigation}) => {
   );
 };
 
-export default AddMore;
+export default ImportCoin;

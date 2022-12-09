@@ -11,7 +11,12 @@ import {images} from '../../../assets/images';
 import commonStyles from '../../../utils/CommonStyles';
 import {colors} from '../../../utils/Colors';
 import {OnBoardingData} from '../../../utils/Data';
-import {verticalScale, ScaledSheet, scale} from 'react-native-size-matters';
+import {
+  verticalScale,
+  ScaledSheet,
+  scale,
+  moderateScale,
+} from 'react-native-size-matters';
 import AppIntroSlider from 'react-native-app-intro-slider';
 import CustomText from '../../../components/CustomText';
 import {Spacer} from '../../../components/Spacer';
@@ -19,7 +24,10 @@ import {Montserrat, Roboto} from '../../../utils/Fonts';
 import Icon from 'react-native-vector-icons/Ionicons';
 import GradientCircleBtn from '../../../components/GradientCircleBtn';
 import SepratorLine from '../../../components/SepratorLine';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import CustomGradientButton from '../../../components/CustomGradientButton';
+
 const OnBoarding = ({navigation}) => {
   const [page, setPage] = useState(0);
   const ref = useRef(null);
@@ -41,16 +49,13 @@ const OnBoarding = ({navigation}) => {
     let fingerResponse = await AsyncStorage?.getItem('finger');
     let faceResponse = await AsyncStorage?.getItem('Face');
 
-
     // console.log('respon', response);
     if (fingerResponse == '1' || faceResponse == '1') {
-      navigation.navigate("FingerPrintScreen")
+      navigation.navigate('TermCondition');
       // navigation.navigate("MainStack",{screen:"DashBoard"})
-
     } else {
       navigation.navigate('SecurityWallet');
       // navigation.navigate("MainStack",{screen:"DashBoard"})
-
     }
 
     // console.log("finger",FingerPrint)
@@ -61,7 +66,7 @@ const OnBoarding = ({navigation}) => {
       source={images.BackgroundImage}
       resizeMode="cover"
       style={{height: '100%'}}>
-      <View style={{height: '87%'}}>
+      <View style={{height: '70%'}}>
         <AppIntroSlider
           showNextButton={false}
           showDoneButton={false}
@@ -96,26 +101,64 @@ const OnBoarding = ({navigation}) => {
                   color={colors.white}
                   fontWeight={'600'}
                   fontFamily={Montserrat.SemiBold}
-                  fontSize={verticalScale(18)}
+                  fontSize={verticalScale(16)}
                 />
-                <Spacer height={verticalScale(20)} />
-                <View style={{width: '85%'}}>
+                <Spacer height={verticalScale(10)} />
+                {/* <View style={{width: '100%'}}> */}
                   <CustomText
                     label={item.desc}
                     fontFamily={Roboto.SemiBold}
                     color={colors.darkGray}
-                    textAlign="center"
+                    selfAlign="center"
                     fontSize={verticalScale(10)}
                     textDecorationColor="black"
                   />
-                </View>
+                {/* </View> */}
               </View>
             </>
           )}
         />
       </View>
 
-      <View
+      <View style={{height: '20%', justifyContent: 'flex-end'}}>
+        <CustomGradientButton
+          title="GET STARTED"
+          width="100%"
+          fontSize={18}
+          iconMarginRight={moderateScale(30)}
+          fontFamily={Montserrat.SemiBold}
+          backgroundColor={colors.primary}
+          height={verticalScale(40)}
+          borderRadius={moderateScale(50)}
+          onPress={() => {
+            // navigation.navigate('RecoveryScreen');
+            // RecoveryScreen
+            //  navigation.navigate('MainStack',{screen:"RestoreWallet",restore:true})}}
+            navigation.navigate('TermCondition');
+          }}
+          icons={
+            <FontAwesome5 name="chevron-right" size={20} color={colors.white} />
+          }
+        />
+        <Spacer height={15} />
+
+        <TouchableOpacity
+          onPress={
+            () => navigation.navigate('ImportCoin')
+
+            // navigation.navigate('MainStack',{screen:"RestoreWallet",restore:true})
+          }>
+          <Text
+            style={{
+              textAlign: 'center',
+              fontSize: verticalScale(12),
+              color: colors.white,
+            }}>
+            I already have wallet
+          </Text>
+        </TouchableOpacity>
+      </View>
+      {/* <View
         style={[
           commonStyles.justify,
           {
@@ -123,7 +166,6 @@ const OnBoarding = ({navigation}) => {
           },
         ]}
         >
-        {/* <Text>cdjbcd</Text> */}
 
         <TouchableOpacity
           activeOpacity={0.6}
@@ -154,7 +196,7 @@ const OnBoarding = ({navigation}) => {
           fontFamily={Roboto.SemiBold}
           fontSize={verticalScale(12)}
         />
-      </View>
+      </View> */}
     </ImageBackground>
   );
 };

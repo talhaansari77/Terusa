@@ -25,7 +25,7 @@ const MainStack = () => {
   return (
     <Stack.Navigator
       screenOptions={{headerShown: false}}
-      initialRouteName={"NewWallet"}
+      // initialRouteName={"NewWallet"}
     >
       <Stack.Screen name="DashBoard" component={DashBoard} />
       <Stack.Screen name="AddMore" component={AddMore} />
@@ -43,7 +43,7 @@ const MainStack = () => {
       <Stack.Screen name="RecoveryScreen" component={RecoveryScreen} />
       <Stack.Screen name="FingerPrintScreen" component={FingerPrintScreen} />
       <Stack.Screen name="SupportScreen" component={SupportScreen} />
-      <Stack.Screen name="NewWallet" component={NewWallet} />
+      {/* <Stack.Screen name="NewWallet" component={NewWallet} /> */}
 
     </Stack.Navigator>
   );

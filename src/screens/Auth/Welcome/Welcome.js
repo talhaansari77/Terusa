@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import {images} from '../../../assets/images';
 // import WelcomeScreen from './Styles/WelcomeScreen'
-import React,{useEffect,useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import CustomGradientButton from '../../../components/CustomGradientButton';
 import {moderateScale, scale, verticalScale} from 'react-native-size-matters';
 import {colors} from '../../../utils/Colors';
@@ -21,9 +21,6 @@ import {Montserrat} from '../../../utils/Fonts';
 import TouchID from 'react-native-touch-id';
 
 const Welcome = ({navigation}) => {
-
-
-
   return (
     <ImageBackground
       source={images.BackgroundImage}
@@ -86,20 +83,22 @@ const Welcome = ({navigation}) => {
           onPress={() => {
             // navigation.navigate('RecoveryScreen');
             // RecoveryScreen
-           navigation.navigate('MainStack',{screen:"RestoreWallet",restore:true})}}
-        
+            //  navigation.navigate('MainStack',{screen:"RestoreWallet",restore:true})}}
+            navigation.navigate('languagesScreen');
+          }}
           icons={
             <FontAwesome5 name="chevron-right" size={20} color={colors.white} />
           }
         />
-        <Spacer height={15}/>
+        <Spacer height={15} />
 
-        <TouchableOpacity onPress={() => 
-                    navigation.navigate('MainStack',{screen:"RecoveryScreen"})
+        {/* <TouchableOpacity
+          onPress={
+            () => navigation.navigate('MainStack', {screen: 'RecoveryScreen'})
 
-          // navigation.navigate('MainStack',{screen:"RestoreWallet",restore:true})
+            // navigation.navigate('MainStack',{screen:"RestoreWallet",restore:true})
           }>
-          <Text 
+          <Text
             style={{
               textAlign: 'center',
               fontSize: verticalScale(12),
@@ -107,7 +106,7 @@ const Welcome = ({navigation}) => {
             }}>
             I already have wallet
           </Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
       {/* <Spacer height={70} /> */}
     </ImageBackground>
