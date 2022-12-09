@@ -13,7 +13,9 @@ const GradientContainer = props => {
       style={{
         width: props.width || '100%',
         height: props.height ||  verticalScale(100),
-        borderRadius: moderateScale(props.borderRadius || 10),
+        borderRadius: props.borderRadius,
+        borderBottomRightRadius: props.borderBottomRightRadius,
+        borderBottomLeftRadius:props.borderBottomLeftRadius,
         marginTop: props.marginTop,
         marginBottom: props.marginBottom,
         overflow: 'hidden',

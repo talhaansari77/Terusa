@@ -51,6 +51,7 @@ import styled from 'react-native-styled-components';
       flex: 1,paddingTop:Platform.OS=="ios"?verticalScale(40):5,
       paddingHorizontal:moderateScale(15)
     }
+    
   });
 
   export const PH10 = styled(View, {

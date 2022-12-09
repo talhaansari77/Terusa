@@ -98,7 +98,7 @@ const [counter, setCounter] = useState(0)
       currency: false,
       touchable: true,
       onPress: () => {
-        navigation.navigate('RestoreWallet');
+        navigation.navigate('RestoreWalletDetail');
       },
     },
     {

@@ -1,89 +1,164 @@
-import {View, Text, Image, TouchableOpacity} from 'react-native';
-import React from 'react';
+import {View, Text, Image, TouchableOpacity, ScrollView} from 'react-native';
+import React, {useState} from 'react';
 import GradientContainer from '../../../../components/GradientContainer';
 import {colors} from '../../../../utils/Colors';
 import CustomTextInput from '../../../../components/CustomTextInput';
 import CustomText from '../../../../components/CustomText';
 import {Spacer} from '../../../../components/Spacer';
 import {images} from '../../../../assets/images';
-import {scale, verticalScale} from 'react-native-size-matters';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import {moderateScale, scale, verticalScale} from 'react-native-size-matters';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
 const SelectCurrencyBody = () => {
+  const [check, setcheck] = useState(-1);
   const SelectCurrencyData = [
     {
       flag: images.AustraliaFlag,
-      name: 'AUD',
-      currency: 'Australian Dollar',
+      name: 'US Dollar (USD)',
     },
     {
       flag: images.BrazilFlag,
-      name: 'BRL',
-      currency: 'Brazilian Real',
+      name: 'British Pound (GBP)',
     },
     {
       flag: images.CanadaFlag,
-      name: 'CAD',
-      currency: 'Canadian Dollar',
+      name: 'EURO (EUR)',
     },
     {
       flag: images.SwitzerlandFlag,
-      name: 'CHF',
-      currency: 'Swiss France',
+      name: 'Singapore Dollar (SGD)',
     },
     {
       flag: images.ChinaFlag,
-      name: 'CNY',
-      currency: 'Chinese Yuan',
+      name: 'Canadian Dollar (CAD)',
+    },
+    {
+      flag: images.ChinaFlag,
+      name: 'Australian Dollar (AUD)',
+    },
+    {
+      flag: images.ChinaFlag,
+      name: 'Polish ZLoty (PLM)',
+    },
+    {
+      flag: images.ChinaFlag,
+      name: 'South African Rand (ZAR)',
+    },
+    {
+      flag: images.ChinaFlag,
+      name: 'Kenyan Shilling (KES)',
+    },
+    {
+      flag: images.ChinaFlag,
+      name: 'Bulgarian lev (BGN)',
+    },
+    {
+      flag: images.ChinaFlag,
+      name: 'Romanian leu (RON)',
+    },
+    {
+      flag: images.ChinaFlag,
+      name: 'Israeli New Shekel (ils)',
+    },
+    {
+      flag: images.ChinaFlag,
+      name: 'Saudi Riyal (SAR)',
+    },
+    {
+      flag: images.ChinaFlag,
+      name: 'United Arab Emirate Dirham (AED)',
+    },
+    {
+      flag: images.ChinaFlag,
+      name: 'Hungarian Forint (HUF)',
+    },
+
+    {
+      flag: images.ChinaFlag,
+      name: 'Czech Koruna (CZK)',
+    },
+    {
+      flag: images.ChinaFlag,
+      name: 'Brazilian Real (BRL)',
     },
   ];
   return (
     <View>
-      
-        <Spacer height={10} />
-        {SelectCurrencyData.map((currencyArray, index) => (
-            <TouchableOpacity>
-          <View key={index}>
-            <GradientContainer
-              height={60} 
-              marginBottom={20}
-              alignItems={'center'}
-              flexDirection={'row'}>
-              {/* <CustomText
-            label={currencyArray.no}
-            color={colors.white}
-            fontSize={15}
-            fontFamily={'Montserrat-bold'}
-          /> */}
-              <Image
-                source={currencyArray.flag}
-                style={{
-                  height: verticalScale(35),
-                  width: scale(35),
-                  resizeMode: 'contain',
-                }}
-              />
-              <Spacer width={15} />
+      <Spacer height={10} />
+        {/* <View> */}
+          {SelectCurrencyData.map((currencyArray, index) => (
+            <TouchableOpacity
+              onPress={() => {
+                setcheck(index);
+              }}
+              activeOpacity={0.6}>
+              <View key={index}>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    height: verticalScale(70),
+                  }}>
+                  <View
+                    style={{
+                      width: 30,
+                      height: 30,
+                      borderRadius: 99,
+                      backgroundColor:
+                        index == check ? colors.blueLight : colors.dusk,
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}>
+                    <FontAwesome
+                      name="dollar"
+                      color={colors.darkGray}
+                      size={moderateScale(20)}
+                    />
+                  </View>
 
-              <View>
-                <CustomText
-                  label={currencyArray.name}
-                  color={colors.white}
-                  fontSize={15}
-                  fontFamily={'Montserrat-bold'}
-                />
+                  <Spacer width={15} />
 
-                <CustomText
-                  label={currencyArray.currency}
-                  color={colors.lighBlue}
-                  fontSize={10}
-                  fontFamily={'Montserrat-regular'}
-                />
+                  <View style={{width: '100%'}}>
+                    <View
+                      style={{
+                        flexDirection: 'row',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        width: '90%',
+                      }}>
+                      <CustomText
+                        label={currencyArray.name}
+                        color={colors.white}
+                        fontSize={15}
+                        fontFamily={'Montserrat-bold'}
+                      />
+                      {index == check ? (
+                        <AntDesign
+                          name="check"
+                          color={colors.darkGray}
+                          size={moderateScale(20)}
+                        />
+                      ) : (
+                        <></>
+                      )}
+                    </View>
+
+                    <Spacer height={6} />
+
+                    <View
+                      style={{
+                        width: '90%',
+                        height: 0.5,
+                        backgroundColor: colors.darkGray,
+                        marginTop: verticalScale(5),
+                      }}></View>
+                  </View>
+                </View>
               </View>
-            </GradientContainer>
-          </View>
-      </TouchableOpacity>
-
-        ))}
+            </TouchableOpacity>
+          ))}
+        {/* </View> */}
     </View>
   );
 };

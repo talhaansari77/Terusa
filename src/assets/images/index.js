@@ -105,6 +105,17 @@ export const images = {
   SerachProfile: require('./searchIconSecond.png'),
   SearchBlueImage: require('./SearchBlueIcon.png'), 
   newWallet: require('./newWallet.png'), 
+  newWallet: require('./newWallet.png'), 
+  trust:require('./trust.png'), 
+  largeSetting:require('./largeSetting.png'), 
+  upArrow:require('./upArrow.png'), 
+  swap:require('./swap.png'), 
+  down:require('./down.png'), 
+  addToken:require('./addToken.png'), 
+  nft:require('./nft.png'), 
+  updown:require('./updown.png'), 
+  addwallet:require('./addwallet.png'), 
+  walletshield:require('./walletshield.png'), 
 
-  
+
 };

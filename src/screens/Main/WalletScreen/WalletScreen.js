@@ -13,7 +13,7 @@ import Header from '../../../components/Header';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import CustomText from '../../../components/CustomText';
-import {moderateScale, scale} from 'react-native-size-matters';
+import {moderateScale, scale, verticalScale} from 'react-native-size-matters';
 import styled from 'react-native-styled-components';
 import {images} from '../../../assets/images';
 import {colors} from '../../../utils/Colors';
@@ -31,10 +31,12 @@ import {
   G,
   Line as LineHorizantol,
 } from 'react-native-svg';
+import {Montserrat, Roboto} from '../../../utils/Fonts';
+import commonStyles from '../../../utils/CommonStyles';
+import CustomButton from '../../../components/CustomButton';
 
 const WalletScreen = ({navigation, route}) => {
-  const percent =
-    route?.params?.coin?.price_change_percentage_24h?.toFixed(2);
+  // const percent =route?.params?.coin?.price_change_percentage_24h?.toFixed(2);
 
   const Data = [
     {
@@ -59,6 +61,12 @@ const WalletScreen = ({navigation, route}) => {
   const BitCoinGraphData = [
     55, 50, 60, 70, 90, 80, 65, 25, 30, 5, 40, 30, 47, 70, 55, 99, 55, 65, 40,
     45, 45,
+  ];
+
+  const sendSwipeData = [
+    {id: 1, txt: 'Send', img: images.upArrow,},
+    {id: 2, txt: 'Receive', img: images.down},
+    {id:3,txt:"Swap",img:images.swap},
   ];
   const xdata = ['24H', '7D', '1M', '3M', '6M', '1Y'];
 
@@ -120,79 +128,156 @@ const WalletScreen = ({navigation, route}) => {
           <LinearGradient
             colors={[colors.darkGreyBlueThired, colors.duskSecond]}
             style={styles.flatList}>
-            <View style={styles.bitcoinView}>
-              <View style={styles.bitcoinLeftView}>
-                <Image
-                  source={{uri: route?.params?.coin?.image}}
-                  style={styles.bitcoinImage}
+            <View style={styles.innterHeader}>
+              <CustomText
+                label="COIN"
+                fontFamily={Montserrat.SemiBold}
+                color={colors.white}
+              />
+              <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                <CustomText
+                  label="$44.18"
+                  fontFamily={Montserrat.SemiBold}
+                  color={colors.white}
                 />
-                <Text style={styles.leftDollerPrice}>
-                  ${route?.params?.coin?.current_price}
-                </Text>
-
-                <Text style={styles.leftBTCPrice}>
-                  BTC price{' '}
-                  <Text
-                    style={{
-                      ...styles.leftBTCPercentage,
-                      color: percent.includes('-')
-                        ? colors.red
-                        : colors.frogGreen,
-                    }}>
-                    {!percent.includes('-') ? '+' : ''}
-                    {percent}
-                  </Text>
-                </Text>
-              </View>
-              <View style={styles.bitcoinRightView}>
-                <Text style={styles.rightSideText}>20</Text>
-                <Text style={styles.rightSideBalanceText}>Balance</Text>
-                <View style={styles.separatorLineRight}></View>
-                <Text style={styles.rightDollerPrice}>${route?.params?.coin?.current_price}</Text>
-                <Text style={styles.rightSideValueText}>Value</Text>
+                <CustomText
+                  label="-1.12%"
+                  fontFamily={Montserrat.SemiBold}
+                  color={colors.red}
+                  marginLeft={5}
+                />
               </View>
             </View>
-            <View style={styles.separatorLine}></View>
-            <View style={styles.linemarginTop}>
-              <View style={styles.xAxisTop}>
-                <Text style={styles.xAxisAmt}>$5,341.68</Text>
-                <View style={styles.xAxisTopHr} />
+            <Spacer height={40} />
+            <View style={{alignItems: 'center'}}>
+              <View style={styles.imgContainer}>
+                <Image source={images.BitCoinImage} style={commonStyles.img} />
               </View>
-              <AreaChart
-                style={styles.areaChart}
-                data={BitCoinGraphData}
-                numberOfTicks={0}
-                curve={shape.curveNatural}
-                svg={{fill: 'url(#gradient)'}}>
-                <Grid />
-                <Line />
-                <Tooltip />
-                <Gradient />
-              </AreaChart>
-              <View style={styles.xAxisBottom}>
-                <Text style={styles.xAxisAmt}>$4,341.68</Text>
-                <View style={styles.xAxisBottomHr} />
+              <Spacer height={10} />
+
+              <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                <CustomText
+                  label="0"
+                  fontFamily={Montserrat.SemiBold}
+                  fontSize={16}
+                  color={colors.white}
+                />
+                <CustomText
+                  label="DASH"
+                  fontFamily={Montserrat.SemiBold}
+                  color={colors.white}
+                  fontSize={16}
+                  marginLeft={10}
+                />
               </View>
-              {/* //! Bug To Fix Here >>>> */}
-              {/* <XAxis
-                data={xdata}
-                formatLabel={value => xdata[value]}
-                contentInset={{left: 20, right: 10}}
-                svg={{
-                  ...styles.xAxisSvg,
-                  fill: 'white',
-                }}
-              /> */}
-              {/* //! <<<< Bug To Fix Here */}
+            </View>
+
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginTop: '10%',
+              }}>
+                 <TouchableOpacity
+                  activeOpacity={0.6}
+                  onPress={()=>{
+                    navigation.navigate("SendAmount")
+
+                  }}
+                  >
+                    <View
+                      style={styles.sendContainer}>
+                      <Image
+                        source={images.upArrow}
+                        style={{width: 20, height: 20, tintColor: colors.white}}
+                      />
+                    </View>
+
+                    <CustomText
+                      label={"Send"}
+                      fontSize={13}
+                      fontWeight={'400'}
+                      fontFamily={Roboto.SemiBold}
+                      color={colors.white}
+                      alignSelf="center"
+                      marginTop={5}
+                    />
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                  activeOpacity={0.6}
+                  onPress={()=>{
+                    navigation.navigate("SendAmount")
+
+                  }}
+                  >
+                    <View
+                      style={styles.sendContainer}>
+                      <Image
+                        source={images.down}
+                        style={{width: 20, height: 20, tintColor: colors.white}}
+                      />
+                    </View>
+
+                    <CustomText
+                      label={"Receive"}
+                      fontSize={13}
+                      fontWeight={'400'}
+                      fontFamily={Roboto.SemiBold}
+                      color={colors.white}
+                      alignSelf="center"
+                      marginTop={5}
+                    />
+                  </TouchableOpacity>
+                  {
+                    route?.params?.data?.swap==true?(
+
+                      <TouchableOpacity
+                      activeOpacity={0.6}
+                      onPress={()=>{
+                        navigation.navigate("SwapScreen")
+    
+                      }}
+                      >
+                        <View
+                          style={styles.sendContainer}>
+                          <Image
+                            source={images.swap}
+                            style={{width: 20, height: 20, tintColor: colors.white}}
+                          />
+                        </View>
+    
+                        <CustomText
+                          label={"Swap"}
+                          fontSize={13}
+                          fontWeight={'400'}
+                          fontFamily={Roboto.SemiBold}
+                          color={colors.white}
+                          alignSelf="center"
+                          marginTop={5}
+                        />
+                      </TouchableOpacity>
+                      
+                    ):<></>
+                  }
+                 
+            
             </View>
           </LinearGradient>
         </View>
 
         <View>
-          <View style={styles.activityView}>
-            <Text style={styles.activityText}>ACTIVITY</Text>
-            <View style={styles.separatorWhiteLine}></View>
-          </View>
+          <Spacer height={20} />
+
+          <CustomText
+            label={'Transaction will appear here'}
+            fontSize={13}
+            fontWeight={'400'}
+            fontFamily={Roboto.SemiBold}
+            color={colors.white}
+            alignSelf="center"
+            marginTop={5}
+          />
 
           <FlatList
             data={Data}
@@ -243,46 +328,15 @@ const WalletScreen = ({navigation, route}) => {
               </View>
             )}
           />
+
+          <CustomButton
+            title="Buy Dash"
+            height={35}
+            width={'50%'}
+            alignSelf="center"
+          />
         </View>
       </PH20>
-      <View style={styles.footer}>
-        <View style={styles.bottomButtonView}>
-          <TouchableOpacity
-            onPress={() => navigation.navigate('SendAmountScreen')}
-            style={styles.bottomButtonInnerView}>
-            <LinearGradient
-              start={{x: 0.3, y: 1.3}}
-              end={{x: 0.8, y: 0.0}}
-              colors={[colors.niceBlue, colors.blueWithPurple]}
-              locations={[0.1, 0.7, 1]}
-              style={styles.buttonStyle}>
-              <View style={styles.circleShapeView}>
-                <Image
-                  source={images.SendRight}
-                  style={styles.circleInnerImage}
-                />
-              </View>
-              <Text style={styles.sendText}>SEND</Text>
-            </LinearGradient>
-          </TouchableOpacity>
-          <View style={styles.middleLine} />
-          <TouchableOpacity
-            onPress={() => navigation.navigate('RecivedAmountScreen')}
-            style={styles.bottomButtonInnerView}>
-            <LinearGradient
-              start={{x: 0.3, y: 1.3}}
-              end={{x: 0.5, y: 0.25}}
-              locations={[0.3, 0.7, 1]}
-              colors={[colors.blueWithPurple, colors.niceBlue]}
-              style={styles.buttonStyle}>
-              <View style={styles.circleShapeView}>
-                <Image source={images.RecieveLeft} style={styles.qrCodeImage} />
-              </View>
-              <Text style={styles.sendText}>RECEIVE</Text>
-            </LinearGradient>
-          </TouchableOpacity>
-        </View>
-      </View>
     </SafeAreaView>
   );
 };
@@ -311,10 +365,15 @@ const styles = StyleSheet.create({
   flatList: {
     padding: 20,
     width: '100%',
-    alignSelf: 'center',
+    height: verticalScale(250),
     borderWidth: 1,
     borderRadius: 20,
     borderColor: colors.blueBorder,
+  },
+  innterHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
   bitcoinImage: {
     height: 50,
@@ -329,6 +388,12 @@ const styles = StyleSheet.create({
   },
   bitcoinLeftView: {
     width: '40%',
+  },
+  imgContainer: {
+    width: 60,
+    height: 60,
+    borderRadius: 99,
+    overflow: 'hidden',
   },
   bitcoinRightView: {
     left: 20,
@@ -479,6 +544,16 @@ const styles = StyleSheet.create({
     fontWeight: '400',
     //...Fonts.style.mediumWhite
     color: colors.white,
+  },
+  sendContainer:{
+    width: 40,
+    height: 40,
+    borderRadius: 99,
+    backgroundColor: colors.primary,
+    alignSelf: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginHorizontal: '10%',
   },
   flatListInnerFullTextTitle: {
     //...Fonts.style.mediumWhite,

@@ -12,7 +12,7 @@ import Header from '../../../components/Header';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import CustomText from '../../../components/CustomText';
-import {moderateScale, scale} from 'react-native-size-matters';
+import {moderateScale, scale, verticalScale} from 'react-native-size-matters';
 import styled from 'react-native-styled-components';
 import {images} from '../../../assets/images';
 import {colors} from '../../../utils/Colors';
@@ -25,43 +25,21 @@ const SendAmountScreen = ({navigation}) => {
   return (
     <SafeAreaView>
       <PH10>
-        
         <AppHeader
           img={images.BackArrow}
           txt={'Bitcoin'}
           fontSize={18}
           rightImg={images.SettingImage}
-          onPress={()=>navigation.navigate("MainStack",{screen:"WalletScreen"})}
+          onPress={() =>
+            navigation.navigate('MainStack', {screen: 'WalletScreen'})
+          }
         />
-        <Spacer height={20} />
+        <Spacer height={30} />
         <View style={styles.bitcoinImageView}>
           <Image source={images.BitCoinImage} style={styles.bitcoinImage} />
-          <Text style={styles.bitcoinImageBottomText}>Enter Amount</Text>
-          <View style={styles.btcTextView}>
-            <Text style={styles.btcText}>BTC</Text>
-            <Text style={styles.usdText}>USD</Text>
-          </View>
-          <View style={styles.btcTextValueView}>
-            <Text style={styles.btcTextValue}>0.002146655</Text>
-            <Text style={styles.usdTextValue}>$13.23</Text>
-          </View>
-          <View style={styles.separatorLine} />
-          <LinearGradient
-            colors={[colors.blueWithPurple, colors.niceBlue]}
-            style={styles.circle}>
-            <Text style={styles.circleInnerText}>ALL</Text>
-          </LinearGradient>
-          <Text style={styles.networkText}>Network Fee</Text>
-          <Text style={styles.networkTextValue}>0.00023386 BTC</Text>
 
-          <View style={styles.networkTextSeparatorLine} />
+          <Spacer height={10} />
 
-          <Text style={styles.remainingText}>Remaining Balance</Text>
-          <Text style={styles.remainingTextValue}>20 BTC</Text>
-
-          <TouchableOpacity>
-            <Image source={images.AddIcon} style={styles.addIconStyle} />
-          </TouchableOpacity>
           <View style={styles.bitCoinAddressView}>
             <TouchableOpacity style={styles.qrCodeButtonView}>
               <Image source={images.QrCodeImage} style={styles.qrCodeIcon} />
@@ -73,9 +51,33 @@ const SendAmountScreen = ({navigation}) => {
               placeholderTextColor={colors.cloudyBlue}
             />
           </View>
+          <Spacer height={20} />
+
+          <View style={styles.bitCoinAddressView}>
+            <TextInput
+              style={styles.bitCoinAddressTxtInput}
+              placeholder={'AE Amount'}
+              onChangeText={searchText => this.setState({searchText})}
+              placeholderTextColor={colors.cloudyBlue}
+            />
+          </View>
+          <Spacer height={20} />
+
+          <Text style={styles.networkText}>Network Fee</Text>
+          <Text style={styles.networkTextValue}>0.00023386 BTC</Text>
+
+          <View style={styles.networkTextSeparatorLine} />
+
+          <Spacer height={20} />
+
+          <Text style={styles.networkText}>Transaction Fee</Text>
+          <Text style={styles.networkTextValue}>0.00023386 BTC</Text>
+
+          <View style={styles.networkTextSeparatorLine} />
+          <Spacer height={20}/>
 
           <CustomGradientButton
-            title={'Next'}
+            title={'Send AE'}
             {...styles.nextBtn}
             fontSize={13}
           />
@@ -176,7 +178,6 @@ const styles = StyleSheet.create({
     height: 1,
     backgroundColor: colors.white,
     marginTop: 15,
-    
   },
   remainingText: {
     fontSize: 16,
@@ -230,8 +231,8 @@ const styles = StyleSheet.create({
     position: 'absolute',
   },
   nextBtn: {
-    height: 32,
-    width: 80,
+    height: verticalScale(30),
+    width: '80%',
     borderRadius: 8,
     alignItems: 'center',
     justifyContent: 'center',

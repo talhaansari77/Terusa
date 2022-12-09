@@ -13,7 +13,8 @@ const AppHeader = props => {
       <TouchableOpacity
         activeOpacity={0.6}
         onPress={props.onPress}
-        style={{width:  scale(props.width || 35),height: verticalScale( props.height||  35),marginLeft:props.marginLeft}}>
+        style={{width:  scale(props.width || 35),height: verticalScale( props.height||  35),marginLeft:props.marginLeft}}
+        >
             <Image 
                 resizeMode="contain"
         // style={{
@@ -31,6 +32,8 @@ const AppHeader = props => {
         color={colors.white}
         fontSize={props.fontSize}
         fontFamily={Roboto.SemiBold}
+        alignSelf="center"
+        // marginLeft={20}
       />
 
       <TouchableOpacity

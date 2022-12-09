@@ -9,7 +9,7 @@ import {
   ImageBackground,
   Alert,
 } from 'react-native';
-import React, {useState,useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import AppHeader from '../../../components/AppHeader';
 import {images} from '../../../assets/images';
 import GradientContainer from '../../../components/GradientContainer';
@@ -27,6 +27,7 @@ import {useIsFocused} from '@react-navigation/native';
 import Loader from '../../../utils/Loader';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import constants from '../../../redux/constants';
+import TopNav from './molecules/TopNav';
 
 const DashBoard = ({navigation}) => {
   const coinsList = useSelector(state => state.myCoinReducer.coinsList);
@@ -35,8 +36,8 @@ const DashBoard = ({navigation}) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
-  const [name, setName] = useState("Ali")
-  
+  const [name, setName] = useState('Ali');
+
   const addCoin = async (coin, checkboxValue) =>
     dispatch({
       type: constants.ADD_COIN,
@@ -46,20 +47,13 @@ const DashBoard = ({navigation}) => {
       },
     });
 
-
-  const storeData = async (value) => {
+  const storeData = async value => {
     try {
-      await AsyncStorage.setName('@storage_Key', value)
+      await AsyncStorage.setName('@storage_Key', value);
     } catch (e) {
       // saving error
     }
-  }
-
-
-
-
-
- 
+  };
 
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -80,11 +74,13 @@ const DashBoard = ({navigation}) => {
   };
 
   useEffect(() => {
-    // limit is 250 tokens 
-   
+    // limit is 250 tokens
+
     setLoading(true);
     axios
-      .get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250`)
+      .get(
+        `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250`,
+      )
       .then(response => {
         // console.log(response.data);
         let list = [];
@@ -94,9 +90,7 @@ const DashBoard = ({navigation}) => {
         });
         // sort coin
         list = list.sort(
-          (a, b) =>
-            Number(a.market_cap_rank) -
-            Number(b.market_cap_rank),
+          (a, b) => Number(a.market_cap_rank) - Number(b.market_cap_rank),
         );
         // default coin list
         list = list.length <= 0 ? response?.data?.slice(0, 3) : list;
@@ -114,55 +108,37 @@ const DashBoard = ({navigation}) => {
 
   return (
     <>
-      <ImageBackground
-        source={images.BackgroundImage}
-        resizeMode="cover"
-        style={commonStyles.IosPadding}>
-        <AppHeader
-          onPress={() => {
-            navigation.navigate('ProfileScreen');
-          }}
-          marginLeft={10}
-          img={images.UserImage}
-          txt={'Terusa'}
-          width={18}
-          heigth={20}
-          fontSize={18}
-          rightImg={images.SettingImage}
-          rightOnPress={() => navigation.navigate('SettingScreen')}
-        />
-        <View style={{height: '80%'}}>
-          <ScrollView showsVerticalScrollIndicator={false}>
-            <Spacer height={10} />
-            <DashBoardContainer
-              onPress={() => {
-                navigation.navigate('Portfolio');
-              }}
-            />
-            <PortfolioContainer
-              setModalVisible={setModalVisible}
-              modalVisible={modalVisible}
-            />
+      <SafeAreaView>
+        <ImageBackground
+          source={images.BackgroundImage}
+          resizeMode="cover"
+          style={commonStyles.img}>
+          <DashBoardContainer
+            onPress={() => {
+              navigation.navigate('Portfolio');
+            }}
+          />
 
-            <FlatList
+          <TopNav />
+
+          {/* <FlatList
               data={data}
               showsVerticalScrollIndicator={false}
               renderItem={CoinRender}
-            />
-          </ScrollView>
-        </View>
-      </ImageBackground>
+            /> */}
+        </ImageBackground>
 
-      <FooterAddContainer />
-      <ProtfolioModal
-        setModalVisible={setModalVisible}
-        modalVisible={modalVisible}
-      />
-      <Loader
-        file={require('../../../assets/Loaders/loader.json')}
-        loading={loading}
-        height={100}
-      />
+        {/* <FooterAddContainer /> */}
+        <ProtfolioModal
+          setModalVisible={setModalVisible}
+          modalVisible={modalVisible}
+        />
+        <Loader
+          file={require('../../../assets/Loaders/loader.json')}
+          loading={loading}
+          height={100}
+        />
+      </SafeAreaView>
     </>
   );
 };

@@ -35,7 +35,8 @@ export const colors = {
     blueColorpargraph: '#001241',
     bluedarkColor: '#001241',
     normalDarkGrey: '#001651',
-    red: 'red'
+    red: 'red',
+    gray:"#6c757d"
   };
   
   
