@@ -34,7 +34,7 @@ const bitCoinerArray = [
     coin: 'Ethereum',
     number: '0 ETH',
     amount: '$12,363.21',
-    img: images.BitCoinImage,
+    img: images.dashLogo,
     grading: '-2.95%',
     swap: true,
   },
@@ -43,7 +43,7 @@ const bitCoinerArray = [
     coin: 'BNB Smart',
     number: '0 BNB',
     amount: '$13,63.21',
-    img: images.BitCoinImage,
+    img: images.UsdtIcon,
     grading: '- 2.95%',
     swap: true,
   },
@@ -52,7 +52,7 @@ const bitCoinerArray = [
     coin: 'BNB Beacon',
     number: '0 BNB',
     amount: '$2,363.21',
-    img: images.BitCoinImage,
+    img: images.DecryptoLogoIcon,
     grading: '-0.9%',
     swap: true,
   },
@@ -147,7 +147,7 @@ const BitCoineContainer = ({navigation}) => {
           />
 
           <TouchableOpacity
-            onPress={() => navigation.navigate('AddSwap')}
+            onPress={() => navigation.navigate('AddMore')}
             activeOpacity={0.6}
             style={{
               flexDirection: 'row',

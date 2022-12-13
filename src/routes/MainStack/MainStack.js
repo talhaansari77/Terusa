@@ -102,7 +102,7 @@ const MainStack = () => {
           }
 
           return (
-            <View style={{alignItems:"center"}}>
+            <View style={{alignItems:"center",height:"100%"}}>
             
                 <Image
                   resizeMode="contain"
@@ -119,6 +119,7 @@ const MainStack = () => {
                 fontWeight={'600'}
                 fontFamily={Montserrat.SemiBold}
                 color={focused ? colors.white : colors.gray}
+                marginTop={3}
               />
             </View>
           );

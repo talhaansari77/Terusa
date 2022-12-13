@@ -3,6 +3,7 @@ import {
   Image,
   ImageBackground,
   Platform,
+  SafeAreaView,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -19,6 +20,7 @@ import SepratorLine from '../../../components/SepratorLine';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {Montserrat} from '../../../utils/Fonts';
 import TouchID from 'react-native-touch-id';
+import commonStyles from '../../../utils/CommonStyles';
 
 const Welcome = ({navigation}) => {
   return (
@@ -26,20 +28,24 @@ const Welcome = ({navigation}) => {
       source={images.BackgroundImage}
       resizeMode="cover"
       style={{height: '100%'}}>
-      <Spacer height={65} />
+        <SafeAreaView>
+          {/* <Spacer height={40}/> */}
+          <View style={{height:"15%"}}/>
+
       <View
         style={{
-          width: '100%',
-          alignItems: 'center',
+          width: '90%',
+          alignSelf:"center",
           justifyContent: 'center',
+          height:"40%"
         }}>
         <Image
-          source={images.WelcomeScreenImage}
+          source={images.AppLogo}
           resizeMode="contain"
-          style={{height: verticalScale(300), width: '50%'}}
+          style={commonStyles.img}
         />
       </View>
-      <Spacer height={25} />
+      <Spacer height={40} />
 
       <SepratorLine height={6} />
       <Spacer height={15} />
@@ -52,12 +58,12 @@ const Welcome = ({navigation}) => {
           fontFamily: Montserrat.SemiBold,
           color: colors.white,
         }}>
-        WELCOME TO CRYPTO
+        WELCOME TO TERUSA
       </Text>
       <Spacer height={5} />
       <View
         style={{width: '100%', justifyContent: 'center', alignSelf: 'center'}}>
-        <Text
+        {/* <Text
           style={{
             fontSize: 14,
             // ...Fonts.style.mediumBluegrey,
@@ -68,9 +74,12 @@ const Welcome = ({navigation}) => {
           }}>
           Lorem Ipsum is simply dummy text of the printing and typesetting
           industr Lorem Ipsum sim text.
-        </Text>
+        </Text> */}
       </View>
-      <View style={{height: '20%', justifyContent: 'flex-end'}}>
+      <View style={{height: '10%'}}>
+
+      </View>
+
         <CustomGradientButton
           title="GET STARTED"
           width="100%"
@@ -90,25 +99,11 @@ const Welcome = ({navigation}) => {
             <FontAwesome5 name="chevron-right" size={20} color={colors.white} />
           }
         />
-        <Spacer height={15} />
+        {/* <Spacer height={15} /> */}
 
-        {/* <TouchableOpacity
-          onPress={
-            () => navigation.navigate('MainStack', {screen: 'RecoveryScreen'})
+   
+      </SafeAreaView>
 
-            // navigation.navigate('MainStack',{screen:"RestoreWallet",restore:true})
-          }>
-          <Text
-            style={{
-              textAlign: 'center',
-              fontSize: verticalScale(12),
-              color: colors.white,
-            }}>
-            I already have wallet
-          </Text>
-        </TouchableOpacity> */}
-      </View>
-      {/* <Spacer height={70} /> */}
     </ImageBackground>
   );
 };

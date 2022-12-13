@@ -8,8 +8,8 @@ import {moderateScale, verticalScale} from 'react-native-size-matters';
 import Entypo from 'react-native-vector-icons/Entypo';
 import {useNavigation} from '@react-navigation/native';
 
-const MultiConContainer = () => {
-  const navigation = useNavigation();
+const MultiConContainer = ({navigation}) => {
+  // const navigation = useNavigation();
   const coinArray = [
     'Multi-Coin Wallets 1',
     'Multi-Coin Wallets 2',
@@ -58,8 +58,8 @@ const MultiConContainer = () => {
                 />
               </View>
             </View>
-
-            <TouchableOpacity onPress={() => navigation.navigate('EditWallet')}>
+            <TouchableOpacity 
+              onPress={() => navigation.navigate('AuthStack',{screen:'EditWallet'})}>
               <Entypo
                 name="dots-three-vertical"
                 color={colors.darkGray}

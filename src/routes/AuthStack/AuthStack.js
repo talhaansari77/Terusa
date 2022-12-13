@@ -11,6 +11,9 @@ import TermCondition from '../../screens/Auth/TermCondition/TermCondition';
 import SuccessScreen from '../../screens/Auth/Success/SuccessScreen';
 import languagesScreen from '../../screens/Auth/languages/languagesScreen';
 import ImportCoin from '../../screens/Auth/ImportCoin/ImportCoin';
+import RestoreWalletDetail from '../../screens/Main/RestoreWalletDetail/RestoreWalletDetail';
+import SettingStack from '../MainStack/SettingStack';
+import EditWallet from '../../screens/Main/RestoreWalletDetail/EditWallet';
 
 const AuthStack = ({navigation}) => {
   const Stack = createStackNavigator();
@@ -27,6 +30,10 @@ const AuthStack = ({navigation}) => {
       <Stack.Screen name="PhraseScreen" component={PhraseScreen} />
       <Stack.Screen name="PhraseConfirm" component={PhraseConfirm} />
       <Stack.Screen name="SuccessScreen" component={SuccessScreen} />
+      <Stack.Screen name="RestoreWalletDetail" component={RestoreWalletDetail} />
+      <Stack.Screen name="EditWallet" component={EditWallet} />
+
+
     </Stack.Navigator>
   );
 };

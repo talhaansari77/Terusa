@@ -151,19 +151,19 @@ const WalletScreen = ({navigation, route}) => {
             <Spacer height={40} />
             <View style={{alignItems: 'center'}}>
               <View style={styles.imgContainer}>
-                <Image source={images.BitCoinImage} style={commonStyles.img} />
+                <Image source={ route?.params?.data?.img} style={commonStyles.img} />
               </View>
               <Spacer height={10} />
 
               <View style={{flexDirection: 'row', alignItems: 'center'}}>
-                <CustomText
+                {/* <CustomText
                   label="0"
                   fontFamily={Montserrat.SemiBold}
                   fontSize={16}
                   color={colors.white}
-                />
+                /> */}
                 <CustomText
-                  label="DASH"
+                  label={ route?.params?.data?.number}
                   fontFamily={Montserrat.SemiBold}
                   color={colors.white}
                   fontSize={16}

@@ -2,12 +2,13 @@ import { StyleSheet, Text, View,Image,ImageBackground } from 'react-native'
 import React from 'react'
 import commonStyles from '../../../../utils/CommonStyles'
 import { images } from '../../../../assets/images'
-import { scale, verticalScale } from 'react-native-size-matters'
+import { moderateScale, scale, verticalScale } from 'react-native-size-matters'
 import { Spacer } from '../../../../components/Spacer'
 import CustomText from '../../../../components/CustomText'
-import { Roboto } from '../../../../utils/Fonts'
+import { Montserrat, Roboto } from '../../../../utils/Fonts'
 import { colors } from '../../../../utils/Colors'
 import CustomButton from '../../../../components/CustomButton'
+import CustomGradientButton from '../../../../components/CustomGradientButton'
 
 const NftContainer = () => {
   return (
@@ -37,10 +38,23 @@ const NftContainer = () => {
           />
           <Spacer height={20}/>
 
-        <CustomButton title={"Receive"}
-        height={40}
-        width={"50%"}
+          <CustomGradientButton
+          title="Receive"
+          fontSize={20}
+          width={"60%"}
+          iconMarginRight={moderateScale(30)}
+          fontFamily={Montserrat.SemiBold}
+          backgroundColor={colors.primary}
+          height={verticalScale(35)}
+          borderRadius={moderateScale(10)}
+          onPress={() => {
+            
+            // navigation.navigate('languagesScreen');
+          }}
+      
         />
+
+       
 
     </View>
     </ImageBackground>

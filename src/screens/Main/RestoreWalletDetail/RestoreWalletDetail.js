@@ -35,7 +35,7 @@ const RestoreWalletDetail = ({navigation}) => {
             fontSize={18}
             rigthWidth={20}
             rightImg={images.addwallet}
-              rightOnPress={() => navigation.navigate('AuthStack',{screen:'OnBoarding'})}
+              rightOnPress={() => navigation.navigate('AuthStack',{screen:'ImportCoin'})}
           />
           <Spacer height={10}/>
           
@@ -49,7 +49,7 @@ const RestoreWalletDetail = ({navigation}) => {
           />
                     {/* <Spacer height={10}/> */}
 
-          <MultiConContainer/>
+          <MultiConContainer navigation={navigation}/>
         </PH10>
       </ImageBackground>
     </SafeAreaView>

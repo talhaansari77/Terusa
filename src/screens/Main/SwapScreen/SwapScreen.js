@@ -11,13 +11,14 @@ import React from 'react';
 import {images} from '../../../assets/images';
 import commonStyles, {PH10} from '../../../utils/CommonStyles';
 import CustomText from '../../../components/CustomText';
-import {Roboto} from '../../../utils/Fonts';
+import {Montserrat, Roboto} from '../../../utils/Fonts';
 import {colors} from '../../../utils/Colors';
 import {Spacer} from '../../../components/Spacer';
 import {moderateScale, scale, verticalScale} from 'react-native-size-matters';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import SelectPercent from './Molecules/SelectPercent';
 import CustomButton from '../../../components/CustomButton';
+import CustomGradientButton from '../../../components/CustomGradientButton';
 
 const SwapScreen = ({navigation}) => {
   const persentArray = ['25%', '50%', '75%', '100%'];
@@ -49,7 +50,7 @@ const SwapScreen = ({navigation}) => {
               <View
                 style={{
                   height: '100%',
-                  width: '70%',
+                  width: '60%',
                   justifyContent: 'space-around',
                 }}>
                 <CustomText
@@ -76,7 +77,7 @@ const SwapScreen = ({navigation}) => {
                 style={{
                   height: '100%',
                   justifyContent: 'center',
-                  width: '30%',
+                  width: '40%',
                 }}>
                 <TouchableOpacity
                   activeOpacity={0.6}
@@ -85,15 +86,18 @@ const SwapScreen = ({navigation}) => {
                     source={images.BitCoinImage}
                     style={{width: 25, height: 25, borderRadius: 99}}
                   />
+                  <View style={{width: '60%'}}>
+                    <CustomText
+                      label={'ETH'}
+                      fontSize={17}
+                      numberOfLines={1}
+                      fontFamily={Roboto.SemiBold}
+                      color={colors.white}
+                      marginLeft={10}
+                      marginRight={15}
+                    />
+                  </View>
 
-                  <CustomText
-                    label={'ETH'}
-                    fontSize={17}
-                    fontFamily={Roboto.SemiBold}
-                    color={colors.white}
-                    marginLeft={5}
-                    marginRight={15}
-                  />
                   <MaterialIcons
                     name="navigate-next"
                     color={colors.white}
@@ -112,7 +116,7 @@ const SwapScreen = ({navigation}) => {
               <View
                 style={{
                   height: '100%',
-                  width: '70%',
+                  width: '60%',
                   justifyContent: 'space-around',
                 }}>
                 <CustomText
@@ -139,24 +143,39 @@ const SwapScreen = ({navigation}) => {
                 style={{
                   height: '100%',
                   justifyContent: 'center',
-                  width: '30%',
+                  width: '40%',
                 }}>
                 <TouchableOpacity
                   activeOpacity={0.6}
+                  onPress={() => {
+                    navigation.navigate('AddSwap');
+                  }}
                   style={{flexDirection: 'row', alignItems: 'center'}}>
                   <Image
-                    source={images.BitCoinImage}
+                    source={images.dashLogo}
                     style={{width: 25, height: 25, borderRadius: 99}}
                   />
+                  <View style={{width: '60%'}}>
+                    <CustomText
+                      label={'DASH'}
+                      fontSize={17}
+                      numberOfLines={1}
+                      fontFamily={Roboto.SemiBold}
+                      color={colors.white}
+                      marginLeft={10}
+                      marginRight={15}
+                    />
+                  </View>
 
-                  <CustomText
-                    label={'DAL'}
+                  {/* <CustomText
+                    label={'DASH'}
+
                     fontSize={17}
                     fontFamily={Roboto.SemiBold}
                     color={colors.white}
                     marginLeft={5}
                     marginRight={15}
-                  />
+                  /> */}
                   <MaterialIcons
                     name="navigate-next"
                     color={colors.white}
@@ -200,14 +219,20 @@ const SwapScreen = ({navigation}) => {
             alignSelf="center"
           />
           <Spacer height={10} />
-
-          <CustomButton title={'Swap'} height={45} borderRadius={10}
-          onPress={()=>{
-              navigation.navigate("AddSwap")
-
+          <CustomGradientButton
+          title="Swap"
+          width="100%"
+          fontSize={18}
+          iconMarginRight={moderateScale(30)}
+          fontFamily={Montserrat.SemiBold}
+          backgroundColor={colors.primary}
+          height={verticalScale(35)}
+          borderRadius={moderateScale(10)}
+          onPress={() => {
+            navigation.navigate('languagesScreen');
           }}
-          
-          />
+         
+        />
         </PH10>
       </ImageBackground>
     </SafeAreaView>

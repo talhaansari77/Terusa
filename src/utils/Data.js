@@ -26,20 +26,17 @@ import { images } from "../assets/images";
 export  const OnBoardingData = [
     {
       id: 0,
-      title: 'Private and Secure',
-      desc: 'Private keys nevers leaves your device',
+      title: 'Live Private and Secure',
       img: images.SecurityImage,
     },
     {
       id: 1,
-      title: 'SYSTEM',
-      desc: 'Private keys nevers leaves your device',
+      title: 'Buy and Sell Assets',
       img: images.SystemImage,
     },
     {
       id: 2,
-      title: 'PERSPECTIVE',
-      desc: 'Private keys nevers leaves your device',
+      title: 'Best Descentralized Wallet',
       img: images.PerspectiveImage,
     },
   ];

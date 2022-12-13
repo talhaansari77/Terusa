@@ -99,12 +99,11 @@ const OnBoarding = ({navigation}) => {
                 <CustomText
                   label={item.title}
                   color={colors.white}
-                  fontWeight={'600'}
-                  fontFamily={Montserrat.SemiBold}
-                  fontSize={verticalScale(16)}
+                  fontWeight={'700'}
+                  fontFamily={Montserrat.BlackBold}
+                  fontSize={verticalScale(15)}
                 />
-                <Spacer height={verticalScale(10)} />
-                {/* <View style={{width: '100%'}}> */}
+                {/* <Spacer height={verticalScale(10)} />
                   <CustomText
                     label={item.desc}
                     fontFamily={Roboto.SemiBold}
@@ -112,7 +111,7 @@ const OnBoarding = ({navigation}) => {
                     selfAlign="center"
                     fontSize={verticalScale(10)}
                     textDecorationColor="black"
-                  />
+                  /> */}
                 {/* </View> */}
               </View>
             </>
@@ -144,9 +143,10 @@ const OnBoarding = ({navigation}) => {
 
         <TouchableOpacity
           onPress={
-            () => navigation.navigate('ImportCoin')
+            () => 
+            // navigation.navigate('ImportCoin')
 
-            // navigation.navigate('MainStack',{screen:"RestoreWallet",restore:true})
+            navigation.navigate("RestoreWalletDetail")
           }>
           <Text
             style={{

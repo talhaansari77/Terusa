@@ -21,6 +21,8 @@ const TokenStack = ({navigation}) => {
       <Stack.Screen name="RecivedAmountScreen" component={RecivedAmountScreen} />
       <Stack.Screen name="SwapScreen" component={SwapScreen} />
       <Stack.Screen name="AddSwap" component={AddSwap} />
+      <Stack.Screen name="AddMore" component={AddMore} />
+
 
       {/* <Stack.Screen name="SecurityWallet" component={SecurityWallet} />
    <Stack.Screen name="FingerPrintScreen" component={FingerPrintScreen} />
